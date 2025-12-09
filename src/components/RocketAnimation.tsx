@@ -1,11 +1,12 @@
 export default function RocketAnimation() {
   return (
-    <div className="w-32 h-32 sm:w-40 sm:h-40 animate-rocket-lift">
+    <div className="w-32 h-48 sm:w-40 sm:h-60 animate-rocket-lift">
       <svg
         viewBox="0 0 100 150"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full drop-shadow-2xl"
+        preserveAspectRatio="xMidYMid meet"
       >
         <defs>
           <linearGradient id="rocketBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">

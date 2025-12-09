@@ -1,11 +1,12 @@
 export default function AstronautAnimation() {
   return (
-    <div className="w-32 h-32 sm:w-40 sm:h-40 animate-astronaut-float">
+    <div className="w-32 h-48 sm:w-40 sm:h-60 animate-astronaut-float">
       <svg
         viewBox="0 0 120 180"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full drop-shadow-2xl"
+        preserveAspectRatio="xMidYMid meet"
       >
         <defs>
           <linearGradient id="astronautGradient" x1="0%" y1="0%" x2="0%" y2="100%">
