@@ -70,6 +70,7 @@ db.exec(`
     ga4_measurement_id TEXT,
     conversion_action_id TEXT,
     is_enabled INTEGER DEFAULT 0,
+    fallback_mode_enabled INTEGER DEFAULT 0,
     updated_at TEXT DEFAULT (datetime('now'))
   );
 
@@ -130,6 +131,7 @@ db.exec(`
     requests_total INTEGER DEFAULT 0,
     cache_hits INTEGER DEFAULT 0,
     api_calls INTEGER DEFAULT 0,
+    fallback_mode_uses INTEGER DEFAULT 0,
     queue_length_avg INTEGER DEFAULT 0,
     response_time_avg INTEGER DEFAULT 0,
     errors_count INTEGER DEFAULT 0,

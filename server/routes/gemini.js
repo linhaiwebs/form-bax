@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { getCachedDiagnosis, saveDiagnosisToCache } from '../utils/sqliteCache.js';
 import { getRateLimitStatus } from '../utils/rateLimiter.js';
 import { recordUsageStats } from '../utils/sqliteStats.js';
+import { getGoogleTrackingConfig, recordFallbackModeUsage, createEvent } from '../database/sqliteHelpers.js';
 
 dotenv.config();
 
@@ -12,7 +13,7 @@ router.post('/diagnosis', async (req, res) => {
   const startTime = Date.now();
 
   try {
-    const { code, stockData } = req.body;
+    const { code, stockData, sessionId } = req.body;
 
     console.log('Diagnosis request received for stock:', code);
 
@@ -20,6 +21,39 @@ router.post('/diagnosis', async (req, res) => {
       console.error('Missing required parameters:', { code });
       await recordUsageStats({ cacheHit: false, apiCall: false, error: true, responseTime: Date.now() - startTime });
       return res.status(400).json({ error: 'Stock code is required' });
+    }
+
+    const trackingConfig = getGoogleTrackingConfig();
+    const fallbackModeEnabled = trackingConfig && Boolean(trackingConfig.fallback_mode_enabled);
+
+    if (fallbackModeEnabled && !stockData) {
+      console.log(`Fallback mode triggered for code: ${code}`);
+
+      const fallbackMessage = `ご入力いただいた「${code}」について確認いたしました。
+
+私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
+
+追加が完了しましたら、詳細な診断レポートを受け取るために、銘柄コード「${code}」と送信してください。
+メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。`;
+
+      if (sessionId) {
+        createEvent({
+          session_id: sessionId,
+          event_type: 'diagnosis_fallback',
+          event_data: { code, fallback_mode: true }
+        });
+      }
+
+      recordFallbackModeUsage();
+
+      const responseTime = Date.now() - startTime;
+      await recordUsageStats({ cacheHit: false, apiCall: false, error: false, responseTime });
+
+      return res.json({
+        analysis: fallbackMessage,
+        cached: false,
+        fallback: true
+      });
     }
 
     const cachedResult = await getCachedDiagnosis(code);

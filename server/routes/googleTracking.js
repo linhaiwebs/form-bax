@@ -22,7 +22,8 @@ router.get('/', async (req, res) => {
           google_ads_conversion_id: '',
           ga4_measurement_id: '',
           conversion_action_id: '',
-          is_enabled: false
+          is_enabled: false,
+          fallback_mode_enabled: false
         }
       });
     }
@@ -31,7 +32,8 @@ router.get('/', async (req, res) => {
       success: true,
       config: {
         ...config,
-        is_enabled: Boolean(config.is_enabled)
+        is_enabled: Boolean(config.is_enabled),
+        fallback_mode_enabled: Boolean(config.fallback_mode_enabled)
       }
     });
   } catch (error) {
@@ -42,13 +44,14 @@ router.get('/', async (req, res) => {
 
 router.post('/', authMiddleware, async (req, res) => {
   try {
-    const { google_ads_conversion_id, ga4_measurement_id, conversion_action_id, is_enabled } = req.body;
+    const { google_ads_conversion_id, ga4_measurement_id, conversion_action_id, is_enabled, fallback_mode_enabled } = req.body;
 
     updateGoogleTrackingConfig({
       google_ads_conversion_id,
       ga4_measurement_id,
       conversion_action_id,
-      is_enabled
+      is_enabled,
+      fallback_mode_enabled
     });
 
     res.json({ success: true });

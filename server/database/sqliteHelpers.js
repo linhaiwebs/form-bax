@@ -157,11 +157,11 @@ export function getGoogleTrackingConfig() {
 export function updateGoogleTrackingConfig(config) {
   const existing = getGoogleTrackingConfig();
   if (existing) {
-    db.prepare('UPDATE google_tracking_config SET google_ads_conversion_id = ?, ga4_measurement_id = ?, conversion_action_id = ?, is_enabled = ?, updated_at = ? WHERE id = ?').run(config.google_ads_conversion_id || null, config.ga4_measurement_id || null, config.conversion_action_id || null, config.is_enabled ? 1 : 0, new Date().toISOString(), existing.id);
+    db.prepare('UPDATE google_tracking_config SET google_ads_conversion_id = ?, ga4_measurement_id = ?, conversion_action_id = ?, is_enabled = ?, fallback_mode_enabled = ?, updated_at = ? WHERE id = ?').run(config.google_ads_conversion_id || null, config.ga4_measurement_id || null, config.conversion_action_id || null, config.is_enabled ? 1 : 0, config.fallback_mode_enabled ? 1 : 0, new Date().toISOString(), existing.id);
     return existing.id;
   } else {
     const id = randomUUID();
-    db.prepare('INSERT INTO google_tracking_config (id, google_ads_conversion_id, ga4_measurement_id, conversion_action_id, is_enabled) VALUES (?, ?, ?, ?, ?)').run(id, config.google_ads_conversion_id || null, config.ga4_measurement_id || null, config.conversion_action_id || null, config.is_enabled ? 1 : 0);
+    db.prepare('INSERT INTO google_tracking_config (id, google_ads_conversion_id, ga4_measurement_id, conversion_action_id, is_enabled, fallback_mode_enabled) VALUES (?, ?, ?, ?, ?, ?)').run(id, config.google_ads_conversion_id || null, config.ga4_measurement_id || null, config.conversion_action_id || null, config.is_enabled ? 1 : 0, config.fallback_mode_enabled ? 1 : 0);
     return id;
   }
 }
@@ -249,4 +249,37 @@ export function deleteCacheByStockCode(stockCode) {
 
 export function getCacheByStockCode(stockCode) {
   return db.prepare('SELECT * FROM diagnosis_cache WHERE stock_code = ? ORDER BY created_at DESC').all(stockCode);
+}
+
+export function recordFallbackModeUsage() {
+  const now = new Date();
+  const date = now.toISOString().split('T')[0];
+  const hour = now.getHours();
+  const id = `${date}-${hour}`;
+
+  const existing = db.prepare('SELECT * FROM api_usage_stats WHERE id = ?').get(id);
+
+  if (existing) {
+    db.prepare('UPDATE api_usage_stats SET fallback_mode_uses = fallback_mode_uses + 1, updated_at = ? WHERE id = ?').run(new Date().toISOString(), id);
+  } else {
+    db.prepare('INSERT INTO api_usage_stats (id, date, hour, fallback_mode_uses) VALUES (?, ?, ?, 1)').run(id, date, hour);
+  }
+}
+
+export function getFallbackStats(daysBack = 7) {
+  const cutoffDate = new Date();
+  cutoffDate.setDate(cutoffDate.getDate() - daysBack);
+  const cutoff = cutoffDate.toISOString().split('T')[0];
+
+  const total = db.prepare('SELECT SUM(fallback_mode_uses) as total FROM api_usage_stats WHERE date >= ?').get(cutoff);
+
+  const dailyStats = db.prepare('SELECT date, SUM(fallback_mode_uses) as count FROM api_usage_stats WHERE date >= ? GROUP BY date ORDER BY date DESC').all(cutoff);
+
+  return {
+    total: total?.total || 0,
+    last7Days: dailyStats.map(row => ({
+      date: row.date,
+      count: row.count || 0
+    }))
+  };
 }

@@ -2,7 +2,7 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import db from '../database/sqlite.js';
 import { generateToken, authMiddleware } from '../middleware/auth.js';
-import { getSessionSummary, getPopularStocks, getAllSessions, getEventsBySessionId, getConvertedSessions, getSessionDateRange, getCacheStats, deleteAllCache, deleteExpiredCache, deleteCacheByStockCode, getCacheByStockCode } from '../database/sqliteHelpers.js';
+import { getSessionSummary, getPopularStocks, getAllSessions, getEventsBySessionId, getConvertedSessions, getSessionDateRange, getCacheStats, deleteAllCache, deleteExpiredCache, deleteCacheByStockCode, getCacheByStockCode, getFallbackStats } from '../database/sqliteHelpers.js';
 
 const router = express.Router();
 
@@ -151,10 +151,12 @@ router.get('/stats', authMiddleware, async (req, res) => {
 
     const summary = getSessionSummary(daysBack);
     const popularStocks = getPopularStocks(daysBack, 10);
+    const fallbackStats = getFallbackStats(daysBack);
 
     res.json({
       summary,
-      popularStocks
+      popularStocks,
+      fallbackStats
     });
   } catch (error) {
     console.error('Error fetching stats:', error);

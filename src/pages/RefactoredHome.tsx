@@ -37,6 +37,7 @@ export default function RefactoredHome() {
   const [stockData, setStockData] = useState<StockData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [fallbackModeEnabled, setFallbackModeEnabled] = useState(false);
 
   const [diagnosisState, setDiagnosisState] = useState<DiagnosisState>('initial');
   const [analysisResult, setAnalysisResult] = useState<string>('');
@@ -73,6 +74,21 @@ export default function RefactoredHome() {
       setInputValue('');
     }
   }, [urlParams.code, search, isSearchLoading]);
+
+  useEffect(() => {
+    const loadFallbackConfig = async () => {
+      try {
+        const response = await apiClient.get('/api/google-tracking');
+        const data = await response.json();
+        if (data.success && data.config) {
+          setFallbackModeEnabled(data.config.fallback_mode_enabled || false);
+        }
+      } catch (error) {
+        console.error('Failed to load fallback config:', error);
+      }
+    };
+    loadFallbackConfig();
+  }, []);
 
   useEffect(() => {
     const trackPageVisit = async () => {
@@ -145,7 +161,8 @@ export default function RefactoredHome() {
 
   const runDiagnosis = async () => {
     if (diagnosisState !== 'initial') return;
-    if (!stockCode || !stockData) return;
+    if (!inputValue) return;
+    if (!fallbackModeEnabled && (!stockCode || !stockData)) return;
 
     trackDiagnosisButtonClick();
 
@@ -185,7 +202,7 @@ export default function RefactoredHome() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          code: stockCode,
+          code: stockCode || inputValue,
           stockData: stockData ? {
             name: stockData.info.name,
             price: stockData.info.price,
@@ -197,6 +214,7 @@ export default function RefactoredHome() {
             industry: stockData.info.industry,
             marketCap: stockData.info.marketCap,
           } : null,
+          sessionId: userTracking.getSessionId(),
         }),
         signal: controller.signal,
       });
@@ -514,7 +532,10 @@ export default function RefactoredHome() {
                 )}
 
                 {!loading && diagnosisState === 'initial' && (
-                  <ModernActionButton onClick={runDiagnosis} disabled={!inputValue || !stockCode} />
+                  <ModernActionButton
+                    onClick={runDiagnosis}
+                    disabled={!inputValue || (!fallbackModeEnabled && !stockCode)}
+                  />
                 )}
 
                 {diagnosisState === 'error' && (
