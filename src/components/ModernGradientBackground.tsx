@@ -5,31 +5,44 @@ export default function ModernGradientBackground() {
       <div
         className="absolute inset-0 w-full h-full"
         style={{
-          background: 'linear-gradient(180deg, #0a1929 0%, #1e3a5f 50%, #4a7ba7 100%)'
+          background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 20%, #1e3a8a 40%, #0c4a6e 60%, #164e63 80%, #134e4a 100%)'
         }}
       />
 
-      {/* Layer 1: Large light halos */}
+      {/* Rotating colorful gradient overlay */}
+      <div
+        className="absolute inset-0 w-full h-full opacity-30"
+        style={{
+          background: 'radial-gradient(circle at 30% 50%, rgba(236, 72, 153, 0.3) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), radial-gradient(circle at 50% 80%, rgba(251, 146, 60, 0.3) 0%, transparent 50%)',
+          animation: 'gradient-shift 15s ease-in-out infinite'
+        }}
+      />
+
+      {/* Layer 1: Large colorful halos */}
       <div className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
-        {[...Array(12)].map((_, i) => (
-          <div
-            key={`halo-${i}`}
-            className="absolute rounded-full"
-            style={{
-              width: `${100 + Math.random() * 200}px`,
-              height: `${100 + Math.random() * 200}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 60}%`,
-              background: `radial-gradient(circle, ${
-                ['#2c5f7f', '#3a7ca5', '#4a9bc7'][i % 3]
-              }${Math.floor(10 + Math.random() * 15).toString(16)} 0%, transparent 70%)`,
-              filter: `blur(${20 + Math.random() * 20}px)`,
-              animation: `float-halo ${20 + Math.random() * 15}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 10}s`,
-              willChange: 'transform'
-            }}
-          />
-        ))}
+        {[...Array(12)].map((_, i) => {
+          const colors = [
+            '#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#06b6d4',
+            '#6366f1', '#a855f7', '#f97316', '#14b8a6', '#84cc16', '#f43f5e'
+          ];
+          return (
+            <div
+              key={`halo-${i}`}
+              className="absolute rounded-full"
+              style={{
+                width: `${100 + Math.random() * 200}px`,
+                height: `${100 + Math.random() * 200}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 60}%`,
+                background: `radial-gradient(circle, ${colors[i]}${Math.floor(15 + Math.random() * 20).toString(16)} 0%, transparent 70%)`,
+                filter: `blur(${25 + Math.random() * 25}px)`,
+                animation: `float-halo ${20 + Math.random() * 15}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 10}s`,
+                willChange: 'transform'
+              }}
+            />
+          );
+        })}
       </div>
 
       {/* Layer 2: Grid patterns */}
@@ -193,33 +206,42 @@ export default function ModernGradientBackground() {
         })}
       </div>
 
-      {/* Layer 6: Star particles */}
+      {/* Layer 6: Colorful star particles */}
       <div className="absolute inset-0 w-full h-full" style={{ zIndex: 6 }}>
-        {[...Array(70)].map((_, i) => (
-          <div
-            key={`star-${i}`}
-            className="absolute rounded-full"
-            style={{
-              width: `${1 + Math.random() * 4}px`,
-              height: `${1 + Math.random() * 4}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 50}%`,
-              background: i % 3 === 0 ? '#ffffff' : '#a8d5f7',
-              opacity: 0.3,
-              animation: `twinkle ${2 + Math.random() * 3}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
-              boxShadow: '0 0 2px rgba(255, 255, 255, 0.5)'
-            }}
-          />
-        ))}
+        {[...Array(70)].map((_, i) => {
+          const starColors = ['#ffffff', '#60A5FA', '#C084FC', '#FB923C', '#34D399', '#F472B6', '#FBBF24'];
+          return (
+            <div
+              key={`star-${i}`}
+              className="absolute rounded-full"
+              style={{
+                width: `${1 + Math.random() * 4}px`,
+                height: `${1 + Math.random() * 4}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 50}%`,
+                background: starColors[i % starColors.length],
+                opacity: 0.4,
+                animation: `twinkle ${2 + Math.random() * 3}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 5}s`,
+                boxShadow: `0 0 4px ${starColors[i % starColors.length]}`
+              }}
+            />
+          );
+        })}
       </div>
 
       {/* CSS Animations */}
       <style>{`
+        @keyframes gradient-shift {
+          0%, 100% { transform: rotate(0deg) scale(1); }
+          33% { transform: rotate(120deg) scale(1.1); }
+          66% { transform: rotate(240deg) scale(1.05); }
+        }
+
         @keyframes float-halo {
-          0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-          33% { transform: translate(30px, -40px) scale(1.1); opacity: 0.8; }
-          66% { transform: translate(-20px, 30px) scale(0.9); opacity: 0.5; }
+          0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+          33% { transform: translate(30px, -40px) scale(1.15); opacity: 0.9; }
+          66% { transform: translate(-20px, 30px) scale(0.95); opacity: 0.6; }
         }
 
         @keyframes float-shape {

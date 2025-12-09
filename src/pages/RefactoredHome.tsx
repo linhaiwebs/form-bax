@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import ModernGradientBackground from '../components/ModernGradientBackground';
 import DiagnosisTicker from '../components/DiagnosisTicker';
-import AILogoAnimation from '../components/AILogoAnimation';
+import ColorfulWaveAnimation from '../components/ColorfulWaveAnimation';
 import FormContainer from '../components/FormContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
@@ -464,7 +464,7 @@ export default function RefactoredHome() {
         {!showLoadingScene ? (
           <div className="flex-1 flex flex-col">
             <div className="flex-[6] flex flex-col items-center justify-center px-2 py-4">
-              <AILogoAnimation />
+              <ColorfulWaveAnimation />
             </div>
 
             <div className="w-[95%] mx-auto mb-4">
