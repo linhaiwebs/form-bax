@@ -489,13 +489,36 @@ export default function RefactoredHome() {
               <div className="overflow-hidden py-2">
                 <div className="animate-scroll-left whitespace-nowrap inline-block">
                   {[...diagnosisRecords, ...diagnosisRecords, ...diagnosisRecords].map((record, index) => (
-                    <span key={index} className="inline-flex items-center mx-4 px-4 py-2 border-2 border-white rounded-full bg-white/10 backdrop-blur-sm">
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/20 mr-2 text-sm">
+                    <span
+                      key={index}
+                      className="inline-flex items-center mx-4 px-4 py-2 border-2 rounded-full backdrop-blur-md"
+                      style={{
+                        borderColor: '#00D9FF',
+                        background: 'rgba(255, 255, 255, 0.8)',
+                        boxShadow: '0 0 15px rgba(0, 217, 255, 0.4), inset 0 0 10px rgba(0, 217, 255, 0.1)'
+                      }}
+                    >
+                      <span
+                        className="inline-flex items-center justify-center w-6 h-6 rounded-full mr-2 text-sm"
+                        style={{
+                          background: 'linear-gradient(135deg, #00D9FF 0%, #0066FF 100%)',
+                          boxShadow: '0 0 8px rgba(0, 217, 255, 0.5)'
+                        }}
+                      >
                         {record.icon}
                       </span>
-                      <span className="text-sm font-medium mr-2 text-white">{record.time}</span>
-                      <span className="text-sm font-bold mr-2 text-white">{record.stock}</span>
-                      <span className="text-xs bg-white/30 px-2 py-0.5 rounded-full text-white">無料レポート取得</span>
+                      <span className="text-sm font-medium mr-2" style={{ color: '#1E293B' }}>{record.time}</span>
+                      <span className="text-sm font-bold mr-2" style={{ color: '#0F172A' }}>{record.stock}</span>
+                      <span
+                        className="text-xs px-2 py-0.5 rounded-full font-semibold"
+                        style={{
+                          background: 'linear-gradient(135deg, #00D9FF 0%, #0066FF 100%)',
+                          color: '#FFFFFF',
+                          boxShadow: '0 0 8px rgba(0, 217, 255, 0.5)'
+                        }}
+                      >
+                        無料レポート取得
+                      </span>
                     </span>
                   ))}
                 </div>
