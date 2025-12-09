@@ -473,15 +473,15 @@ export default function RefactoredHome() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col">
+    <div className="relative flex flex-col">
       <NeuralNetworkBackground />
 
-      <div className="relative z-10 flex-1 flex flex-col">
+      <div className="relative z-10 flex flex-col">
         <ApiStatsDisplay />
 
         {!showLoadingScene ? (
-          <div className="flex-1 flex flex-col">
-            <div className="flex-[3] flex flex-col items-center justify-center px-2 py-4">
+          <div className="flex flex-col">
+            <div className="flex flex-col items-center justify-center px-2 py-12">
               <CubicLogoAnimation />
             </div>
 
@@ -544,7 +544,7 @@ export default function RefactoredHome() {
               </div>
             </div>
 
-            <div className="flex-[2] flex flex-col justify-end">
+            <div className="flex flex-col py-8 pb-12">
               <FormContainer>
                 <ModernStockInput
                   value={inputValue}
@@ -599,7 +599,7 @@ export default function RefactoredHome() {
             </div>
           </div>
         ) : (
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex items-center justify-center py-20">
             <InlineLoadingScene isVisible={showLoadingScene} />
           </div>
         )}
