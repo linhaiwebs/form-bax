@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 const stockTerms = [
-  'PER', 'PBR', 'ROE', 'EPS',
-  'EBITDA', 'ROA', 'β値', 'BPS'
+  '株価収益率', '株価純資産倍率', '自己資本利益率', '一株当たり利益',
+  '営業利益', '総資本利益率', 'ベータ値', '一株当たり純資産'
 ];
 
 interface Particle {
@@ -157,29 +157,17 @@ export default function CubicLogoAnimation() {
             transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
           }}
         >
-          <div
-            className="absolute inset-0 flex items-center justify-center text-4xl font-bold"
-            style={{
-              color: '#F0F9FF',
-              textShadow: '0 0 20px rgba(0, 240, 255, 0.8), 0 0 40px rgba(0, 240, 255, 0.5)',
-              transform: 'translateZ(60px)',
-              zIndex: 10,
-            }}
-          >
-            AI
-          </div>
-
           {[
-            { transform: 'rotateY(0deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.15) 0%, rgba(99, 102, 241, 0.2) 100%)' },
-            { transform: 'rotateY(180deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(0, 240, 255, 0.15) 100%)' },
-            { transform: 'rotateY(90deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.18) 0%, rgba(99, 102, 241, 0.15) 100%)' },
-            { transform: 'rotateY(-90deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(0, 240, 255, 0.18) 100%)' },
-            { transform: 'rotateX(90deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(99, 102, 241, 0.25) 100%)' },
-            { transform: 'rotateX(-90deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(0, 240, 255, 0.2) 100%)' },
+            { transform: 'rotateY(0deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.15) 0%, rgba(99, 102, 241, 0.2) 100%)', text: 'AI診断' },
+            { transform: 'rotateY(180deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(0, 240, 255, 0.15) 100%)', text: '株式分析' },
+            { transform: 'rotateY(90deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.18) 0%, rgba(99, 102, 241, 0.15) 100%)', text: '投資判断' },
+            { transform: 'rotateY(-90deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(0, 240, 255, 0.18) 100%)', text: 'リスク評価' },
+            { transform: 'rotateX(90deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(99, 102, 241, 0.25) 100%)', text: '収益予測' },
+            { transform: 'rotateX(-90deg) translateZ(60px)', background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(0, 240, 255, 0.2) 100%)', text: '市場動向' },
           ].map((face, index) => (
             <div
               key={index}
-              className="absolute inset-0"
+              className="absolute inset-0 flex items-center justify-center"
               style={{
                 transform: face.transform,
                 background: face.background,
@@ -188,7 +176,17 @@ export default function CubicLogoAnimation() {
                 backdropFilter: 'blur(10px)',
                 borderRadius: '4px',
               }}
-            />
+            >
+              <div
+                className="text-xl font-bold"
+                style={{
+                  color: '#F0F9FF',
+                  textShadow: '0 0 20px rgba(0, 240, 255, 0.8), 0 0 40px rgba(0, 240, 255, 0.5)',
+                }}
+              >
+                {face.text}
+              </div>
+            </div>
           ))}
 
           {[
