@@ -463,7 +463,7 @@ export default function RefactoredHome() {
 
         {!showLoadingScene ? (
           <div className="flex-1 flex flex-col">
-            <div className="flex-[6] flex flex-col items-center justify-center px-2 py-4">
+            <div className="flex-[3] flex flex-col items-center justify-center px-2 py-4">
               <ColorfulWaveAnimation />
             </div>
 
@@ -484,7 +484,7 @@ export default function RefactoredHome() {
               </div>
             </div>
 
-            <div className="flex-[4] flex flex-col justify-end">
+            <div className="flex-[2] flex flex-col justify-end">
               <FormContainer>
                 <ModernStockInput
                   value={inputValue}
