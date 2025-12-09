@@ -77,19 +77,19 @@ export default function Footer() {
         </div>
 
         {/* Footer Links Section */}
-        <div className="border-t-2 border-white/30 pt-6">
+        <div className="border-t-2 border-cyan-400/40 pt-6">
           <div className="grid grid-cols-2 gap-6 mb-6">
             {/* Legal Documents */}
             <div>
-              <h4 className="font-bold text-white drop-shadow-lg mb-3 flex items-center gap-2 text-sm">
-                <FileText className="w-4 h-4" />
+              <h4 className="font-bold text-slate-800 mb-3 flex items-center gap-2 text-sm">
+                <FileText className="w-4 h-4 text-cyan-600" />
                 法的文書
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm">
                 <li>
                   <Link
                     to="/company"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-slate-700 hover:text-cyan-600 hover:underline flex items-center gap-1 font-medium"
                   >
                     会社概要 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -97,7 +97,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/terms"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-slate-700 hover:text-cyan-600 hover:underline flex items-center gap-1 font-medium"
                   >
                     利用規約 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -105,7 +105,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/privacy"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-slate-700 hover:text-cyan-600 hover:underline flex items-center gap-1 font-medium"
                   >
                     プライバシーポリシー <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -113,7 +113,7 @@ export default function Footer() {
                 <li>
                   <Link
                     to="/specified-commercial-transaction-act"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-slate-700 hover:text-cyan-600 hover:underline flex items-center gap-1 font-medium"
                   >
                     特定商取引法表記 <ExternalLink className="w-3 h-3" />
                   </Link>
@@ -123,24 +123,24 @@ export default function Footer() {
 
             {/* Contact */}
             <div>
-              <h4 className="font-bold text-white drop-shadow-lg mb-3 flex items-center gap-2 text-sm">
-                <Mail className="w-4 h-4" />
+              <h4 className="font-bold text-slate-800 mb-3 flex items-center gap-2 text-sm">
+                <Mail className="w-4 h-4 text-cyan-600" />
                 お問い合わせ
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm">
                 <li>
                   <Link
                     to="/contact"
-                    className="text-white drop-shadow-lg hover:text-yellow-300 hover:underline flex items-center gap-1"
+                    className="text-slate-700 hover:text-cyan-600 hover:underline flex items-center gap-1 font-medium"
                   >
                     お問い合わせフォーム <ExternalLink className="w-3 h-3" />
                   </Link>
                 </li>
-                <li className="flex items-center gap-1 text-white drop-shadow-lg">
-                  <Mail className="w-3 h-3" />
+                <li className="flex items-center gap-1 text-slate-700 font-medium">
+                  <Mail className="w-3 h-3 text-cyan-600" />
                   <span>support@aisbistock.com</span>
                 </li>
-                <li className="text-white/80 drop-shadow-lg text-xs">
+                <li className="text-slate-600 text-xs">
                   受付時間: 24時間受付（返信は営業日内）
                 </li>
               </ul>
@@ -148,11 +148,11 @@ export default function Footer() {
           </div>
 
           {/* Copyright Section */}
-          <div className="border-t border-white/30 pt-4 text-center">
-            <p className="text-xs sm:text-sm text-white drop-shadow-lg mb-2 font-medium">
+          <div className="border-t border-cyan-400/40 pt-4 text-center">
+            <p className="text-xs sm:text-sm text-slate-800 mb-2 font-semibold">
               &copy; {currentYear} 株式会社アドバンス (Advance Co., Ltd.). All rights reserved.
             </p>
-            <p className="text-[10px] sm:text-xs text-white/90 drop-shadow-lg leading-relaxed max-w-3xl mx-auto mb-4">
+            <p className="text-[10px] sm:text-xs text-slate-700 leading-relaxed max-w-3xl mx-auto mb-4">
               当サイトで提供される情報は投資勧誘を目的としたものではありません。
               投資に関する最終決定は、利用者ご自身の判断でなさるようお願いいたします。
               掲載されている情報の正確性については万全を期しておりますが、その内容の正確性、安全性、有用性を保証するものではありません。
