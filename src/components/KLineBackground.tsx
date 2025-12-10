@@ -27,8 +27,8 @@ export default function KLineBackground() {
     let offset = 0;
 
     const drawGrid = () => {
-      ctx.strokeStyle = 'rgba(40, 50, 60, 0.3)';
-      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(34, 197, 94, 0.15)';
+      ctx.lineWidth = 0.5;
 
       for (let x = 0; x < canvas.width; x += gridSpacing) {
         ctx.beginPath();
@@ -43,6 +43,13 @@ export default function KLineBackground() {
         ctx.lineTo(canvas.width, y);
         ctx.stroke();
       }
+
+      ctx.strokeStyle = 'rgba(34, 197, 94, 0.3)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height / 2);
+      ctx.lineTo(canvas.width, canvas.height / 2);
+      ctx.stroke();
     };
 
     const drawCandlestick = (x: number, y: number, height: number, isGreen: boolean) => {

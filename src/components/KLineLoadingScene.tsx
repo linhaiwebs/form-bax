@@ -20,17 +20,22 @@ export default function KLineLoadingScene({ isVisible }: KLineLoadingSceneProps)
 
         <div className="text-center space-y-4">
           <h2
-            className="text-3xl md:text-4xl font-bold"
+            className="text-4xl md:text-5xl font-bold tracking-tight"
             style={{
               color: '#22c55e',
-              textShadow: '0 0 20px rgba(34, 197, 94, 0.6), 0 0 40px rgba(34, 197, 94, 0.3)'
+              textShadow: '0 0 30px rgba(34, 197, 94, 0.8), 0 0 60px rgba(34, 197, 94, 0.4)',
+              fontFamily: 'monospace'
             }}
           >
             AI市場分析中
           </h2>
-          <p className="text-lg text-gray-300 font-medium">
-            リアルタイムデータを処理しています...
-          </p>
+          <div className="flex items-center justify-center space-x-2">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <p className="text-xl text-gray-300 font-semibold tracking-wide">
+              リアルタイムデータ処理中
+            </p>
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" style={{ animationDelay: '0.5s' }} />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl px-4">
