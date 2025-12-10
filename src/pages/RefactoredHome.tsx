@@ -480,43 +480,50 @@ export default function RefactoredHome() {
 
         {!showLoadingScene ? (
           <div className="flex flex-col">
-            <div className="flex flex-col items-center justify-center px-2 py-12 relative">
+            <div className="flex flex-col items-center justify-center px-2 py-12">
               <MinimalistLogoAnimation />
+            </div>
 
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="relative w-[600px] h-[600px] max-w-[90vw] max-h-[90vw]">
-                  {diagnosisRecords.slice(0, 8).map((record, index) => {
-                    const angle = (index * 360) / 8;
-                    const radius = 280;
-                    const x = Math.cos((angle - 90) * Math.PI / 180) * radius;
-                    const y = Math.sin((angle - 90) * Math.PI / 180) * radius;
-
-                    return (
-                      <div
-                        key={index}
-                        className="absolute left-1/2 top-1/2 pointer-events-auto animate-gentle-pulse"
+            <div className="w-[95%] mx-auto mb-4">
+              <div className="overflow-hidden py-2 relative">
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, transparent 5%, transparent 95%, rgba(255, 255, 255, 0.95) 100%)',
+                    zIndex: 1
+                  }}
+                />
+                <div className="animate-scroll-left whitespace-nowrap inline-block">
+                  {[...diagnosisRecords, ...diagnosisRecords, ...diagnosisRecords].map((record, index) => (
+                    <span
+                      key={index}
+                      className="inline-flex items-center mx-3 px-4 py-2 bg-white rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105"
+                      style={{
+                        border: '1px solid rgba(59, 130, 246, 0.2)',
+                      }}
+                    >
+                      <span
+                        className="inline-flex items-center justify-center w-7 h-7 mr-2 text-sm rounded-full"
                         style={{
-                          transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                          animationDelay: `${index * 0.2}s`
+                          background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)',
+                          border: '1px solid rgba(59, 130, 246, 0.2)',
                         }}
                       >
-                        <div
-                          className="flex items-center px-3 py-2 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-default"
-                          style={{
-                            border: '1px solid rgba(59, 130, 246, 0.2)',
-                          }}
-                        >
-                          <span className="inline-flex items-center justify-center w-6 h-6 mr-2 text-xs bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full">
-                            {record.icon}
-                          </span>
-                          <div className="flex flex-col">
-                            <span className="text-xs font-medium text-gray-500">{record.time}</span>
-                            <span className="text-xs font-bold text-gray-800 whitespace-nowrap">{record.stock}</span>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
+                        {record.icon}
+                      </span>
+                      <span className="text-sm font-medium mr-2" style={{ color: '#64748B' }}>{record.time}</span>
+                      <span className="text-sm font-bold mr-2" style={{ color: '#2C3E50' }}>{record.stock}</span>
+                      <span
+                        className="text-xs px-3 py-1 font-semibold rounded-full"
+                        style={{
+                          background: 'linear-gradient(135deg, #3B82F6 0%, #06B6D4 50%, #10B981 100%)',
+                          color: '#FFFFFF',
+                        }}
+                      >
+                        無料レポート取得
+                      </span>
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
