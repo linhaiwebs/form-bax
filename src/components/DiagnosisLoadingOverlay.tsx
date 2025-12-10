@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react';
+import HolographicBackground from './HolographicBackground';
+import HolographicLogo from './HolographicLogo';
+import HolographicProgressBar from './HolographicProgressBar';
+import HolographicLabel from './HolographicLabel';
 
 interface DiagnosisLoadingOverlayProps {
   isVisible: boolean;
@@ -12,6 +16,17 @@ export default function DiagnosisLoadingOverlay({
   onComplete
 }: DiagnosisLoadingOverlayProps) {
   const [isExiting, setIsExiting] = useState(false);
+  const [currentStage, setCurrentStage] = useState(0);
+
+  useEffect(() => {
+    if (progress < 33) {
+      setCurrentStage(0);
+    } else if (progress < 66) {
+      setCurrentStage(1);
+    } else {
+      setCurrentStage(2);
+    }
+  }, [progress]);
 
   useEffect(() => {
     if (progress >= 100 && isVisible) {
@@ -20,7 +35,7 @@ export default function DiagnosisLoadingOverlay({
         if (onComplete) {
           onComplete();
         }
-      }, 500);
+      }, 1000);
       return () => clearTimeout(timer);
     } else if (!isVisible) {
       setIsExiting(false);
@@ -49,77 +64,96 @@ export default function DiagnosisLoadingOverlay({
 
   if (!isVisible && !isExiting) return null;
 
+  const stageLabels = [
+    'データ収集中',
+    'AI分析中',
+    'レポート生成中'
+  ];
+
   return (
     <div
-      className={`fixed inset-0 z-[9997] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md transition-opacity duration-500 ${
+      className={`fixed inset-0 z-[9997] flex items-center justify-center p-4 transition-opacity duration-500 ${
         isExiting ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       style={{ touchAction: 'none' }}
     >
-      <div className={`w-full max-w-2xl transition-transform duration-500 ${
-        isExiting ? 'scale-95' : 'scale-100'
-      }`}>
-        <div
-          className="border-2 rounded-2xl shadow-2xl p-8"
-          style={{
-            background: 'linear-gradient(to bottom right, #3A3452, #4A4563, #3A3452)',
-            borderColor: 'rgba(139, 131, 255, 0.5)'
-          }}
-        >
-          <div className="flex justify-center mb-6">
-            <div className="relative w-24 h-24">
-              <div
-                className="absolute inset-0 rounded-full animate-pulse opacity-50"
-                style={{ background: 'linear-gradient(to bottom right, #8B83FF, #6B63FF)' }}
-              ></div>
-              <div
-                className="absolute inset-2 rounded-full flex items-center justify-center"
-                style={{ background: 'linear-gradient(to bottom right, #A78BFA, #8B83FF)' }}
-              >
-                <span className="text-4xl">🤖</span>
-              </div>
-            </div>
+      <HolographicBackground />
+
+      <div
+        className={`relative z-10 w-full max-w-2xl transition-all duration-500 ${
+          isExiting ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
+        }`}
+        style={{
+          animation: isExiting ? 'hologram-dissipate 1s ease-out forwards' : 'none',
+        }}
+      >
+        <div className="relative p-8 md:p-12">
+          <div className="flex justify-center mb-8">
+            <HolographicLogo />
           </div>
+
+          <HolographicLabel className="mb-8 rounded-xl p-6">
+            <h3 className="text-2xl font-bold text-white mb-3 text-center">AI分析を実行中</h3>
+            <p className="text-base text-center text-cyan-300">
+              市場データを深度分析しています...
+            </p>
+          </HolographicLabel>
 
           <div className="mb-6">
-            <h3 className="text-xl font-bold text-white mb-2 text-center">AI分析を実行中</h3>
-            <p className="text-sm text-center" style={{ color: '#C4B5FD' }}>市場データを深度分析しています...</p>
-          </div>
-
-          <div className="relative w-full h-3 bg-gray-800/50 rounded-full overflow-hidden mb-3 border" style={{ borderColor: 'rgba(139, 131, 255, 0.3)' }}>
-            <div
-              className="absolute top-0 left-0 h-full transition-all duration-300 ease-out shadow-lg"
-              style={{
-                width: `${Math.min(progress, 100)}%`,
-                background: 'linear-gradient(to right, #8B83FF, #6B63FF)',
-                boxShadow: '0 0 20px rgba(139, 131, 255, 0.5)'
-              }}
-            />
+            <HolographicProgressBar progress={progress} stage={currentStage} />
           </div>
 
           <div className="mb-6 text-center">
-            <span className="text-sm font-semibold" style={{ color: '#A78BFA' }}>
+            <span className="text-2xl font-bold" style={{ color: '#00D9FF', textShadow: '0 0 10px rgba(0, 217, 255, 0.8)' }}>
               {Math.floor(Math.min(progress, 100))}%
             </span>
           </div>
 
-          <div className="bg-gray-900/40 border-2 rounded-lg p-6 backdrop-blur-sm" style={{ borderColor: 'rgba(139, 131, 255, 0.3)' }}>
-            <div className="space-y-3 text-sm">
-              <p className="text-white font-semibold text-center text-base">
-                📊 AIが複数の指標を総合的に評価中
+          <HolographicLabel className="rounded-lg p-6">
+            <div className="space-y-4 text-sm">
+              <p className="text-white font-semibold text-center text-lg">
+                {stageLabels[currentStage]}
               </p>
-              <p className="text-center" style={{ color: '#C4B5FD' }}>
+              <p className="text-center text-cyan-200">
                 しばらくお待ちください
               </p>
-              <div className="pt-3 border-t border-modern-purple-500/30">
+              <div className="pt-4 border-t border-cyan-500/30">
                 <p className="text-xs text-gray-300 text-center leading-relaxed">
                   すべてのデータは公開されている市場情報を使用しており、公開市場データに基づいて分析を行っています。本分析は最新のAI技術により、財務指標、業界動向、市場トレンドを総合的に評価しています。
                 </p>
               </div>
             </div>
-          </div>
+          </HolographicLabel>
         </div>
       </div>
+
+      <style>{`
+        @keyframes hologram-dissipate {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+            filter: blur(0px);
+          }
+          50% {
+            transform: scale(1.05);
+            opacity: 0.5;
+            filter: blur(2px);
+          }
+          100% {
+            transform: scale(1.2);
+            opacity: 0;
+            filter: blur(10px);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
