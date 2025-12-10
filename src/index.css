@@ -23,7 +23,7 @@
   }
 
   body {
-    @apply bg-gradient-to-b from-white to-light-blue text-gray-800 min-h-screen;
+    @apply bg-gradient-to-b from-white to-light-blue text-gray-800;
     overflow-x: hidden;
     font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -32,25 +32,34 @@
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: #3b82f6 #dbeafe;
+    scrollbar-color: #00F0FF #0A0E27;
   }
 
   *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
   }
 
   *::-webkit-scrollbar-track {
-    background: #dbeafe;
+    background: linear-gradient(to right, #0A0E27, #050810);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 2px;
   }
 
   *::-webkit-scrollbar-thumb {
-    background: #3b82f6;
-    border-radius: 4px;
+    background: linear-gradient(135deg, #00F0FF 0%, #6366F1 100%);
+    border-radius: 2px;
+    border: 1px solid rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
   }
 
   *::-webkit-scrollbar-thumb:hover {
-    background: #1e3a8a;
+    background: linear-gradient(135deg, #67E8F9 0%, #818CF8 100%);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: #0A0E27;
   }
 
   body[data-modal-open] header,
@@ -333,6 +342,15 @@
     }
     50% {
       opacity: 0.5;
+    }
+  }
+
+  @keyframes scanline {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(200%);
     }
   }
 

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import ModernGradientBackground from '../components/ModernGradientBackground';
+import NeuralNetworkBackground from '../components/NeuralNetworkBackground';
 import DiagnosisTicker from '../components/DiagnosisTicker';
-import ColorfulWaveAnimation from '../components/ColorfulWaveAnimation';
+import CubicLogoAnimation from '../components/CubicLogoAnimation';
 import FormContainer from '../components/FormContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
@@ -473,36 +473,78 @@ export default function RefactoredHome() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col">
-      <ModernGradientBackground />
+    <div className="relative flex flex-col">
+      <NeuralNetworkBackground />
 
-      <div className="relative z-10 flex-1 flex flex-col">
+      <div className="relative z-10 flex flex-col">
         <ApiStatsDisplay />
 
         {!showLoadingScene ? (
-          <div className="flex-1 flex flex-col">
-            <div className="flex-[3] flex flex-col items-center justify-center px-2 py-4">
-              <ColorfulWaveAnimation />
+          <div className="flex flex-col">
+            <div className="flex flex-col items-center justify-center px-2 py-12">
+              <CubicLogoAnimation />
             </div>
 
             <div className="w-[95%] mx-auto mb-4">
-              <div className="overflow-hidden py-2">
+              <div className="overflow-hidden py-2 relative">
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(90deg, rgba(10, 14, 39, 0.8) 0%, transparent 5%, transparent 95%, rgba(10, 14, 39, 0.8) 100%)',
+                    zIndex: 1
+                  }}
+                />
                 <div className="animate-scroll-left whitespace-nowrap inline-block">
                   {[...diagnosisRecords, ...diagnosisRecords, ...diagnosisRecords].map((record, index) => (
-                    <span key={index} className="inline-flex items-center mx-4 px-4 py-2 border-2 border-white rounded-full bg-white/10 backdrop-blur-sm">
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/20 mr-2 text-sm">
+                    <span
+                      key={index}
+                      className="inline-flex items-center mx-3 px-4 py-2 border backdrop-blur-md relative overflow-hidden"
+                      style={{
+                        borderColor: '#00F0FF',
+                        background: 'rgba(10, 20, 50, 0.6)',
+                        boxShadow: '0 0 20px rgba(0, 240, 255, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.1)',
+                        borderRadius: '4px',
+                      }}
+                    >
+                      <div
+                        className="absolute top-0 left-0 w-full h-0.5 opacity-50"
+                        style={{
+                          background: 'linear-gradient(90deg, transparent, #00F0FF, transparent)',
+                          animation: 'scanline 2s linear infinite',
+                        }}
+                      />
+                      <span
+                        className="inline-flex items-center justify-center w-7 h-7 mr-2 text-sm border"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.3) 0%, rgba(99, 102, 241, 0.3) 100%)',
+                          borderColor: '#00F0FF',
+                          boxShadow: '0 0 10px rgba(0, 240, 255, 0.5), inset 0 0 10px rgba(0, 240, 255, 0.2)',
+                          borderRadius: '2px',
+                          color: '#00F0FF',
+                        }}
+                      >
                         {record.icon}
                       </span>
-                      <span className="text-sm font-medium mr-2 text-white">{record.time}</span>
-                      <span className="text-sm font-bold mr-2 text-white">{record.stock}</span>
-                      <span className="text-xs bg-white/30 px-2 py-0.5 rounded-full text-white">無料レポート取得</span>
+                      <span className="text-sm font-medium mr-2" style={{ color: '#E0F2FE' }}>{record.time}</span>
+                      <span className="text-sm font-bold mr-2" style={{ color: '#F0F9FF' }}>{record.stock}</span>
+                      <span
+                        className="text-xs px-3 py-1 font-semibold"
+                        style={{
+                          background: 'linear-gradient(135deg, #00F0FF 0%, #6366F1 100%)',
+                          color: '#FFFFFF',
+                          boxShadow: '0 0 12px rgba(0, 240, 255, 0.6)',
+                          borderRadius: '2px',
+                        }}
+                      >
+                        無料レポート取得
+                      </span>
                     </span>
                   ))}
                 </div>
               </div>
             </div>
 
-            <div className="flex-[2] flex flex-col justify-end">
+            <div className="flex flex-col py-8 pb-12">
               <FormContainer>
                 <ModernStockInput
                   value={inputValue}
@@ -557,7 +599,7 @@ export default function RefactoredHome() {
             </div>
           </div>
         ) : (
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex items-center justify-center py-20">
             <InlineLoadingScene isVisible={showLoadingScene} />
           </div>
         )}
