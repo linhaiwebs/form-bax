@@ -1,7 +1,10 @@
 import { ArrowLeft, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getDomainEmail } from '../lib/getDomainEmail';
 
 export default function Privacy() {
+  const contactEmail = getDomainEmail();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
@@ -149,7 +152,7 @@ export default function Privacy() {
                 設立: 2012年10月
               </p>
               <p className="text-sm text-gray-700 mb-2">
-                メール: support@aisbistock.com
+                メール: {contactEmail}
               </p>
               <p className="text-sm text-gray-700">
                 受付時間: 24時間受付（返信は営業日内）
