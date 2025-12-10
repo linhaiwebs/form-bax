@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import CyberpunkBackground from '../components/CyberpunkBackground';
-import CyberpunkLogoAnimation from '../components/CyberpunkLogoAnimation';
+import BusinessGradientBackground from '../components/BusinessGradientBackground';
+import BusinessCircularLogoAnimation from '../components/BusinessCircularLogoAnimation';
 import FormContainer from '../components/FormContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
-import KLineLoadingScene from '../components/KLineLoadingScene';
+import BusinessLoadingScene from '../components/BusinessLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
 import StockTickerItem from '../components/StockTickerItem';
@@ -475,7 +475,7 @@ export default function RefactoredHome() {
 
   return (
     <div className="relative flex flex-col">
-      <CyberpunkBackground />
+      <BusinessGradientBackground />
       <SoundToggle />
 
       <div className="relative z-10 flex flex-col">
@@ -484,21 +484,20 @@ export default function RefactoredHome() {
         {!showLoadingScene ? (
           <div className="flex flex-col">
             <div className="flex flex-col items-center justify-center px-2 py-8">
-              <CyberpunkLogoAnimation />
+              <BusinessCircularLogoAnimation />
             </div>
 
             <div className="w-full mx-auto mb-4">
-              <div className="overflow-hidden py-3 relative"
+              <div className="overflow-hidden py-3 relative rounded-xl backdrop-blur-md"
                 style={{
-                  background: 'rgba(10, 15, 25, 0.6)',
-                  borderTop: '1px solid rgba(34, 197, 94, 0.2)',
-                  borderBottom: '1px solid rgba(34, 197, 94, 0.2)',
+                  background: 'rgba(255, 255, 255, 0.5)',
+                  border: '1px solid rgba(96, 165, 250, 0.2)',
                 }}
               >
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'linear-gradient(90deg, rgba(26, 31, 46, 1) 0%, transparent 5%, transparent 95%, rgba(26, 31, 46, 1) 100%)',
+                    background: 'linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, transparent 5%, transparent 95%, rgba(255, 255, 255, 1) 100%)',
                     zIndex: 1
                   }}
                 />
@@ -571,7 +570,7 @@ export default function RefactoredHome() {
           </div>
         ) : (
           <div className="flex items-center justify-center">
-            <KLineLoadingScene isVisible={showLoadingScene} />
+            <BusinessLoadingScene isVisible={showLoadingScene} />
           </div>
         )}
       </div>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,15 +27,15 @@
   body {
     @apply bg-white text-gray-800;
     overflow-x: hidden;
-    font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    font-family: 'Inter', 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #2C3E50;
+    color: #1F2937;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: #3B82F6 #F5F5F7;
+    scrollbar-color: #60A5FA #F0F9FF;
   }
 
   *::-webkit-scrollbar {
@@ -42,22 +44,22 @@
   }
 
   *::-webkit-scrollbar-track {
-    background: #F5F5F7;
+    background: #F0F9FF;
     border-radius: 5px;
   }
 
   *::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 50%, #10B981 100%);
+    background: linear-gradient(135deg, #60A5FA 0%, #4ADE80 50%, #6EE7B7 100%);
     border-radius: 5px;
-    border: 2px solid #F5F5F7;
+    border: 2px solid #F0F9FF;
   }
 
   *::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #2563EB 0%, #0891B2 50%, #059669 100%);
+    background: linear-gradient(135deg, #3B82F6 0%, #22C55E 50%, #34D399 100%);
   }
 
   *::-webkit-scrollbar-corner {
-    background: #F5F5F7;
+    background: #F0F9FF;
   }
 
   body[data-modal-open] header,

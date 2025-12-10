@@ -24,69 +24,50 @@ export default function ModernActionButton({ onClick, disabled = false }: Modern
 
   return (
     <>
-      <div className="relative animate-fadeIn mt-6 group" style={{ animationDelay: '0.3s' }}>
-        <div className="absolute -inset-1 bg-gradient-to-r from-cyber-cyan via-neon-pink to-electric-yellow rounded-lg blur-lg opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-neon-pulse" />
-
+      <div className="relative animate-fadeIn mt-6" style={{ animationDelay: '0.3s' }}>
         <button
           onClick={handleClick}
           disabled={disabled}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={() => setIsHovered(false)}
-          className={`relative w-full font-cyber font-bold py-4 px-6 transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50 overflow-hidden`}
+          className="relative w-full font-display font-bold py-4 px-8 rounded-xl transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50 overflow-hidden shadow-gradient-glow"
           style={{
             background: disabled
-              ? 'linear-gradient(135deg, rgba(75, 85, 99, 0.8) 0%, rgba(55, 65, 81, 0.8) 100%)'
-              : 'linear-gradient(135deg, rgba(10, 0, 21, 0.9) 0%, rgba(26, 0, 51, 0.9) 100%)',
-            height: '60px',
-            border: disabled ? 'none' : '3px solid #00F0FF',
+              ? 'linear-gradient(135deg, rgba(156, 163, 175, 0.3) 0%, rgba(107, 114, 128, 0.3) 100%)'
+              : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%)',
+            height: '64px',
+            border: disabled ? '2px solid rgba(156, 163, 175, 0.3)' : '2px solid rgba(96, 165, 250, 0.4)',
             boxShadow: disabled
-              ? 'none'
-              : '0 0 20px rgba(0, 240, 255, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.1)',
-            clipPath: 'polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)',
-            color: disabled ? '#94a3b8' : '#00F0FF',
-            textShadow: disabled ? 'none' : '0 0 10px rgba(0, 240, 255, 0.8), 2px 0 0 rgba(255, 0, 110, 0.5), -2px 0 0 rgba(176, 38, 255, 0.5)',
-            transform: isHovered && !disabled ? 'scale(1.02)' : 'scale(1)',
+              ? '0 4px 16px rgba(0, 0, 0, 0.04)'
+              : isHovered
+                ? '0 8px 32px rgba(96, 165, 250, 0.20), 0 12px 64px rgba(110, 231, 183, 0.15)'
+                : '0 4px 24px rgba(96, 165, 250, 0.15), 0 8px 48px rgba(110, 231, 183, 0.10)',
+            color: disabled ? '#9CA3AF' : 'transparent',
+            backgroundClip: disabled ? 'unset' : 'text',
+            WebkitBackgroundClip: disabled ? 'unset' : 'text',
+            WebkitTextFillColor: disabled ? '#9CA3AF' : 'transparent',
+            backgroundImage: disabled ? 'none' : 'linear-gradient(135deg, #60A5FA 0%, #4ADE80 50%, #6EE7B7 100%)',
+            transform: isHovered && !disabled ? 'perspective(1000px) rotateX(2deg) rotateY(3deg) translateY(-4px)' : 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)',
           }}
         >
-          <div className="absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 border-cyber-cyan animate-neon-pulse" />
-          <div className="absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 border-neon-pink animate-neon-pulse" style={{ animationDelay: '0.3s' }} />
-          <div className="absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 border-electric-yellow animate-neon-pulse" style={{ animationDelay: '0.6s' }} />
-          <div className="absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 border-neon-purple animate-neon-pulse" style={{ animationDelay: '0.9s' }} />
-
           {!disabled && (
-            <>
-              <div
-                className="absolute inset-0 opacity-30"
-                style={{
-                  background: 'linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), transparent)',
-                  animation: 'data-flow 3s linear infinite',
-                }}
-              />
-
-              {[...Array(3)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute h-px bg-cyber-cyan"
-                  style={{
-                    top: `${30 + i * 20}%`,
-                    left: '-100%',
-                    width: '30%',
-                    boxShadow: '0 0 5px #00F0FF',
-                    animation: `data-flow ${2 + i * 0.5}s linear infinite`,
-                    animationDelay: `${i * 0.3}s`,
-                  }}
-                />
-              ))}
-            </>
+            <div
+              className="absolute inset-0 opacity-20 rounded-xl"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.4) 50%, transparent 100%)',
+                backgroundSize: '200% 100%',
+                animation: 'shimmer 3s ease-in-out infinite',
+              }}
+            />
           )}
 
-          <span className="relative text-xl tracking-widest uppercase font-cyber">
+          <span className="relative text-lg tracking-wide font-display">
             診断を開始する
           </span>
         </button>
       </div>
       <div className="mt-4 text-center">
-        <p className="text-xs leading-relaxed font-cyber-sans" style={{ color: '#94a3b8' }}>
+        <p className="text-xs leading-relaxed font-body text-text-muted">
           ※本診断は投資助言ではありません。投資判断は自己責任でお願いいたします。
         </p>
       </div>
