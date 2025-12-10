@@ -28,33 +28,53 @@ export default function StockTickerItem({ code, name, basePrice }: StockTickerIt
   }, [basePrice]);
 
   const isPositive = change >= 0;
-  const glowColor = isPositive ? 'green' : 'red';
+  const glowColor = isPositive ? 'cyan' : 'pink';
   const arrowIcon = isPositive ? '▲' : '▼';
+  const neonColor = isPositive ? '#00F0FF' : '#FF006E';
+  const neonShadow = isPositive ? 'shadow-neon-cyan' : 'shadow-neon-pink';
 
   return (
-    <div className="inline-flex items-center mx-3 px-4 py-3 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
+    <div
+      className={`inline-flex items-center mx-3 px-4 py-3 relative group transition-all duration-300 hover:scale-105 ${neonShadow}`}
       style={{
-        background: 'linear-gradient(135deg, rgba(26, 31, 46, 0.95) 0%, rgba(20, 25, 40, 0.95) 100%)',
-        border: `1px solid ${isPositive ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
+        background: 'linear-gradient(135deg, rgba(10, 0, 21, 0.9) 0%, rgba(26, 0, 51, 0.9) 100%)',
+        clipPath: 'polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)',
+        border: `2px solid ${neonColor}`,
+        boxShadow: `0 0 10px ${neonColor}60, inset 0 0 10px ${neonColor}20`,
       }}
     >
+      <div
+        className="absolute top-0 left-2 w-1 h-1 rounded-full animate-neon-pulse"
+        style={{ background: neonColor, boxShadow: `0 0 5px ${neonColor}` }}
+      />
+      <div
+        className="absolute top-0 right-2 w-1 h-1 rounded-full animate-neon-pulse"
+        style={{ background: neonColor, boxShadow: `0 0 5px ${neonColor}`, animationDelay: '0.5s' }}
+      />
+
       <div className="flex flex-col mr-3">
-        <span className="text-xs font-bold text-gray-400">{code}</span>
-        <span className="text-xs text-gray-300 truncate max-w-[80px]">{name}</span>
+        <span className="text-xs font-cyber-mono font-bold text-cyber-cyan">{code}</span>
+        <span className="text-xs text-gray-300 truncate max-w-[80px] font-cyber-sans">{name}</span>
       </div>
 
-      <div className="flex items-center space-x-2 border-l border-gray-700 pl-3">
+      <div className="flex items-center space-x-2 border-l pl-3" style={{ borderColor: `${neonColor}40` }}>
         <div className="flex flex-col items-end">
           <div className="flex items-baseline space-x-1">
-            <span className="text-white font-bold text-base">¥</span>
+            <span className="text-white font-cyber font-bold text-base">¥</span>
             <RollingNumber
               value={price}
               decimals={0}
-              className="text-white font-bold text-base"
+              className="text-white font-cyber font-bold text-base"
             />
           </div>
-          <div className={`flex items-center space-x-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
-            <span className="text-xs">{arrowIcon}</span>
+          <div
+            className={`flex items-center space-x-1 font-cyber-sans`}
+            style={{
+              color: neonColor,
+              textShadow: `0 0 5px ${neonColor}80`,
+            }}
+          >
+            <span className="text-xs animate-neon-pulse">{arrowIcon}</span>
             <RollingNumber
               value={Math.abs(change)}
               decimals={0}
@@ -73,14 +93,32 @@ export default function StockTickerItem({ code, name, basePrice }: StockTickerIt
         </div>
       </div>
 
-      <div className="ml-3 flex items-center justify-center px-2 py-1 rounded"
+      <div
+        className="ml-3 flex items-center justify-center px-2 py-1 relative"
         style={{
-          background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%)',
-          border: '1px solid rgba(34, 197, 94, 0.3)',
+          background: `linear-gradient(135deg, ${neonColor}30, ${neonColor}10)`,
+          border: `1px solid ${neonColor}`,
+          clipPath: 'polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px)',
         }}
       >
-        <span className="text-xs font-bold text-green-400 whitespace-nowrap">診断済</span>
+        <span
+          className="text-xs font-cyber font-bold whitespace-nowrap"
+          style={{
+            color: neonColor,
+            textShadow: `0 0 5px ${neonColor}`,
+          }}
+        >
+          診断済
+        </span>
       </div>
+
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{
+          background: `linear-gradient(90deg, transparent, ${neonColor}20, transparent)`,
+          animation: 'data-flow 2s infinite',
+        }}
+      />
     </div>
   );
 }

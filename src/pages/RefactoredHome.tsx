@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import KLineBackground from '../components/KLineBackground';
-import KLineLogoAnimation from '../components/KLineLogoAnimation';
+import CyberpunkBackground from '../components/CyberpunkBackground';
+import CyberpunkLogoAnimation from '../components/CyberpunkLogoAnimation';
 import FormContainer from '../components/FormContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
@@ -8,6 +8,7 @@ import KLineLoadingScene from '../components/KLineLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
 import StockTickerItem from '../components/StockTickerItem';
+import SoundToggle from '../components/SoundToggle';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -474,15 +475,16 @@ export default function RefactoredHome() {
 
   return (
     <div className="relative flex flex-col">
-      <KLineBackground />
+      <CyberpunkBackground />
+      <SoundToggle />
 
       <div className="relative z-10 flex flex-col">
         <ApiStatsDisplay />
 
         {!showLoadingScene ? (
           <div className="flex flex-col">
-            <div className="flex flex-col items-center justify-center px-2">
-              <KLineLogoAnimation />
+            <div className="flex flex-col items-center justify-center px-2 py-8">
+              <CyberpunkLogoAnimation />
             </div>
 
             <div className="w-full mx-auto mb-4">
