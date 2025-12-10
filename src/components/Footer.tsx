@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Shield, Scale, FileText, Mail, ExternalLink } from 'lucide-react';
+import { getDomainEmail } from '../lib/getDomainEmail';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const contactEmail = getDomainEmail();
 
   return (
     <footer className="relative z-10 border-t-2 border-white/20 mt-6">
@@ -88,14 +90,6 @@ export default function Footer() {
               <ul className="space-y-1 text-xs sm:text-sm">
                 <li>
                   <Link
-                    to="/company"
-                    className="text-slate-700 hover:text-cyan-600 hover:underline flex items-center gap-1 font-medium"
-                  >
-                    会社概要 <ExternalLink className="w-3 h-3" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     to="/terms"
                     className="text-slate-700 hover:text-cyan-600 hover:underline flex items-center gap-1 font-medium"
                   >
@@ -138,7 +132,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-1 text-slate-700 font-medium">
                   <Mail className="w-3 h-3 text-cyan-600" />
-                  <span>support@aisbistock.com</span>
+                  <span>{contactEmail}</span>
                 </li>
                 <li className="text-slate-600 text-xs">
                   受付時間: 24時間受付（返信は営業日内）
@@ -150,7 +144,7 @@ export default function Footer() {
           {/* Copyright Section */}
           <div className="border-t border-cyan-400/40 pt-2 text-center">
             <p className="text-xs sm:text-sm text-slate-800 mb-1 font-semibold">
-              &copy; {currentYear} 株式会社アドバンス (Advance Co., Ltd.). All rights reserved.
+              &copy; {currentYear} All rights reserved.
             </p>
             <p className="text-[10px] sm:text-xs text-slate-700 leading-relaxed max-w-3xl mx-auto mb-2">
               当サイトで提供される情報は投資勧誘を目的としたものではありません。

@@ -1,7 +1,10 @@
 import { ArrowLeft, Mail, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getDomainEmail } from '../lib/getDomainEmail';
 
 export default function Contact() {
+  const contactEmail = getDomainEmail();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
@@ -28,122 +31,32 @@ export default function Contact() {
             </p>
 
             <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">受付時間</h2>
-              <div className="bg-blue-50 rounded-lg p-4 flex items-start gap-3">
-                <Clock className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
-                <div>
-                  <p className="font-semibold text-gray-900 mb-1">24時間受付</p>
-                  <p className="text-sm text-gray-600">
-                    ※メールでのお問い合わせは24時間受け付けております<br />
-                    ※ご返信は営業日（平日 9:00-18:00）内に順次対応いたします<br />
-                    ※土日祝日、年末年始の返信は翌営業日となります
-                  </p>
+              <h2 className="text-xl font-bold text-gray-900 mb-4">お問い合わせ方法</h2>
+              <div className="bg-blue-50 rounded-lg p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Mail className="w-6 h-6 text-blue-600" />
+                  <div>
+                    <p className="font-semibold text-gray-900 text-lg">メールアドレス</p>
+                    <a
+                      href={`mailto:${contactEmail}`}
+                      className="text-blue-600 hover:underline text-xl font-bold"
+                    >
+                      {contactEmail}
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 mt-4 pt-4 border-t border-blue-200">
+                  <Clock className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">受付時間</p>
+                    <p className="text-sm text-gray-600">
+                      ※メールでのお問い合わせは24時間受け付けております<br />
+                      ※ご返信は営業日（平日 9:00-18:00）内に順次対応いたします<br />
+                      ※土日祝日、年末年始の返信は翌営業日となります
+                    </p>
+                  </div>
                 </div>
               </div>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">お問い合わせフォーム</h2>
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
-                    お名前 <span className="text-red-600">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="山田 太郎"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                    メールアドレス <span className="text-red-600">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="example@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
-                    件名 <span className="text-red-600">*</span>
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">選択してください</option>
-                    <option value="service">サービス内容について</option>
-                    <option value="technical">技術的な問題</option>
-                    <option value="billing">料金について</option>
-                    <option value="account">アカウントについて</option>
-                    <option value="feature">機能リクエスト</option>
-                    <option value="other">その他</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                    お問い合わせ内容 <span className="text-red-600">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={8}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                    placeholder="お問い合わせ内容を詳しくご記入ください"
-                  />
-                </div>
-
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <label className="flex items-start gap-3">
-                    <input
-                      type="checkbox"
-                      required
-                      className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                    />
-                    <span className="text-sm text-gray-700">
-                      <a href="/privacy" className="text-blue-600 hover:underline">プライバシーポリシー</a>
-                      に同意します <span className="text-red-600">*</span>
-                    </span>
-                  </label>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors shadow-md"
-                >
-                  送信する
-                </button>
-              </form>
-
-              <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                <p className="text-sm text-amber-800">
-                  <strong>注意：</strong> このフォームは現在デモ版です。実際の送信機能は実装されていません。
-                  本番環境では、適切なバックエンド処理を実装する必要があります。
-                </p>
-              </div>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">よくあるお問い合わせ</h2>
-              <p className="text-gray-700 leading-relaxed mb-3">
-                よくあるご質問については、
-                <a href="/faq" className="text-blue-600 hover:underline font-semibold">FAQ（よくある質問）</a>
-                のページもご参照ください。
-              </p>
             </section>
 
             <section className="mb-8">
@@ -156,31 +69,6 @@ export default function Contact() {
                 </p>
               </div>
             </section>
-
-            <div className="bg-slate-100 rounded-lg p-6">
-              <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <Mail className="w-5 h-5" />
-                運営会社情報
-              </h3>
-              <p className="text-sm text-gray-700 mb-2">
-                <strong>会社名:</strong> 株式会社アドバンス（Advance Co., Ltd.）
-              </p>
-              <p className="text-sm text-gray-700 mb-2">
-                <strong>所在地:</strong> 〒101-0032 東京都千代田区岩本町2-8-2 都ビジネスビル9階
-              </p>
-              <p className="text-sm text-gray-700 mb-2">
-                <strong>設立:</strong> 2012年10月
-              </p>
-              <p className="text-sm text-gray-700 mb-2">
-                <strong>業種:</strong> デジタルマーケティング／広告戦略・運用／データ分析
-              </p>
-              <p className="text-sm text-gray-700 mb-2">
-                <strong>メールアドレス:</strong> support@aisbistock.com
-              </p>
-              <p className="text-sm text-gray-700">
-                <strong>受付時間:</strong> 24時間受付（返信は営業日内）
-              </p>
-            </div>
           </div>
         </div>
       </div>
