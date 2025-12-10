@@ -1,4 +1,4 @@
-import { ArrowLeft, FileText, Building, Mail, Phone } from 'lucide-react';
+import { ArrowLeft, FileText, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getDomainEmail } from '../lib/getDomainEmail';
 
@@ -29,42 +29,6 @@ export default function SpecifiedCommercialTransactionAct() {
           </p>
 
           <div className="space-y-6">
-            <section className="border-b border-gray-200 pb-6">
-              <div className="flex items-start gap-4">
-                <div className="bg-blue-50 p-3 rounded-lg flex-shrink-0">
-                  <Building className="w-5 h-5 text-blue-600" />
-                </div>
-                <div className="flex-1">
-                  <h2 className="text-xl font-bold text-gray-900 mb-4">販売業者情報</h2>
-                  <dl className="space-y-3">
-                    <div className="grid sm:grid-cols-3 gap-2">
-                      <dt className="font-semibold text-gray-900">会社名</dt>
-                      <dd className="sm:col-span-2 text-gray-700">株式会社アドバンス</dd>
-                    </div>
-                    <div className="grid sm:grid-cols-3 gap-2">
-                      <dt className="font-semibold text-gray-900">会社名（英語）</dt>
-                      <dd className="sm:col-span-2 text-gray-700">Advance Co., Ltd.</dd>
-                    </div>
-                    <div className="grid sm:grid-cols-3 gap-2">
-                      <dt className="font-semibold text-gray-900">所在地</dt>
-                      <dd className="sm:col-span-2 text-gray-700">
-                        〒101-0032<br />
-                        東京都千代田区岩本町2-8-2 都ビジネスビル9階
-                      </dd>
-                    </div>
-                    <div className="grid sm:grid-cols-3 gap-2">
-                      <dt className="font-semibold text-gray-900">設立</dt>
-                      <dd className="sm:col-span-2 text-gray-700">2012年10月</dd>
-                    </div>
-                    <div className="grid sm:grid-cols-3 gap-2">
-                      <dt className="font-semibold text-gray-900">業種</dt>
-                      <dd className="sm:col-span-2 text-gray-700">デジタルマーケティング／広告戦略・運用／データ分析</dd>
-                    </div>
-                  </dl>
-                </div>
-              </div>
-            </section>
-
             <section className="border-b border-gray-200 pb-6">
               <div className="flex items-start gap-4">
                 <div className="bg-green-50 p-3 rounded-lg flex-shrink-0">
