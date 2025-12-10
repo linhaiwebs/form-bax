@@ -71,9 +71,9 @@ export default function Footer() {
         </div>
 
         {/* Important Notice - Mobile */}
-        <div className="md:hidden bg-cyan-500/10 backdrop-blur-md border border-cyan-400/50 rounded-xl p-3 text-center mb-3">
-          <p className="text-sm text-cyan-300 font-semibold mb-1">⚠️ 重要なお知らせ</p>
-          <p className="text-xs text-cyan-100 leading-relaxed">
+        <div className="md:hidden bg-amber-50 border-2 border-amber-500 rounded-xl p-4 text-center mb-3 shadow-md">
+          <p className="text-base text-amber-900 font-bold mb-2">⚠️ 重要なお知らせ</p>
+          <p className="text-sm text-amber-800 leading-relaxed font-medium">
             当サービスは情報提供のみを目的としており、投資助言や投資勧誘を行うものではありません。投資判断は必ずご自身の責任で行ってください。
           </p>
         </div>
