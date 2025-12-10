@@ -480,7 +480,7 @@ export default function RefactoredHome() {
 
         {!showLoadingScene ? (
           <div className="flex flex-col">
-            <div className="flex flex-col items-center justify-center px-2 py-12">
+            <div className="flex flex-col items-center justify-center px-2">
               <MinimalistLogoAnimation />
             </div>
 
@@ -528,7 +528,7 @@ export default function RefactoredHome() {
               </div>
             </div>
 
-            <div className="flex flex-col py-8 pb-12">
+            <div className="flex flex-col">
               <FormContainer>
                 <ModernStockInput
                   value={inputValue}
