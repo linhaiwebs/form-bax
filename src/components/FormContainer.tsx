@@ -8,38 +8,39 @@ export default function FormContainer({ children }: FormContainerProps) {
   return (
     <div className="w-[95%] mx-auto">
       <div
-        className="rounded-t-[32px] px-5 py-8 backdrop-blur-xl relative overflow-hidden"
+        className="rounded-t-[32px] px-5 py-8 backdrop-blur-xl relative overflow-hidden animate-current-sway"
         style={{
           minHeight: '40vh',
-          background: 'rgba(26, 26, 26, 0.9)',
-          boxShadow: '0 -10px 50px rgba(212, 175, 55, 0.2), 0 2px 8px rgba(0, 0, 0, 0.5)',
-          border: '2px solid #D4AF37',
+          background: 'rgba(4, 47, 82, 0.85)',
+          boxShadow: '0 -10px 50px rgba(0, 230, 195, 0.3), 0 0 40px rgba(77, 255, 220, 0.2)',
+          border: '2px solid #00E6C3',
           borderBottom: 'none',
         }}
       >
-        <svg className="absolute top-0 left-0 w-16 h-16 opacity-20" viewBox="0 0 100 100">
+        <svg className="absolute top-0 left-0 w-16 h-16 opacity-30 animate-wave-flow" viewBox="0 0 100 100">
           <path
-            d="M50,10 L60,30 L80,30 L65,45 L70,65 L50,50 L30,65 L35,45 L20,30 L40,30 Z"
+            d="M10,50 Q30,30 50,45 Q70,60 90,40"
             fill="none"
-            stroke="#D4AF37"
+            stroke="#4DFFDC"
             strokeWidth="2"
           />
+          <circle cx="50" cy="45" r="3" fill="#B3FFF0" opacity="0.6" />
         </svg>
-        <svg className="absolute top-0 right-0 w-16 h-16 opacity-20" viewBox="0 0 100 100">
+        <svg className="absolute top-0 right-0 w-16 h-16 opacity-30 animate-wave-flow" viewBox="0 0 100 100" style={{ animationDelay: '0.5s' }}>
           <path
-            d="M50,10 L60,30 L80,30 L65,45 L70,65 L50,50 L30,65 L35,45 L20,30 L40,30 Z"
+            d="M10,40 Q30,60 50,45 Q70,30 90,50"
             fill="none"
-            stroke="#D4AF37"
+            stroke="#4DFFDC"
             strokeWidth="2"
-            transform="rotate(90 50 50)"
           />
+          <circle cx="50" cy="45" r="3" fill="#B3FFF0" opacity="0.6" />
         </svg>
         <div className="max-w-md mx-auto relative z-10">
           <div className="mb-6">
-            <h2 className="text-2xl font-luxury font-bold text-left mb-2" style={{ color: '#D4AF37', textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)' }}>
+            <h2 className="text-2xl font-luxury font-bold text-left mb-2" style={{ color: '#4DFFDC', textShadow: '0 0 20px rgba(0, 230, 195, 0.6)' }}>
               早速始めましょう
             </h2>
-            <p className="text-sm text-left font-body" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+            <p className="text-sm text-left font-body" style={{ color: 'rgba(179, 255, 240, 0.8)' }}>
               銘柄コードまたは銘柄名を入力してください
             </p>
           </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import LuxuryMarbleBackground from '../components/LuxuryMarbleBackground';
-import GoldenShieldLogoAnimation from '../components/GoldenShieldLogoAnimation';
+import UkiyoeDeepSeaBackground from '../components/UkiyoeDeepSeaBackground';
+import WaterDropletRippleLogo from '../components/WaterDropletRippleLogo';
 import FormContainer from '../components/FormContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
@@ -8,7 +8,6 @@ import BusinessLoadingScene from '../components/BusinessLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
 import StockTickerItem from '../components/StockTickerItem';
-import SoundToggle from '../components/SoundToggle';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -475,8 +474,7 @@ export default function RefactoredHome() {
 
   return (
     <div className="relative flex flex-col">
-      <LuxuryMarbleBackground />
-      <SoundToggle />
+      <UkiyoeDeepSeaBackground />
 
       <div className="relative z-10 flex flex-col">
         <ApiStatsDisplay />
@@ -484,20 +482,20 @@ export default function RefactoredHome() {
         {!showLoadingScene ? (
           <div className="flex flex-col">
             <div className="flex flex-col items-center justify-center px-2 py-8">
-              <GoldenShieldLogoAnimation />
+              <WaterDropletRippleLogo />
             </div>
 
             <div className="w-full mx-auto mb-4">
               <div className="overflow-hidden py-3 relative rounded-xl backdrop-blur-md"
                 style={{
-                  background: 'rgba(26, 26, 26, 0.7)',
-                  border: '2px solid rgba(212, 175, 55, 0.3)',
+                  background: 'rgba(4, 47, 82, 0.75)',
+                  border: '2px solid rgba(0, 230, 195, 0.4)',
                 }}
               >
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'linear-gradient(90deg, rgba(26, 26, 26, 1) 0%, transparent 5%, transparent 95%, rgba(26, 26, 26, 1) 100%)',
+                    background: 'linear-gradient(90deg, rgba(4, 47, 82, 1) 0%, transparent 5%, transparent 95%, rgba(4, 47, 82, 1) 100%)',
                     zIndex: 1
                   }}
                 />
