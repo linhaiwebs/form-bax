@@ -89,8 +89,8 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
           onChange={(e) => onChange(e.target.value)}
           onFocus={handleInputFocus}
           placeholder="例: 7203 / トヨタ / ソニー"
-          className="w-full px-4 py-3 text-base text-gray-900 bg-[#F4F4F4] rounded-xl border-0 focus:ring-2 focus:ring-gray-300 focus:outline-none placeholder-gray-400 transition-all duration-200"
-          style={{ height: '52px' }}
+          className="w-full px-4 py-3 text-base bg-white rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none placeholder-gray-400 transition-all duration-200"
+          style={{ height: '52px', color: '#2C3E50' }}
           disabled={isLoading}
         />
       </div>

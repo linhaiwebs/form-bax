@@ -59,12 +59,12 @@ export default function DiagnosisModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black bg-opacity-75" style={{ touchAction: 'none' }}>
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" style={{ touchAction: 'none', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
       <div className="relative w-full max-w-3xl max-h-[95vh]">
-        <div className="relative bg-white rounded-lg shadow-2xl overflow-hidden border-2" style={{ touchAction: 'auto', borderColor: '#06B6D4' }}>
+        <div className="relative bg-white rounded-lg overflow-hidden" style={{ touchAction: 'auto', boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
           <div
-            className="sticky top-0 flex items-center justify-between"
-            style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #0284C7 100%)' }}
+            className="sticky top-0 flex items-center justify-between px-6 py-4"
+            style={{ background: 'linear-gradient(135deg, #3B82F6 0%, #06B6D4 50%, #10B981 100%)' }}
           >
           <div className="flex-1 text-center">
             <h2 className="text-sm font-bold text-white">
@@ -92,22 +92,22 @@ export default function DiagnosisModal({
           </button>
         </div>
 
-        <div ref={contentRef} className="overflow-y-auto max-h-[calc(95vh-180px)] px-2 py-2">
+        <div ref={contentRef} className="overflow-y-auto max-h-[calc(95vh-180px)] px-6 py-6">
           <div className="mb-6">
 
-            <div className="rounded-xl p-2 shadow-inner relative border" style={{ backgroundColor: '#ECFEFF', borderColor: '#67E8F9' }}>
+            <div className="rounded-xl p-6 relative border" style={{ backgroundColor: '#F8FAFC', borderColor: '#E2E8F0', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)' }}>
               <div className="prose prose-sm max-w-none">
                 {isConnecting ? (
                   <div className="text-center py-8">
-                    <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4" style={{ color: '#06B6D4' }} />
-                    <p className="font-semibold" style={{ color: '#0C4A6E' }}>AI分析中...</p>
-                    <p className="text-sm mt-2" style={{ color: '#0284C7' }}>処理中...</p>
+                    <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4" style={{ color: '#3B82F6' }} />
+                    <p className="font-semibold" style={{ color: '#2C3E50' }}>AI分析中...</p>
+                    <p className="text-sm mt-2" style={{ color: '#64748B' }}>処理中...</p>
                   </div>
                 ) : (
                   <div>
                     <AnalysisRenderer text={analysis} />
                     {isStreaming && (
-                      <span className="inline-block w-2 h-5 animate-pulse ml-1" style={{ backgroundColor: '#06B6D4' }}></span>
+                      <span className="inline-block w-2 h-5 animate-pulse ml-1" style={{ backgroundColor: '#3B82F6' }}></span>
                     )}
                   </div>
                 )}

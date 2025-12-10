@@ -23,16 +23,17 @@
   }
 
   body {
-    @apply bg-gradient-to-b from-white to-light-blue text-gray-800;
+    @apply bg-white text-gray-800;
     overflow-x: hidden;
     font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: #2C3E50;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: #00F0FF #0A0E27;
+    scrollbar-color: #3B82F6 #F5F5F7;
   }
 
   *::-webkit-scrollbar {
@@ -41,25 +42,22 @@
   }
 
   *::-webkit-scrollbar-track {
-    background: linear-gradient(to right, #0A0E27, #050810);
-    border: 1px solid rgba(0, 240, 255, 0.2);
-    border-radius: 2px;
+    background: #F5F5F7;
+    border-radius: 5px;
   }
 
   *::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #00F0FF 0%, #6366F1 100%);
-    border-radius: 2px;
-    border: 1px solid rgba(0, 240, 255, 0.5);
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 50%, #10B981 100%);
+    border-radius: 5px;
+    border: 2px solid #F5F5F7;
   }
 
   *::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #67E8F9 0%, #818CF8 100%);
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
+    background: linear-gradient(135deg, #2563EB 0%, #0891B2 50%, #059669 100%);
   }
 
   *::-webkit-scrollbar-corner {
-    background: #0A0E27;
+    background: #F5F5F7;
   }
 
   body[data-modal-open] header,
@@ -400,5 +398,72 @@
 
   .animate-line-pulse {
     animation: line-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes gentle-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes ring-rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes ring-breathe {
+    0%, 100% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes dot-blink {
+    0%, 100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes circular-float {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-10px) scale(1.02);
+    }
+  }
+
+  .animate-gentle-pulse {
+    animation: gentle-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-ring-rotate {
+    animation: ring-rotate 20s linear infinite;
+  }
+
+  .animate-ring-breathe {
+    animation: ring-breathe 3s ease-in-out infinite;
+  }
+
+  .animate-dot-blink {
+    animation: dot-blink 3s ease-in-out infinite;
+  }
+
+  .animate-circular-float {
+    animation: circular-float 4s ease-in-out infinite;
   }
 }
