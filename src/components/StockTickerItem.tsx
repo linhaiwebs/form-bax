@@ -36,32 +36,33 @@ export default function StockTickerItem({ code, name, basePrice }: StockTickerIt
     <div
       className="inline-flex items-center mx-3 px-4 py-3 relative group transition-all duration-300 rounded-xl backdrop-blur-xl shadow-soft animate-gentle-float"
       style={{
-        background: 'rgba(255, 255, 255, 0.8)',
-        border: '2px solid rgba(96, 165, 250, 0.2)',
-        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.06)',
+        background: 'rgba(26, 26, 26, 0.8)',
+        border: '2px solid #D4AF37',
+        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'perspective(1000px) rotateX(2deg) rotateY(3deg) translateY(-4px)';
-        e.currentTarget.style.boxShadow = '0 8px 32px rgba(96, 165, 250, 0.15)';
+        e.currentTarget.style.transform = 'perspective(1000px) rotateY(10deg) translateY(-4px)';
+        e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.5)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
-        e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.06)';
+        e.currentTarget.style.transform = 'perspective(1000px) rotateY(0deg) translateY(0)';
+        e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.3)';
       }}
     >
       <div className="flex flex-col mr-3">
-        <span className="text-xs font-display font-bold text-sky-600">{code}</span>
-        <span className="text-xs text-text-muted truncate max-w-[80px] font-body">{name}</span>
+        <span className="text-xs font-display font-bold" style={{ color: '#D4AF37' }}>{code}</span>
+        <span className="text-xs truncate max-w-[80px] font-body" style={{ color: '#FFFFFF' }}>{name}</span>
       </div>
 
-      <div className="flex items-center space-x-2 border-l pl-3 border-border-subtle">
+      <div className="flex items-center space-x-2 border-l pl-3" style={{ borderColor: 'rgba(212, 175, 55, 0.3)' }}>
         <div className="flex flex-col items-end">
           <div className="flex items-baseline space-x-1">
-            <span className="text-text-dark font-display font-bold text-base">¥</span>
+            <span className="font-luxury-number font-bold text-base" style={{ color: '#D4AF37' }}>¥</span>
             <RollingNumber
               value={price}
               decimals={0}
-              className="text-text-dark font-display font-bold text-base"
+              className="font-luxury-number font-bold text-base"
+              style={{ color: '#D4AF37' }}
             />
           </div>
           <div className="flex items-center space-x-1 font-body" style={{ color: accentColor }}>
@@ -87,11 +88,11 @@ export default function StockTickerItem({ code, name, basePrice }: StockTickerIt
       <div
         className="ml-3 flex items-center justify-center px-3 py-1 relative rounded-lg"
         style={{
-          background: 'rgba(96, 165, 250, 0.1)',
-          border: '1px solid rgba(96, 165, 250, 0.3)',
+          background: 'linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
         }}
       >
-        <span className="text-xs font-display font-bold whitespace-nowrap text-sky-600">
+        <span className="text-xs font-display font-bold whitespace-nowrap" style={{ color: '#1A1A1A' }}>
           診断済
         </span>
       </div>
@@ -99,9 +100,9 @@ export default function StockTickerItem({ code, name, basePrice }: StockTickerIt
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl"
         style={{
-          background: 'linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent)',
           backgroundSize: '200% 100%',
-          animation: 'shimmer 3s infinite',
+          animation: 'metallic-shine 3s infinite',
         }}
       />
     </div>

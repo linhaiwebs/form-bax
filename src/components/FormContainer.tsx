@@ -8,22 +8,38 @@ export default function FormContainer({ children }: FormContainerProps) {
   return (
     <div className="w-[95%] mx-auto">
       <div
-        className="rounded-t-[32px] px-5 py-8 backdrop-blur-xl"
+        className="rounded-t-[32px] px-5 py-8 backdrop-blur-xl relative overflow-hidden"
         style={{
           minHeight: '40vh',
-          background: 'rgba(15, 20, 35, 0.75)',
-          boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05)',
-          border: '1px solid rgba(34, 197, 94, 0.2)',
+          background: 'rgba(26, 26, 26, 0.9)',
+          boxShadow: '0 -10px 50px rgba(212, 175, 55, 0.2), 0 2px 8px rgba(0, 0, 0, 0.5)',
+          border: '2px solid #D4AF37',
           borderBottom: 'none',
-          borderTop: '1px solid rgba(239, 68, 68, 0.2)',
         }}
       >
-        <div className="max-w-md mx-auto">
+        <svg className="absolute top-0 left-0 w-16 h-16 opacity-20" viewBox="0 0 100 100">
+          <path
+            d="M50,10 L60,30 L80,30 L65,45 L70,65 L50,50 L30,65 L35,45 L20,30 L40,30 Z"
+            fill="none"
+            stroke="#D4AF37"
+            strokeWidth="2"
+          />
+        </svg>
+        <svg className="absolute top-0 right-0 w-16 h-16 opacity-20" viewBox="0 0 100 100">
+          <path
+            d="M50,10 L60,30 L80,30 L65,45 L70,65 L50,50 L30,65 L35,45 L20,30 L40,30 Z"
+            fill="none"
+            stroke="#D4AF37"
+            strokeWidth="2"
+            transform="rotate(90 50 50)"
+          />
+        </svg>
+        <div className="max-w-md mx-auto relative z-10">
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-left mb-2" style={{ color: '#f0f4f8', textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' }}>
+            <h2 className="text-2xl font-luxury font-bold text-left mb-2" style={{ color: '#D4AF37', textShadow: '0 2px 8px rgba(0, 0, 0, 0.5)' }}>
               早速始めましょう
             </h2>
-            <p className="text-sm text-left" style={{ color: '#cbd5e1' }}>
+            <p className="text-sm text-left font-body" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
               銘柄コードまたは銘柄名を入力してください
             </p>
           </div>
