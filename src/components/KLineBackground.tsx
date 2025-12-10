@@ -27,7 +27,7 @@ export default function KLineBackground() {
     let offset = 0;
 
     const drawGrid = () => {
-      ctx.strokeStyle = 'rgba(34, 197, 94, 0.15)';
+      ctx.strokeStyle = 'rgba(34, 197, 94, 0.25)';
       ctx.lineWidth = 0.5;
 
       for (let x = 0; x < canvas.width; x += gridSpacing) {
@@ -44,7 +44,7 @@ export default function KLineBackground() {
         ctx.stroke();
       }
 
-      ctx.strokeStyle = 'rgba(34, 197, 94, 0.3)';
+      ctx.strokeStyle = 'rgba(34, 197, 94, 0.4)';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.moveTo(0, canvas.height / 2);
@@ -55,8 +55,8 @@ export default function KLineBackground() {
     const drawCandlestick = (x: number, y: number, height: number, isGreen: boolean) => {
       const wickHeight = height * 1.4;
       const bodyHeight = height * 0.8;
-      const color = isGreen ? 'rgba(34, 197, 94, 0.15)' : 'rgba(239, 68, 68, 0.15)';
-      const wickColor = isGreen ? 'rgba(34, 197, 94, 0.25)' : 'rgba(239, 68, 68, 0.25)';
+      const color = isGreen ? 'rgba(34, 197, 94, 0.25)' : 'rgba(239, 68, 68, 0.25)';
+      const wickColor = isGreen ? 'rgba(34, 197, 94, 0.35)' : 'rgba(239, 68, 68, 0.35)';
 
       ctx.strokeStyle = wickColor;
       ctx.lineWidth = 1;
@@ -105,7 +105,7 @@ export default function KLineBackground() {
     };
 
     const animate = () => {
-      ctx.fillStyle = '#0a0e14';
+      ctx.fillStyle = '#1a1f2e';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       drawGrid();
@@ -159,7 +159,7 @@ export default function KLineBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full"
-      style={{ background: '#0a0e14' }}
+      style={{ background: '#1a1f2e' }}
     />
   );
 }

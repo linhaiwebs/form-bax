@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import MinimalistBackground from '../components/MinimalistBackground';
-import MinimalistLogoAnimation from '../components/MinimalistLogoAnimation';
+import KLineBackground from '../components/KLineBackground';
+import KLineLogoAnimation from '../components/KLineLogoAnimation';
 import FormContainer from '../components/FormContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
 import KLineLoadingScene from '../components/KLineLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
+import StockTickerItem from '../components/StockTickerItem';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -15,17 +16,17 @@ import { apiClient } from '../lib/apiClient';
 import { userTracking } from '../lib/userTracking';
 import { trackConversion, trackDiagnosisButtonClick, trackConversionButtonClick } from '../lib/googleTracking';
 
-const diagnosisRecords = [
-  { time: '2分前', stock: 'トヨタ自動車', icon: '👨' },
-  { time: '5分前', stock: 'ソニーグループ', icon: '👩' },
-  { time: '8分前', stock: '任天堂', icon: '👨' },
-  { time: '12分前', stock: 'ソフトバンクグループ', icon: '👩' },
-  { time: '15分前', stock: 'キーエンス', icon: '👨' },
-  { time: '18分前', stock: '三菱UFJ', icon: '👩' },
-  { time: '22分前', stock: 'ファーストリテイリング', icon: '👨' },
-  { time: '25分前', stock: '東京エレクトロン', icon: '👩' },
-  { time: '28分前', stock: 'リクルート', icon: '👨' },
-  { time: '32分前', stock: 'KDDI', icon: '👩' },
+const stockTickerData = [
+  { code: '7203', name: 'トヨタ自動車', basePrice: 2850 },
+  { code: '6758', name: 'ソニーグループ', basePrice: 13500 },
+  { code: '7974', name: '任天堂', basePrice: 7200 },
+  { code: '9984', name: 'ソフトバンクG', basePrice: 6800 },
+  { code: '6861', name: 'キーエンス', basePrice: 62000 },
+  { code: '8306', name: '三菱UFJ', basePrice: 1450 },
+  { code: '9983', name: 'ファーストリテ', basePrice: 42000 },
+  { code: '8035', name: '東京エレクトロン', basePrice: 25500 },
+  { code: '6098', name: 'リクルート', basePrice: 6200 },
+  { code: '9433', name: 'KDDI', basePrice: 4300 },
 ];
 
 export default function RefactoredHome() {
@@ -473,7 +474,7 @@ export default function RefactoredHome() {
 
   return (
     <div className="relative flex flex-col">
-      <MinimalistBackground />
+      <KLineBackground />
 
       <div className="relative z-10 flex flex-col">
         <ApiStatsDisplay />
@@ -481,48 +482,32 @@ export default function RefactoredHome() {
         {!showLoadingScene ? (
           <div className="flex flex-col">
             <div className="flex flex-col items-center justify-center px-2">
-              <MinimalistLogoAnimation />
+              <KLineLogoAnimation />
             </div>
 
-            <div className="w-[95%] mx-auto mb-4">
-              <div className="overflow-hidden py-2 relative">
+            <div className="w-full mx-auto mb-4">
+              <div className="overflow-hidden py-3 relative"
+                style={{
+                  background: 'rgba(10, 15, 25, 0.6)',
+                  borderTop: '1px solid rgba(34, 197, 94, 0.2)',
+                  borderBottom: '1px solid rgba(34, 197, 94, 0.2)',
+                }}
+              >
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, transparent 5%, transparent 95%, rgba(255, 255, 255, 0.95) 100%)',
+                    background: 'linear-gradient(90deg, rgba(26, 31, 46, 1) 0%, transparent 5%, transparent 95%, rgba(26, 31, 46, 1) 100%)',
                     zIndex: 1
                   }}
                 />
                 <div className="animate-scroll-left whitespace-nowrap inline-block">
-                  {[...diagnosisRecords, ...diagnosisRecords, ...diagnosisRecords].map((record, index) => (
-                    <span
+                  {[...stockTickerData, ...stockTickerData, ...stockTickerData].map((stock, index) => (
+                    <StockTickerItem
                       key={index}
-                      className="inline-flex items-center mx-3 px-4 py-2 bg-white rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105"
-                      style={{
-                        border: '1px solid rgba(59, 130, 246, 0.2)',
-                      }}
-                    >
-                      <span
-                        className="inline-flex items-center justify-center w-7 h-7 mr-2 text-sm rounded-full"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%)',
-                          border: '1px solid rgba(59, 130, 246, 0.2)',
-                        }}
-                      >
-                        {record.icon}
-                      </span>
-                      <span className="text-sm font-medium mr-2" style={{ color: '#64748B' }}>{record.time}</span>
-                      <span className="text-sm font-bold mr-2" style={{ color: '#2C3E50' }}>{record.stock}</span>
-                      <span
-                        className="text-xs px-3 py-1 font-semibold rounded-full"
-                        style={{
-                          background: 'linear-gradient(135deg, #3B82F6 0%, #06B6D4 50%, #10B981 100%)',
-                          color: '#FFFFFF',
-                        }}
-                      >
-                        無料レポート取得
-                      </span>
-                    </span>
+                      code={stock.code}
+                      name={stock.name}
+                      basePrice={stock.basePrice}
+                    />
                   ))}
                 </div>
               </div>

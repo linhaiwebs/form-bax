@@ -89,8 +89,13 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
           onChange={(e) => onChange(e.target.value)}
           onFocus={handleInputFocus}
           placeholder="例: 7203 / トヨタ / ソニー"
-          className="w-full px-4 py-3 text-base bg-white rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none placeholder-gray-400 transition-all duration-200"
-          style={{ height: '52px', color: '#2C3E50' }}
+          className="w-full px-4 py-3 text-base rounded-xl backdrop-blur-sm border-2 focus:ring-2 focus:ring-green-400 focus:border-green-400 focus:outline-none placeholder-gray-500 transition-all duration-200 font-medium"
+          style={{
+            height: '52px',
+            color: '#f0f4f8',
+            background: 'rgba(20, 25, 40, 0.7)',
+            borderColor: 'rgba(100, 116, 139, 0.3)',
+          }}
           disabled={isLoading}
         />
       </div>
@@ -98,23 +103,43 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
       {showDropdown && currentResults.length > 0 && (
         <div
           ref={dropdownRef}
-          className="absolute z-[9999] w-full mt-3 bg-white rounded-2xl shadow-2xl overflow-hidden animate-fadeIn border border-gray-200"
+          className="absolute z-[9999] w-full mt-3 rounded-2xl shadow-2xl overflow-hidden animate-fadeIn backdrop-blur-xl"
+          style={{
+            background: 'rgba(15, 20, 35, 0.85)',
+            border: '1px solid rgba(34, 197, 94, 0.3)',
+          }}
         >
           <div className="max-h-80 overflow-y-auto">
             {currentResults.map((stock, index) => (
               <button
                 key={`${stock.code}-${index}`}
                 onClick={() => handleStockClick(stock)}
-                className="w-full px-5 py-2.5 text-left hover:bg-gray-50 transition-all duration-150 border-b border-gray-100 last:border-b-0"
+                className="w-full px-5 py-2.5 text-left transition-all duration-150 border-b last:border-b-0"
+                style={{
+                  borderColor: 'rgba(100, 116, 139, 0.2)',
+                  background: 'transparent',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(34, 197, 94, 0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'transparent';
+                }}
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="font-semibold text-gray-900 whitespace-nowrap">{stock.code}</div>
-                    <div className="text-sm text-gray-600 truncate" title={stock.name}>
+                    <div className="font-semibold whitespace-nowrap font-mono" style={{ color: '#22c55e' }}>{stock.code}</div>
+                    <div className="text-sm truncate" title={stock.name} style={{ color: '#cbd5e1' }}>
                       {stock.name.length > 6 ? `${stock.name.slice(0, 6)}...` : stock.name}
                     </div>
                   </div>
-                  <div className="text-xs text-gray-600 bg-gray-100 px-3 py-1 rounded-full font-medium whitespace-nowrap">
+                  <div className="text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap"
+                    style={{
+                      color: '#22c55e',
+                      background: 'rgba(34, 197, 94, 0.15)',
+                      border: '1px solid rgba(34, 197, 94, 0.3)',
+                    }}
+                  >
                     {stock.market}
                   </div>
                 </div>
@@ -123,24 +148,39 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
           </div>
 
           {totalPages > 1 && (
-            <div className="flex items-center justify-between px-5 py-3 bg-gray-50 border-t border-gray-200">
+            <div className="flex items-center justify-between px-5 py-3 backdrop-blur-sm"
+              style={{
+                background: 'rgba(10, 15, 25, 0.5)',
+                borderTop: '1px solid rgba(100, 116, 139, 0.2)',
+              }}
+            >
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage === 0}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                style={{
+                  color: '#cbd5e1',
+                  background: 'rgba(34, 197, 94, 0.15)',
+                  border: '1px solid rgba(34, 197, 94, 0.3)',
+                }}
               >
                 <ChevronLeft className="w-4 h-4" />
                 前へ
               </button>
 
-              <div className="text-sm font-semibold text-gray-700">
+              <div className="text-sm font-semibold" style={{ color: '#f0f4f8' }}>
                 {currentPage + 1} / {totalPages}
               </div>
 
               <button
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages - 1}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                style={{
+                  color: '#cbd5e1',
+                  background: 'rgba(34, 197, 94, 0.15)',
+                  border: '1px solid rgba(34, 197, 94, 0.3)',
+                }}
               >
                 次へ
                 <ChevronRight className="w-4 h-4" />
@@ -151,7 +191,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
       )}
 
       {isLoading && (
-        <div className="absolute left-0 right-0 top-full mt-2 text-center text-sm text-gray-300">
+        <div className="absolute left-0 right-0 top-full mt-2 text-center text-sm" style={{ color: '#cbd5e1' }}>
           読み込み中...
         </div>
       )}
