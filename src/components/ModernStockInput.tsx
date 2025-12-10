@@ -87,8 +87,8 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="例: 7203 / トヨタ / ソニー"
-          className="w-full px-5 py-4 text-base backdrop-blur-xl border-2 rounded-xl focus:outline-none transition-all duration-300 font-body shadow-soft animate-current-sway"
+          placeholder="銘柄名を入力して検索"
+          className="w-full px-5 py-4 text-sm backdrop-blur-xl border-2 rounded-xl focus:outline-none transition-all duration-300 font-sans font-normal shadow-soft animate-current-sway"
           style={{
             height: '60px',
             color: '#FFFFFF',
@@ -154,11 +154,11 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="font-semibold whitespace-nowrap font-display" style={{ color: '#4DFFDC' }}>
+                    <div className="font-semibold whitespace-nowrap font-sans" style={{ color: '#4DFFDC' }}>
                       {stock.code}
                     </div>
                     <div
-                      className="text-sm truncate font-body"
+                      className="text-xs truncate font-sans font-medium"
                       style={{ color: '#B3FFF0' }}
                       title={stock.name}
                     >
@@ -166,7 +166,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
                     </div>
                   </div>
                   <div
-                    className="text-xs px-3 py-1 font-medium whitespace-nowrap font-display rounded-lg"
+                    className="text-xs px-3 py-1 font-medium whitespace-nowrap font-sans rounded-lg"
                     style={{
                       color: '#4DFFDC',
                       background: 'rgba(0, 230, 195, 0.15)',
@@ -191,7 +191,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage === 0}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-display disabled:opacity-50 disabled:cursor-not-allowed transition-all rounded-lg shadow-soft-sm"
+                className="flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all rounded-lg shadow-soft-sm"
                 style={{
                   color: '#4DFFDC',
                   background: 'rgba(0, 230, 195, 0.15)',
@@ -212,14 +212,14 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
                 前へ
               </button>
 
-              <div className="text-sm font-display font-semibold" style={{ color: '#4DFFDC' }}>
+              <div className="text-sm font-sans font-semibold" style={{ color: '#4DFFDC' }}>
                 {currentPage + 1} / {totalPages}
               </div>
 
               <button
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages - 1}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-display disabled:opacity-50 disabled:cursor-not-allowed transition-all rounded-lg shadow-soft-sm"
+                className="flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all rounded-lg shadow-soft-sm"
                 style={{
                   color: '#4DFFDC',
                   background: 'rgba(0, 230, 195, 0.15)',
@@ -245,7 +245,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
       )}
 
       {isLoading && (
-        <div className="absolute left-0 right-0 top-full mt-2 text-center text-sm font-body animate-soft-pulse" style={{ color: '#4DFFDC' }}>
+        <div className="absolute left-0 right-0 top-full mt-2 text-center text-xs font-sans animate-soft-pulse" style={{ color: '#4DFFDC' }}>
           読み込み中...
         </div>
       )}

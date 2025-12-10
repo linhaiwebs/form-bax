@@ -17,16 +17,16 @@ import { userTracking } from '../lib/userTracking';
 import { trackConversion, trackDiagnosisButtonClick, trackConversionButtonClick } from '../lib/googleTracking';
 
 const stockTickerData = [
-  { code: '7203', name: 'トヨタ自動車', basePrice: 2850 },
   { code: '6758', name: 'ソニーグループ', basePrice: 13500 },
-  { code: '7974', name: '任天堂', basePrice: 7200 },
-  { code: '9984', name: 'ソフトバンクG', basePrice: 6800 },
   { code: '6861', name: 'キーエンス', basePrice: 62000 },
-  { code: '8306', name: '三菱UFJ', basePrice: 1450 },
-  { code: '9983', name: 'ファーストリテ', basePrice: 42000 },
   { code: '8035', name: '東京エレクトロン', basePrice: 25500 },
   { code: '6098', name: 'リクルート', basePrice: 6200 },
-  { code: '9433', name: 'KDDI', basePrice: 4300 },
+  { code: '4755', name: '楽天グループ', basePrice: 850 },
+  { code: '4689', name: 'Ｚホールディングス', basePrice: 420 },
+  { code: '3382', name: '７＆ｉＨＤ', basePrice: 1650 },
+  { code: '4063', name: '信越化学', basePrice: 7500 },
+  { code: '6954', name: 'ファナック', basePrice: 3800 },
+  { code: '9984', name: 'ソフトバンクG', basePrice: 6800 },
 ];
 
 export default function RefactoredHome() {

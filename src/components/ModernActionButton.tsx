@@ -26,7 +26,7 @@ export default function ModernActionButton({ onClick, disabled = false }: Modern
           disabled={disabled}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={() => setIsHovered(false)}
-          className="relative w-full font-display font-bold py-4 px-8 rounded-xl transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50 overflow-hidden animate-wave-flow"
+          className="relative w-full font-sans font-semibold py-4 px-8 rounded-xl transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50 overflow-hidden animate-wave-flow"
           style={{
             background: disabled
               ? 'linear-gradient(135deg, rgba(4, 47, 82, 0.5) 0%, rgba(6, 62, 110, 0.3) 100%)'
@@ -52,13 +52,13 @@ export default function ModernActionButton({ onClick, disabled = false }: Modern
             />
           )}
 
-          <span className="relative text-lg tracking-wide font-display">
-            診断を開始する
+          <span className="relative text-base tracking-wide font-sans">
+            今すぐ診断
           </span>
         </button>
       </div>
       <div className="mt-4 text-center">
-        <p className="text-xs leading-relaxed font-body" style={{ color: '#80D4FF' }}>
+        <p className="text-xs leading-relaxed font-sans" style={{ color: '#80D4FF' }}>
           ※本診断は投資助言ではありません。投資判断は自己責任でお願いいたします。
         </p>
       </div>

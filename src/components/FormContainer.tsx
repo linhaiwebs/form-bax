@@ -37,11 +37,11 @@ export default function FormContainer({ children }: FormContainerProps) {
         </svg>
         <div className="max-w-md mx-auto relative z-10">
           <div className="mb-6">
-            <h2 className="text-2xl font-luxury font-bold text-left mb-2" style={{ color: '#4DFFDC', textShadow: '0 0 20px rgba(0, 230, 195, 0.6)' }}>
-              早速始めましょう
+            <h2 className="text-2xl font-sans font-semibold text-left mb-2" style={{ color: '#4DFFDC', textShadow: '0 0 20px rgba(0, 230, 195, 0.6)' }}>
+              3秒で診断完了
             </h2>
-            <p className="text-sm text-left font-body" style={{ color: 'rgba(179, 255, 240, 0.8)' }}>
-              銘柄コードまたは銘柄名を入力してください
+            <p className="text-xs font-sans font-normal text-left" style={{ color: 'rgba(179, 255, 240, 0.8)' }}>
+              銘柄コードまたは銘柄名を入力するだけ
             </p>
           </div>
 

@@ -18,13 +18,13 @@ export default function BusinessLoadingScene({ isVisible }: BusinessLoadingScene
         </div>
 
         <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tight text-sky-600 animate-soft-pulse">
-            AI市場分析中
+          <h2 className="text-4xl md:text-5xl font-sans font-semibold tracking-tight text-sky-600 animate-soft-pulse">
+            高速分析実行中
           </h2>
           <div className="flex items-center justify-center space-x-3">
             <div className="w-2 h-2 bg-sky-500 rounded-full animate-soft-pulse" />
-            <p className="text-xl text-mint-600 font-body font-semibold tracking-wide">
-              リアルタイムデータ処理中
+            <p className="text-xl text-mint-600 font-sans font-normal tracking-wide">
+              数秒で完了します
             </p>
             <div className="w-2 h-2 bg-mint-500 rounded-full animate-soft-pulse" style={{ animationDelay: '0.5s' }} />
           </div>
@@ -41,7 +41,7 @@ export default function BusinessLoadingScene({ isVisible }: BusinessLoadingScene
             background: 'rgba(255, 255, 255, 0.8)',
             borderColor: 'rgba(96, 165, 250, 0.2)',
           }}>
-            <p className="text-xs leading-relaxed text-text-muted font-body">
+            <p className="text-xs leading-relaxed text-text-muted font-sans">
               すべてのデータは公開されている市場情報を使用しており、
               公開市場データに基づいて分析を行っています。
               本分析は最新のAI技術により、財務指標、業界動向、市場トレンドを総合的に評価しています。
