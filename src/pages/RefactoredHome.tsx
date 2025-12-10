@@ -4,7 +4,7 @@ import MinimalistLogoAnimation from '../components/MinimalistLogoAnimation';
 import FormContainer from '../components/FormContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
-import InlineLoadingScene from '../components/InlineLoadingScene';
+import KLineLoadingScene from '../components/KLineLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
 import { StockData } from '../types/stock';
@@ -583,8 +583,8 @@ export default function RefactoredHome() {
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center py-20">
-            <InlineLoadingScene isVisible={showLoadingScene} />
+          <div className="flex items-center justify-center">
+            <KLineLoadingScene isVisible={showLoadingScene} />
           </div>
         )}
       </div>
