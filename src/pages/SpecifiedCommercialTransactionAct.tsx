@@ -1,4 +1,4 @@
-import { ArrowLeft, FileText, Building, Mail } from 'lucide-react';
+import { ArrowLeft, FileText, Building, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function SpecifiedCommercialTransactionAct() {
