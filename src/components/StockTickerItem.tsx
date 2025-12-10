@@ -57,12 +57,12 @@ export default function StockTickerItem({ code, name, basePrice }: StockTickerIt
       <div className="flex items-center space-x-2 border-l pl-3" style={{ borderColor: 'rgba(0, 230, 195, 0.3)' }}>
         <div className="flex flex-col items-end">
           <div className="flex items-baseline space-x-1">
-            <span className="font-luxury-number font-bold text-base" style={{ color: '#4DFFDC' }}>¥</span>
+            <span className="font-luxury-number font-bold text-base" style={{ color: '#FFFFFF' }}>¥</span>
             <RollingNumber
               value={price}
               decimals={0}
               className="font-luxury-number font-bold text-base"
-              style={{ color: '#4DFFDC' }}
+              style={{ color: '#FFFFFF' }}
             />
           </div>
           <div className="flex items-center space-x-1 font-body" style={{ color: accentColor }}>
