@@ -43,10 +43,11 @@ export default function MinimalistBackground() {
     };
 
     const drawGradientBackground = () => {
-      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      gradient.addColorStop(0, '#FFFFFF');
-      gradient.addColorStop(0.5, '#F5F5F7');
-      gradient.addColorStop(1, '#E8E8EA');
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, '#EFF6FF');
+      gradient.addColorStop(0.3, '#DBEAFE');
+      gradient.addColorStop(0.6, '#E0F2FE');
+      gradient.addColorStop(1, '#ECFEFF');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
@@ -57,9 +58,9 @@ export default function MinimalistBackground() {
       const maxRadius = Math.max(canvas.width, canvas.height) * 0.6;
 
       const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
-      gradient.addColorStop(0, 'rgba(59, 130, 246, 0.03)');
-      gradient.addColorStop(0.3, 'rgba(6, 182, 212, 0.02)');
-      gradient.addColorStop(0.6, 'rgba(16, 185, 129, 0.01)');
+      gradient.addColorStop(0, 'rgba(59, 130, 246, 0.12)');
+      gradient.addColorStop(0.3, 'rgba(6, 182, 212, 0.08)');
+      gradient.addColorStop(0.6, 'rgba(16, 185, 129, 0.04)');
       gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
       ctx.fillStyle = gradient;
@@ -68,12 +69,12 @@ export default function MinimalistBackground() {
 
     const drawDotGrid = () => {
       const spacing = 40;
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+      ctx.fillStyle = 'rgba(59, 130, 246, 0.08)';
 
       for (let x = 0; x < canvas.width; x += spacing) {
         for (let y = 0; y < canvas.height; y += spacing) {
           ctx.beginPath();
-          ctx.arc(x, y, 0.8, 0, Math.PI * 2);
+          ctx.arc(x, y, 1.2, 0, Math.PI * 2);
           ctx.fill();
         }
       }
@@ -129,7 +130,7 @@ export default function MinimalistBackground() {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full -z-10"
-      style={{ background: '#FFFFFF' }}
+      style={{ background: '#EFF6FF' }}
     />
   );
 }
