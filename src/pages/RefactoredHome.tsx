@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import HolographicBackground from '../components/HolographicBackground';
+import ModernGradientBackground from '../components/ModernGradientBackground';
 import DiagnosisTicker from '../components/DiagnosisTicker';
-import HexagonalLogo from '../components/HexagonalLogo';
+import ColorfulWaveAnimation from '../components/ColorfulWaveAnimation';
 import FormContainer from '../components/FormContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
@@ -474,7 +474,7 @@ export default function RefactoredHome() {
 
   return (
     <div className="min-h-screen relative flex flex-col">
-      <HolographicBackground />
+      <ModernGradientBackground />
 
       <div className="relative z-10 flex-1 flex flex-col">
         <ApiStatsDisplay />
@@ -482,7 +482,7 @@ export default function RefactoredHome() {
         {!showLoadingScene ? (
           <div className="flex-1 flex flex-col">
             <div className="flex-[3] flex flex-col items-center justify-center px-2 py-4">
-              <HexagonalLogo />
+              <ColorfulWaveAnimation />
             </div>
 
             <div className="w-[95%] mx-auto mb-4">
