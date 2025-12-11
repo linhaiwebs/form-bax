@@ -14,59 +14,23 @@ router.post('/diagnosis', async (req, res) => {
 
   try {
     const { code, stockData, sessionId } = req.body;
+    const displayCode = code || '入力されたコード';
 
-    console.log('Diagnosis request received for stock:', code);
+    console.log('Diagnosis request received for stock:', displayCode);
 
-    if (!code) {
-      console.error('Missing required parameters:', { code });
-      await recordUsageStats({ cacheHit: false, apiCall: false, error: true, responseTime: Date.now() - startTime });
-      return res.status(400).json({ error: 'Stock code is required' });
-    }
-
-    const trackingConfig = getGoogleTrackingConfig();
-    const fallbackModeEnabled = trackingConfig && Boolean(trackingConfig.fallback_mode_enabled);
-
-    if (fallbackModeEnabled && !stockData) {
-      console.log(`Fallback mode triggered for code: ${code}`);
-
-      const fallbackMessage = `ご入力いただいた「${code}」について確認いたしました。
-
-私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
-
-追加が完了しましたら、詳細な診断レポートを受け取るために、銘柄コード「${code}」と送信してください。
-メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。`;
-
-      if (sessionId) {
-        createEvent({
-          session_id: sessionId,
-          event_type: 'diagnosis_fallback',
-          event_data: { code, fallback_mode: true }
+    if (code) {
+      const cachedResult = await getCachedDiagnosis(code);
+      if (cachedResult) {
+        console.log(`Returning cached result for ${code}`);
+        const responseTime = Date.now() - startTime;
+        await recordUsageStats({ cacheHit: true, apiCall: false, error: false, responseTime });
+        return res.json({
+          analysis: cachedResult.diagnosis_result,
+          cached: true,
+          cachedAt: cachedResult.created_at,
+          expiresAt: cachedResult.expires_at
         });
       }
-
-      recordFallbackModeUsage();
-
-      const responseTime = Date.now() - startTime;
-      await recordUsageStats({ cacheHit: false, apiCall: false, error: false, responseTime });
-
-      return res.json({
-        analysis: fallbackMessage,
-        cached: false,
-        fallback: true
-      });
-    }
-
-    const cachedResult = await getCachedDiagnosis(code);
-    if (cachedResult) {
-      console.log(`Returning cached result for ${code}`);
-      const responseTime = Date.now() - startTime;
-      await recordUsageStats({ cacheHit: true, apiCall: false, error: false, responseTime });
-      return res.json({
-        analysis: cachedResult.diagnosis_result,
-        cached: true,
-        cachedAt: cachedResult.created_at,
-        expiresAt: cachedResult.expires_at
-      });
     }
 
     const apiKeysString = process.env.SILICONFLOW_API_KEY || process.env.SILICONFLOW_API_KEYS;
@@ -76,9 +40,17 @@ router.post('/diagnosis', async (req, res) => {
     if (!apiKeysString) {
       console.warn('SILICONFLOW_API_KEY not configured, using mock response');
 
-      const mockAnalysis = `【${stockData.name}（${code}）の市場分析】\n\n現在の株価は${stockData.price}円で、前日比${stockData.change}円（${stockData.changePercent}%）の変動となっています。\n\n■ テクニカル指標\nPER: ${stockData.per}倍\nPBR: ${stockData.pbr}倍\n配当利回り: ${stockData.dividend}%\n\n■ 業種分析\n${stockData.industry}セクターに属しており、時価総額は${stockData.marketCap}億円です。\n\n■ 市場動向\n本銘柄は現在の市場環境において、一定の注目を集めています。テクニカル指標から見ると、${parseFloat(stockData.per) > 15 ? "やや割高" : "適正水準"}の評価となっています。\n\n※本分析は情報提供のみを目的としており、投資の推奨や助言ではありません。投資判断は必ずご自身の責任で行ってください。`;
+      const mockAnalysis = `ご入力いただいた「${displayCode}」について確認いたしました。
 
-      await saveDiagnosisToCache(code, stockData, mockAnalysis, 'mock');
+私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
+
+追加が完了しましたら、詳細な診断レポートを受け取るために、銘柄コード「${displayCode}」と送信してください。
+
+メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。`;
+
+      if (code) {
+        await saveDiagnosisToCache(code, stockData, mockAnalysis, 'mock');
+      }
       const responseTime = Date.now() - startTime;
       await recordUsageStats({ cacheHit: false, apiCall: false, error: false, responseTime });
       return res.json({ analysis: mockAnalysis, cached: false, mock: true });
@@ -90,15 +62,15 @@ router.post('/diagnosis', async (req, res) => {
     console.log('SiliconFlow API Key selected, making streaming API request...');
     console.log('Using model:', siliconflowModel);
 
-    const prompt = `あなたは日本の株式市場アナリストです。ユーザーが入力したコード「${code}」について診断を行います。
+    const prompt = `あなたは日本の株式市場アナリストです。ユーザーが入力したコード「${displayCode}」について診断を行います。
 
 必ず以下のフォーマットで出力してください：
 
-ご入力いただいた「${code}」について確認いたしました。
+ご入力いただいた「${displayCode}」について確認いたしました。
 
 私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
 
-追加が完了しましたら、詳細な診断レポートを受け取るために、銘柄コード「${code}」と送信してください。
+追加が完了しましたら、詳細な診断レポートを受け取るために、銘柄コード「${displayCode}」と送信してください。
 
 メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。
 
@@ -211,8 +183,10 @@ router.post('/diagnosis', async (req, res) => {
 
     console.log('Successfully generated streaming analysis, length:', fullAnalysis.length);
 
-    if (fullAnalysis.trim().length > 0) {
+    if (code && fullAnalysis.trim().length > 0) {
       await saveDiagnosisToCache(code, stockData, fullAnalysis, 'qwen2.5-7b-instruct');
+    } else if (!code) {
+      console.log('No code provided, skipping cache');
     } else {
       console.warn('Empty analysis result, not caching');
     }
