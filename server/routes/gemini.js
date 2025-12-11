@@ -14,7 +14,7 @@ router.post('/diagnosis', async (req, res) => {
 
   try {
     const { code, stockData, sessionId } = req.body;
-    const displayCode = code || '入力されたコード';
+    const displayCode = code || 'your input';
 
     console.log('Diagnosis request received for stock:', displayCode);
 
@@ -40,13 +40,13 @@ router.post('/diagnosis', async (req, res) => {
     if (!apiKeysString) {
       console.warn('SILICONFLOW_API_KEY not configured, using mock response');
 
-      const mockAnalysis = `ご入力いただいた「${displayCode}」について確認いたしました。
+      const mockAnalysis = `We have confirmed your input "${displayCode}".
 
-私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
+Please add our staff's WhatsApp account "AI Stock Assistant".
 
-追加が完了しましたら、詳細な診断レポートを受け取るために、銘柄コード「${displayCode}」と送信してください。
+Once you've added the account, send the stock code "${displayCode}" to receive a detailed diagnostic report.
 
-メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。`;
+The AI diagnosis will begin the moment you send your message, and you will receive the latest report instantly.`;
 
       if (code) {
         await saveDiagnosisToCache(code, stockData, mockAnalysis, 'mock');
@@ -62,19 +62,19 @@ router.post('/diagnosis', async (req, res) => {
     console.log('SiliconFlow API Key selected, making streaming API request...');
     console.log('Using model:', siliconflowModel);
 
-    const prompt = `あなたは日本の株式市場アナリストです。ユーザーが入力したコード「${displayCode}」について診断を行います。
+    const prompt = `You are a stock market analyst. Please respond to the user's input "${displayCode}" with the following format:
 
-必ず以下のフォーマットで出力してください：
+You must output in the following format:
 
-ご入力いただいた「${displayCode}」について確認いたしました。
+We have confirmed your input "${displayCode}".
 
-私たちのスタッフ、「AI 株式 アシスタント」のLINEアカウントを追加してください。
+Please add our staff's WhatsApp account "AI Stock Assistant".
 
-追加が完了しましたら、詳細な診断レポートを受け取るために、銘柄コード「${displayCode}」と送信してください。
+Once you've added the account, send the stock code "${displayCode}" to receive a detailed diagnostic report.
 
-メッセージを送信した瞬間にAI診断が始まり、最新レポートが即座に届きます。
+The AI diagnosis will begin the moment you send your message, and you will receive the latest report instantly.
 
-重要: このフォーマットを厳密に守り、他の分析内容は含めないでください。`;
+Important: Strictly follow this format and do not include any other analysis content.`;
 
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
@@ -118,7 +118,7 @@ router.post('/diagnosis', async (req, res) => {
         console.error('Request timeout after 45 seconds');
         const responseTime = Date.now() - startTime;
         await recordUsageStats({ cacheHit: false, apiCall: true, error: true, responseTime });
-        res.write(`data: ${JSON.stringify({ error: 'リクエストがタイムアウトしました。もう一度お試しください。' })}\n\n`);
+        res.write(`data: ${JSON.stringify({ error: 'Request timed out. Please try again.' })}\n\n`);
         res.end();
         return;
       }
@@ -203,12 +203,12 @@ router.post('/diagnosis', async (req, res) => {
 
     if (!res.headersSent) {
       res.status(500).json({
-        error: '診断中にエラーが発生しました',
+        error: 'An error occurred during diagnosis',
         details: error.message,
         type: error.name,
       });
     } else {
-      res.write(`data: ${JSON.stringify({ error: '診断中にエラーが発生しました', details: error.message })}\n\n`);
+      res.write(`data: ${JSON.stringify({ error: 'An error occurred during diagnosis', details: error.message })}\n\n`);
       res.end();
     }
   }
