@@ -2,9 +2,9 @@ import { MapPin, Clock, CheckCircle } from 'lucide-react';
 
 export default function FeatureBadges() {
   const badges = [
-    { icon: MapPin, text: '全国対応等', color: 'text-blue-600' },
-    { icon: Clock, text: '24時間分析可', color: 'text-green-600' },
-    { icon: CheckCircle, text: '即時対応', color: 'text-purple-600' }
+    { icon: MapPin, text: 'Nationwide', color: 'text-blue-600' },
+    { icon: Clock, text: '24/7 Analysis', color: 'text-green-600' },
+    { icon: CheckCircle, text: 'Instant Results', color: 'text-purple-600' }
   ];
 
   return (

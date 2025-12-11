@@ -2,9 +2,9 @@ import { TrendingUp, FileText, Shield } from 'lucide-react';
 
 export default function BottomNavigation() {
   const navItems = [
-    { icon: TrendingUp, label: '市場分析', color: 'bg-blue-50 text-blue-600' },
-    { icon: FileText, label: 'レポート', color: 'bg-green-50 text-green-600' },
-    { icon: Shield, label: 'セキュリティ', color: 'bg-purple-50 text-purple-600' }
+    { icon: TrendingUp, label: 'Market Analysis', color: 'bg-blue-50 text-blue-600' },
+    { icon: FileText, label: 'Reports', color: 'bg-green-50 text-green-600' },
+    { icon: Shield, label: 'Security', color: 'bg-purple-50 text-purple-600' }
   ];
 
   return (

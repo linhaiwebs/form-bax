@@ -70,45 +70,29 @@ export default function EnhancedFormModule({
         <div className="flex items-center justify-between mb-1">
           <Lightbulb className="w-5 h-5 text-yellow-200 animate-pulse" />
           <span className="text-xs font-bold text-white bg-white/20 px-3 py-1 rounded-full">
-            期間限定
+            Limited Time
           </span>
           <Lightbulb className="w-5 h-5 text-yellow-200 animate-pulse" />
         </div>
         <h2 className="text-center text-white font-bold text-sm mb-2">
-          今だけ完全無料でプロ級分析レポート提供中！
+          Free Professional Analysis Reports Available Now!
         </h2>
         <div className="text-center text-white text-xs">
-          残り時間: {formatTime(timeLeft.hours)}:{formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
+          Time Left: {formatTime(timeLeft.hours)}:{formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
         </div>
       </div>
 
       <div className="p-4">
         <div className="mb-3">
           <span className="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded">
-            人気急上昇中
+            Trending Now
           </span>
         </div>
-
-        <div className="mb-3">
-          <ModernStockInput
-            value={value}
-            onChange={onChange}
-            onStockSelect={onStockSelect}
-            search={search}
-            isLoading={isLoading}
-          />
-        </div>
-
-        {autoFillMessage && (
-          <div className="text-center py-2 text-sm text-green-600 font-medium">
-            {autoFillMessage}
-          </div>
-        )}
 
         <div className="bg-blue-50 rounded-lg px-4 py-3 mb-4 flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
           <span className="text-sm text-blue-900 font-medium">
-            リアルタイム: <span className="font-bold">{realtimeCount.toLocaleString()}</span> 人が同時に分析中
+            Live: <span className="font-bold">{realtimeCount.toLocaleString()}</span> users analyzing now
           </span>
         </div>
 
@@ -118,21 +102,21 @@ export default function EnhancedFormModule({
           className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
         >
           <Zap className="w-5 h-5" fill="currentColor" />
-          <span className="text-base">30秒で無料AI分析開始</span>
+          <span className="text-base">Start Free AI Analysis (30s)</span>
         </button>
 
         <div className="mt-4 flex items-center justify-center gap-4 text-xs text-gray-600">
           <div className="flex items-center gap-1">
             <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-            <span>約30秒で完了</span>
+            <span>~30 seconds</span>
           </div>
           <div className="flex items-center gap-1">
             <Gift className="w-3.5 h-3.5 text-pink-500" />
-            <span>完全無料</span>
+            <span>100% Free</span>
           </div>
           <div className="flex items-center gap-1">
             <FileText className="w-3.5 h-3.5 text-blue-500" />
-            <span>登録不要</span>
+            <span>No Registration</span>
           </div>
         </div>
       </div>

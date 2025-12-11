@@ -17,11 +17,11 @@ export default function LINEConversionButton({ onClick }: LINEConversionButtonPr
         >
           <div className="flex items-center gap-3">
             <MessageCircle className="w-7 h-7" />
-            <span className="text-lg">LINE追加</span>
+            <span className="text-lg">Add Contact</span>
           </div>
           <div className="flex items-center gap-2 text-xs">
             <TrendingUp className="w-4 h-4" />
-            <span>今すぐ無料で分析レポートを入手</span>
+            <span>Get Free Analysis Report Now</span>
           </div>
         </button>
       </div>

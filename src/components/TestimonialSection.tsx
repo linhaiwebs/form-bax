@@ -2,17 +2,17 @@ import { Star, User } from 'lucide-react';
 
 export default function TestimonialSection() {
   const testimonial = {
-    name: '山本 健太',
-    date: '投資歴3年・副業の傍ら、初心者で参戦',
+    name: 'Michael Johnson',
+    date: '3 years investing experience, started as a beginner',
     rating: 5,
-    text: '「投資を始めたばかりの方でした。このAIシステムが出てくるまでは手探り状態でしたが、このAIシステムならわかりやすい判断で資産運用できるようになりました。わかりやすい判断で資産運用できるようになりました。'
+    text: "As someone new to investing, I was struggling until I found this AI system. It's made asset management so much clearer and easier to understand. The insights are actionable and have really helped me make confident investment decisions."
   };
 
   return (
     <div className="bg-business-gray py-6 px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-center text-xl font-bold text-gray-900 mb-5">
-          ユーザーの声
+          User Testimonials
         </h2>
         <div className="bg-white rounded-xl shadow-md p-6">
           <div className="flex items-start gap-3 mb-3">
@@ -33,7 +33,7 @@ export default function TestimonialSection() {
             {testimonial.text}
           </p>
           <p className="text-xs text-right text-gray-500 mt-4">
-            2025年1月投稿
+            Posted January 2025
           </p>
         </div>
       </div>

@@ -65,25 +65,25 @@ export default function DiagnosisModal({
           <div className="sticky top-0 flex items-center justify-between px-6 py-4 bg-gradient-to-r from-brand-blue to-brand-blue-dark">
           <div className="flex-1 text-center">
             <h2 className="text-base font-bold text-white">
-              {stockName}（{stockCode}）AI分析レポート
+              {stockName} ({stockCode}) AI Analysis Report
             </h2>
             {isConnecting && (
               <div className="flex items-center gap-2 text-sm justify-center mt-2 text-white">
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>AIサーバーに接続中...</span>
+                <span>Connecting to AI Server...</span>
               </div>
             )}
             {isStreaming && !isConnecting && (
               <div className="flex items-center gap-2 text-sm justify-center mt-2 text-white">
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>レポート生成中...</span>
+                <span>Generating Report...</span>
               </div>
             )}
           </div>
           <button
             onClick={onClose}
             className="p-2 rounded-full transition-colors ml-4 hover:bg-white/20 text-white"
-            aria-label="閉じる"
+            aria-label="Close"
           >
             <X className="w-6 h-6" />
           </button>
@@ -97,8 +97,8 @@ export default function DiagnosisModal({
                 {isConnecting ? (
                   <div className="text-center py-8">
                     <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-brand-blue" />
-                    <p className="font-semibold text-brand-blue">AI分析中...</p>
-                    <p className="text-sm mt-2 text-gray-600">処理中...</p>
+                    <p className="font-semibold text-brand-blue">AI Analysis in Progress...</p>
+                    <p className="text-sm mt-2 text-gray-600">Processing...</p>
                   </div>
                 ) : (
                   <div>
@@ -116,32 +116,32 @@ export default function DiagnosisModal({
               className="w-full bg-gradient-to-r from-[#06C755] to-[#05b04b] hover:from-[#05b04b] hover:to-[#049c42] text-white font-bold py-4 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 text-sm mt-2"
             >
               <ExternalLink className="w-6 h-6 flex-shrink-0" />
-              <span>LINE追加で無料分析レポートを入手</span>
+              <span>Get Free Analysis Report</span>
             </button>
 
             <div className="mt-3 p-4 rounded-lg border" style={{ backgroundColor: '#FFF7ED', borderColor: '#FB923C' }}>
               <div className="flex items-start gap-2 mb-2">
                 <ExternalLink className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: '#EA580C' }} />
                 <p className="text-sm font-bold" style={{ color: '#9A3412' }}>
-                  【重要】AI分析による優良ブルーチップ銘柄を毎日お届け！
+                  [IMPORTANT] Get Daily Premium Blue-Chip Stock Analysis!
                 </p>
               </div>
               <ul className="text-xs text-gray-800 leading-relaxed space-y-1.5 ml-1">
                 <li className="flex items-start gap-2">
                   <span className="text-orange-600 font-bold mt-0.5">•</span>
-                  <span>このボタンをクリックすると、<strong>LINE公式アプリまたはLINE公式サイト（第三者サービス）に移動</strong>します。</span>
+                  <span>Clicking this button will take you to a <strong>third-party contact service</strong>.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-orange-600 font-bold mt-0.5">•</span>
-                  <span>LINEは当サービスとは<strong>独立した別のサービス</strong>です。</span>
+                  <span>This contact service is <strong>independent from our platform</strong>.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-600 font-bold mt-0.5">✓</span>
-                  <span><strong className="text-green-700">完全無料</strong>：LINEへの移動後も追加料金は一切かかりません。</span>
+                  <span><strong className="text-green-700">100% Free</strong>: No additional fees after connecting.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-600 font-bold mt-0.5">✓</span>
-                  <span>LINE友だち追加で毎日最新のAI分析レポートが受け取れます。</span>
+                  <span>Receive daily AI analysis reports directly to your inbox.</span>
                 </li>
               </ul>
             </div>

@@ -6,7 +6,7 @@ export default function CampaignBanner() {
       <div className="max-w-4xl mx-auto flex items-center justify-center gap-1.5 text-red-600">
         <Gift className="w-3.5 h-3.5 animate-pulse flex-shrink-0" />
         <p className="text-[10px] font-bold text-center">
-          今だけ! 完全無料キャンペーン実施中
+          Limited Time Only! 100% Free Campaign Active
         </p>
       </div>
     </div>
