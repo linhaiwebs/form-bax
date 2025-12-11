@@ -9,11 +9,11 @@ export default function FeatureBadges() {
 
   return (
     <div className="bg-business-gray py-3 px-4">
-      <div className="max-w-4xl mx-auto flex items-center justify-center gap-4 flex-wrap">
+      <div className="max-w-4xl mx-auto flex items-center justify-center gap-3 flex-wrap">
         {badges.map((badge, index) => (
-          <div key={index} className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full shadow-sm">
-            <badge.icon className={`w-4 h-4 ${badge.color}`} />
-            <span className="text-sm font-semibold text-gray-700">{badge.text}</span>
+          <div key={index} className="flex items-center gap-1.5 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+            <badge.icon className={`w-4 h-4 ${badge.color} flex-shrink-0`} />
+            <span className="text-sm font-semibold text-gray-700 whitespace-nowrap">{badge.text}</span>
           </div>
         ))}
       </div>

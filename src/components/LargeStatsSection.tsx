@@ -28,17 +28,17 @@ export default function LargeStatsSection() {
   return (
     <div className="bg-white py-6 px-4">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-center text-xl font-bold text-gray-900 mb-4">
+        <h2 className="text-center text-xl font-bold text-gray-900 mb-5">
           社生証券グループ提携
         </h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-4">
           {stats.map((stat, index) => (
-            <div key={index} className={`${stat.bgColor} rounded-lg p-3 text-center`}>
-              <stat.icon className={`w-6 h-6 ${stat.color} mx-auto mb-2`} />
-              <div className={`text-xl font-bold ${stat.color} mb-1`}>
+            <div key={index} className={`${stat.bgColor} rounded-xl p-4 text-center shadow-sm`}>
+              <stat.icon className={`w-7 h-7 ${stat.color} mx-auto mb-2`} />
+              <div className={`text-2xl font-bold ${stat.color} mb-1`}>
                 {stat.value}
               </div>
-              <div className="text-xs text-gray-600">
+              <div className="text-xs text-gray-600 font-medium">
                 {stat.label}
               </div>
             </div>
