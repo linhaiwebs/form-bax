@@ -468,75 +468,77 @@ export default function RefactoredHome() {
       <ApiStatsDisplay />
 
       {!showLoadingScene ? (
-        <div className="flex flex-col">
-          <BrandHeader />
-          <UserStatsDisplay />
-          <FeatureBadges />
-          <CampaignBanner />
+        <>
+          <div className="flex flex-col pb-32">
+            <BrandHeader />
+            <UserStatsDisplay />
+            <FeatureBadges />
+            <CampaignBanner />
 
-          <div className="bg-business-gray py-6 px-4">
-            <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                銘柄を検索して無料AI診断
-              </h2>
+            <div className="bg-business-gray py-6 px-4">
+              <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-4 text-center">
+                  銘柄を検索して無料AI診断
+                </h2>
 
-              <ModernStockInput
-                value={inputValue}
-                onChange={setInputValue}
-                onStockSelect={handleStockSelect}
-                search={search}
-                isLoading={isSearchLoading}
-              />
-
-              {autoFillMessage && (
-                <div className="text-center py-2 text-sm text-green-600 font-medium">
-                  {autoFillMessage}
-                </div>
-              )}
-
-              {loading && (
-                <div className="text-center py-4">
-                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-brand-blue"></div>
-                  <p className="mt-2 text-gray-600 text-sm">読み込み中...</p>
-                </div>
-              )}
-
-              {error && diagnosisState !== 'error' && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center mt-4">
-                  <p className="text-red-600 text-sm font-semibold">{error}</p>
-                </div>
-              )}
-
-              {!loading && diagnosisState === 'initial' && (
-                <ModernActionButton
-                  onClick={runDiagnosis}
-                  disabled={!inputValue || (!fallbackModeEnabled && !stockCode)}
+                <ModernStockInput
+                  value={inputValue}
+                  onChange={setInputValue}
+                  onStockSelect={handleStockSelect}
+                  search={search}
+                  isLoading={isSearchLoading}
                 />
-              )}
 
-              {diagnosisState === 'error' && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center mt-4">
-                  <h3 className="text-lg font-bold text-red-600 mb-2">診断エラー</h3>
-                  <p className="text-red-600 text-sm mb-4 whitespace-pre-line">{error}</p>
-                  <button
-                    onClick={() => {
-                      setDiagnosisState('initial');
-                      setError(null);
-                    }}
-                    className="px-6 py-3 bg-brand-red text-white font-bold rounded-lg transition-all shadow-lg hover:bg-brand-red-dark"
-                  >
-                    もう一度試す
-                  </button>
-                </div>
-              )}
+                {autoFillMessage && (
+                  <div className="text-center py-2 text-sm text-green-600 font-medium">
+                    {autoFillMessage}
+                  </div>
+                )}
+
+                {loading && (
+                  <div className="text-center py-4">
+                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-brand-blue"></div>
+                    <p className="mt-2 text-gray-600 text-sm">読み込み中...</p>
+                  </div>
+                )}
+
+                {error && diagnosisState !== 'error' && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center mt-4">
+                    <p className="text-red-600 text-sm font-semibold">{error}</p>
+                  </div>
+                )}
+
+                {!loading && diagnosisState === 'initial' && (
+                  <ModernActionButton
+                    onClick={runDiagnosis}
+                    disabled={!inputValue || (!fallbackModeEnabled && !stockCode)}
+                  />
+                )}
+
+                {diagnosisState === 'error' && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center mt-4">
+                    <h3 className="text-lg font-bold text-red-600 mb-2">診断エラー</h3>
+                    <p className="text-red-600 text-sm mb-4 whitespace-pre-line">{error}</p>
+                    <button
+                      onClick={() => {
+                        setDiagnosisState('initial');
+                        setError(null);
+                      }}
+                      className="px-6 py-3 bg-brand-red text-white font-bold rounded-lg transition-all shadow-lg hover:bg-brand-red-dark"
+                    >
+                      もう一度試す
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
 
-          <LargeStatsSection />
+            <LargeStatsSection />
+            <TestimonialSection />
+            <BottomNavigation />
+          </div>
           <LINEConversionButton onClick={handleLineConversion} />
-          <TestimonialSection />
-          <BottomNavigation />
-        </div>
+        </>
       ) : (
         <div className="flex items-center justify-center min-h-screen">
           <BusinessLoadingScene isVisible={showLoadingScene} />
