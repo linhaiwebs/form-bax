@@ -12,7 +12,7 @@ export default function Contact() {
         title="お問い合わせ | AI株式診断"
         description="AI株式診断サービスへのお問い合わせ。ご質問、ご要望、不具合のご報告など、お気軽にお問い合わせください。メールでのお問い合わせは24時間受け付けております。"
         keywords="お問い合わせ,サポート,質問,AI株式診断,問い合わせフォーム"
-        canonical="https://japanaistock.jp/contact"
+        path="/contact"
       />
       <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">

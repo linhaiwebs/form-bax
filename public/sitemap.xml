@@ -4,44 +4,34 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- トップページ / ホーム -->
   <url>
     <loc>https://japanaistock.jp/</loc>
     <lastmod>2025-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- プライバシーポリシー -->
   <url>
     <loc>https://japanaistock.jp/privacy</loc>
     <lastmod>2025-12-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-
-  <!-- 利用規約 -->
   <url>
     <loc>https://japanaistock.jp/terms</loc>
     <lastmod>2025-12-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-
-  <!-- 特定商取引法に基づく表記 -->
   <url>
     <loc>https://japanaistock.jp/specified-commercial-transaction-act</loc>
     <lastmod>2025-12-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-
-  <!-- お問い合わせ -->
   <url>
     <loc>https://japanaistock.jp/contact</loc>
     <lastmod>2025-12-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
 </urlset>

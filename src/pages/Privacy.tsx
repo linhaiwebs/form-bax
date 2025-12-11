@@ -12,7 +12,7 @@ export default function Privacy() {
         title="プライバシーポリシー | AI株式診断"
         description="AI株式診断サービスのプライバシーポリシー。個人情報の収集、利用、保護に関する方針を記載しています。Google AdSense、Cookie、セキュリティについて説明。"
         keywords="プライバシーポリシー,個人情報保護,Cookie,Google AdSense,セキュリティ,AI株式診断"
-        canonical="https://japanaistock.jp/privacy"
+        path="/privacy"
       />
       <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">

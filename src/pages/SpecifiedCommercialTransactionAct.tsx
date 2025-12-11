@@ -12,7 +12,7 @@ export default function SpecifiedCommercialTransactionAct() {
         title="特定商取引法に基づく表記 | AI株式診断"
         description="AI株式診断サービスの特定商取引法に基づく表記。事業者情報、サービス内容、利用料金、お支払い方法、返金ポリシーなどを記載しています。"
         keywords="特定商取引法,特商法,事業者情報,返金ポリシー,AI株式診断"
-        canonical="https://japanaistock.jp/specified-commercial-transaction-act"
+        path="/specified-commercial-transaction-act"
       />
       <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">

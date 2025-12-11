@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { getSiteUrl } from '../lib/getSiteUrl';
 
 interface SEOProps {
   title?: string;
@@ -7,6 +8,7 @@ interface SEOProps {
   ogTitle?: string;
   ogDescription?: string;
   canonical?: string;
+  path?: string;
 }
 
 export default function SEO({
@@ -15,8 +17,12 @@ export default function SEO({
   keywords = 'AI株式診断,株式分析,銘柄診断,投資判断,株価分析,リアルタイム株価,無料株式診断,AI投資,機械学習,投資支援ツール,日本株,米国株',
   ogTitle,
   ogDescription,
-  canonical = 'https://japanaistock.jp/',
+  canonical,
+  path = '/',
 }: SEOProps) {
+  const siteUrl = getSiteUrl();
+  const fullCanonical = canonical || `${siteUrl}${path.startsWith('/') ? path : `/${path}`}`;
+
   useEffect(() => {
     document.title = title;
 
@@ -37,7 +43,7 @@ export default function SEO({
     updateMetaTag('keywords', keywords);
     updateMetaTag('og:title', ogTitle || title, true);
     updateMetaTag('og:description', ogDescription || description, true);
-    updateMetaTag('og:url', canonical, true);
+    updateMetaTag('og:url', fullCanonical, true);
     updateMetaTag('twitter:title', ogTitle || title);
     updateMetaTag('twitter:description', ogDescription || description);
 
@@ -47,8 +53,8 @@ export default function SEO({
       linkElement.setAttribute('rel', 'canonical');
       document.head.appendChild(linkElement);
     }
-    linkElement.setAttribute('href', canonical);
-  }, [title, description, keywords, ogTitle, ogDescription, canonical]);
+    linkElement.setAttribute('href', fullCanonical);
+  }, [title, description, keywords, ogTitle, ogDescription, fullCanonical]);
 
   return null;
 }
