@@ -471,9 +471,11 @@ export default function RefactoredHome() {
         <>
           <div className="flex flex-col pb-32">
             <BrandHeader />
-            <UserStatsDisplay />
-            <FeatureBadges />
-            <CampaignBanner />
+            <div className="bg-[#bbf7d0] bg-opacity-50 rounded-lg mx-4 my-2 p-3">
+              <UserStatsDisplay />
+              <FeatureBadges />
+              <CampaignBanner />
+            </div>
 
             <div className="bg-business-gray py-6 px-4">
               <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
