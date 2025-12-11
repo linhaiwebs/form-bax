@@ -1,9 +1,17 @@
 import { ArrowLeft, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function Terms() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50">
+    <>
+      <SEO
+        title="利用規約 | AI株式診断"
+        description="AI株式診断サービスの利用規約。サービスの利用条件、禁止事項、免責事項、知的財産権などについて記載しています。ご利用前に必ずお読みください。"
+        keywords="利用規約,規約,使用条件,禁止事項,免責事項,AI株式診断"
+        canonical="https://japanaistock.jp/terms"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Link
           to="/"
@@ -145,6 +153,7 @@ export default function Terms() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
