@@ -80,45 +80,19 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
   };
 
   return (
-    <div className="relative w-full animate-fadeIn" style={{ animationDelay: '0.1s' }}>
+    <div className="relative w-full">
       <div className="relative group">
         <input
           ref={inputRef}
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="銘柄名を入力して検索"
-          className="w-full px-5 py-4 text-sm backdrop-blur-xl border-2 rounded-xl focus:outline-none transition-all duration-300 font-sans font-normal shadow-soft"
+          placeholder="銘柄コードまたは銘柄名を入力"
+          className="w-full px-5 py-4 text-base border-2 rounded-lg focus:outline-none transition-all duration-200 font-sans shadow-sm bg-white text-gray-900 border-gray-300 focus:border-brand-blue hover:border-brand-blue"
           style={{
-            height: '60px',
-            color: '#FFFFFF',
-            background: 'rgba(4, 47, 82, 0.7)',
-            borderColor: '#00E6C3',
-            boxShadow: '0 4px 20px rgba(0, 149, 224, 0.4), 0 0 30px rgba(0, 230, 195, 0.2)',
+            height: '56px',
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#4DFFDC';
-            e.currentTarget.style.boxShadow = '0 0 30px rgba(0, 230, 195, 0.6), 0 0 60px rgba(77, 255, 220, 0.3)';
-            e.currentTarget.style.transform = 'translateY(-2px)';
-          }}
-          onMouseLeave={(e) => {
-            if (document.activeElement !== e.currentTarget) {
-              e.currentTarget.style.borderColor = '#00E6C3';
-              e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 149, 224, 0.4), 0 0 30px rgba(0, 230, 195, 0.2)';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }
-          }}
-          onFocus={(e) => {
-            handleInputFocus();
-            e.currentTarget.style.borderColor = '#4DFFDC';
-            e.currentTarget.style.boxShadow = '0 0 50px rgba(0, 230, 195, 0.8), 0 0 100px rgba(77, 255, 220, 0.4)';
-            e.currentTarget.style.transform = 'translateY(-2px)';
-          }}
-          onBlur={(e) => {
-            e.currentTarget.style.borderColor = '#00E6C3';
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 149, 224, 0.4), 0 0 30px rgba(0, 230, 195, 0.2)';
-            e.currentTarget.style.transform = 'translateY(0)';
-          }}
+          onFocus={handleInputFocus}
           disabled={isLoading}
         />
       </div>
@@ -126,53 +100,28 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
       {showDropdown && currentResults.length > 0 && (
         <div
           ref={dropdownRef}
-          className="absolute z-[9999] w-full mt-3 rounded-xl shadow-soft-lg overflow-hidden animate-fadeIn backdrop-blur-xl"
-          style={{
-            background: 'rgba(4, 47, 82, 0.95)',
-            border: '2px solid #00E6C3',
-            boxShadow: '0 8px 32px rgba(0, 16, 26, 0.6), 0 0 40px rgba(0, 230, 195, 0.3)',
-          }}
+          className="absolute z-[9999] w-full mt-2 rounded-lg shadow-lg overflow-hidden border border-gray-200 bg-white"
         >
           <div className="max-h-80 overflow-y-auto">
             {currentResults.map((stock, index) => (
               <button
                 key={`${stock.code}-${index}`}
                 onClick={() => handleStockClick(stock)}
-                className="w-full px-5 py-3 text-left transition-all duration-200 border-b last:border-b-0 group/item relative"
-                style={{
-                  borderColor: 'rgba(0, 230, 195, 0.2)',
-                  background: 'transparent',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(0, 230, 195, 0.15)';
-                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(1deg) rotateY(2deg)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-                }}
+                className="w-full px-5 py-3 text-left transition-colors duration-150 border-b last:border-b-0 hover:bg-blue-50 border-gray-100"
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="font-semibold whitespace-nowrap font-sans" style={{ color: '#4DFFDC' }}>
+                    <div className="font-semibold whitespace-nowrap font-sans text-brand-blue">
                       {stock.code}
                     </div>
                     <div
-                      className="text-xs truncate font-sans font-medium"
-                      style={{ color: '#B3FFF0' }}
+                      className="text-sm truncate font-sans text-gray-700"
                       title={stock.name}
                     >
-                      {stock.name.length > 6 ? `${stock.name.slice(0, 6)}...` : stock.name}
+                      {stock.name}
                     </div>
                   </div>
-                  <div
-                    className="text-xs px-3 py-1 font-medium whitespace-nowrap font-sans rounded-lg"
-                    style={{
-                      color: '#4DFFDC',
-                      background: 'rgba(0, 230, 195, 0.15)',
-                      border: '1px solid rgba(77, 255, 220, 0.4)',
-                    }}
-                  >
+                  <div className="text-xs px-2 py-1 font-medium whitespace-nowrap font-sans rounded bg-gray-100 text-gray-600">
                     {stock.market}
                   </div>
                 </div>
@@ -181,60 +130,24 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
           </div>
 
           {totalPages > 1 && (
-            <div
-              className="flex items-center justify-between px-5 py-3 backdrop-blur-sm"
-              style={{
-                background: 'rgba(4, 47, 82, 0.98)',
-                borderTop: '1px solid rgba(0, 230, 195, 0.3)',
-              }}
-            >
+            <div className="flex items-center justify-between px-5 py-3 bg-gray-50 border-t border-gray-200">
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage === 0}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all rounded-lg shadow-soft-sm"
-                style={{
-                  color: '#4DFFDC',
-                  background: 'rgba(0, 230, 195, 0.15)',
-                  border: '1px solid rgba(77, 255, 220, 0.4)',
-                }}
-                onMouseEnter={(e) => {
-                  if (currentPage !== 0) {
-                    e.currentTarget.style.background = 'rgba(0, 230, 195, 0.25)';
-                    e.currentTarget.style.transform = 'translateY(-1px)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(0, 230, 195, 0.15)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
+                className="flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all rounded-lg bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
               >
                 <ChevronLeft className="w-4 h-4" />
                 前へ
               </button>
 
-              <div className="text-sm font-sans font-semibold" style={{ color: '#4DFFDC' }}>
+              <div className="text-sm font-sans font-semibold text-gray-700">
                 {currentPage + 1} / {totalPages}
               </div>
 
               <button
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages - 1}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all rounded-lg shadow-soft-sm"
-                style={{
-                  color: '#4DFFDC',
-                  background: 'rgba(0, 230, 195, 0.15)',
-                  border: '1px solid rgba(77, 255, 220, 0.4)',
-                }}
-                onMouseEnter={(e) => {
-                  if (currentPage !== totalPages - 1) {
-                    e.currentTarget.style.background = 'rgba(0, 230, 195, 0.25)';
-                    e.currentTarget.style.transform = 'translateY(-1px)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(0, 230, 195, 0.15)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
+                className="flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all rounded-lg bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
               >
                 次へ
                 <ChevronRight className="w-4 h-4" />
@@ -245,7 +158,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
       )}
 
       {isLoading && (
-        <div className="absolute left-0 right-0 top-full mt-2 text-center text-xs font-sans animate-soft-pulse" style={{ color: '#4DFFDC' }}>
+        <div className="absolute left-0 right-0 top-full mt-2 text-center text-xs font-sans text-gray-500">
           読み込み中...
         </div>
       )}

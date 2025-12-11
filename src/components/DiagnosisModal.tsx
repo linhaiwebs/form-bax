@@ -59,25 +59,22 @@ export default function DiagnosisModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" style={{ touchAction: 'none', backgroundColor: 'rgba(0, 16, 26, 0.9)' }}>
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50" style={{ touchAction: 'none' }}>
       <div className="relative w-full max-w-3xl max-h-[95vh]">
-        <div className="relative rounded-lg overflow-hidden animate-ripple-expand" style={{ touchAction: 'auto', boxShadow: '0 0 50px rgba(0, 230, 195, 0.8), 0 0 100px rgba(77, 255, 220, 0.4)', border: '2px solid #00E6C3', background: '#022036' }}>
-          <div
-            className="sticky top-0 flex items-center justify-between px-6 py-4 animate-wave-flow"
-            style={{ background: 'linear-gradient(135deg, #4DFFDC 0%, #00E6C3 50%, #008071 100%)' }}
-          >
+        <div className="relative rounded-lg overflow-hidden shadow-2xl bg-white" style={{ touchAction: 'auto' }}>
+          <div className="sticky top-0 flex items-center justify-between px-6 py-4 bg-gradient-to-r from-brand-blue to-brand-blue-dark">
           <div className="flex-1 text-center">
-            <h2 className="text-sm font-bold font-luxury" style={{ color: '#00101A' }}>
+            <h2 className="text-base font-bold text-white">
               {stockName}（{stockCode}）AI分析レポート
             </h2>
             {isConnecting && (
-              <div className="flex items-center gap-2 text-sm justify-center mt-2" style={{ color: '#00101A' }}>
+              <div className="flex items-center gap-2 text-sm justify-center mt-2 text-white">
                 <Loader2 className="w-4 h-4 animate-spin" />
                 <span>AIサーバーに接続中...</span>
               </div>
             )}
             {isStreaming && !isConnecting && (
-              <div className="flex items-center gap-2 text-sm justify-center mt-2" style={{ color: '#00101A' }}>
+              <div className="flex items-center gap-2 text-sm justify-center mt-2 text-white">
                 <Loader2 className="w-4 h-4 animate-spin" />
                 <span>レポート生成中...</span>
               </div>
@@ -85,36 +82,29 @@ export default function DiagnosisModal({
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full transition-colors ml-4"
-            style={{ color: '#00101A' }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(0, 16, 26, 0.3)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent';
-            }}
+            className="p-2 rounded-full transition-colors ml-4 hover:bg-white/20 text-white"
             aria-label="閉じる"
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
-        <div ref={contentRef} className="overflow-y-auto max-h-[calc(95vh-180px)] px-6 py-6">
+        <div ref={contentRef} className="overflow-y-auto max-h-[calc(95vh-180px)] px-6 py-6 bg-gray-50">
           <div className="mb-6">
 
-            <div className="rounded-xl p-6 relative border animate-current-sway" style={{ backgroundColor: '#042F52', borderColor: '#00E6C3', boxShadow: '0 0 30px rgba(0, 230, 195, 0.3), inset 0 1px 0 rgba(77, 255, 220, 0.2)' }}>
-              <div className="prose prose-sm max-w-none" style={{ color: '#B3FFF0' }}>
+            <div className="rounded-lg p-6 bg-white border border-gray-200 shadow-sm">
+              <div className="prose prose-sm max-w-none text-gray-700">
                 {isConnecting ? (
                   <div className="text-center py-8">
-                    <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4" style={{ color: '#4DFFDC' }} />
-                    <p className="font-semibold" style={{ color: '#4DFFDC' }}>AI分析中...</p>
-                    <p className="text-sm mt-2" style={{ color: '#B3FFF0' }}>処理中...</p>
+                    <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-brand-blue" />
+                    <p className="font-semibold text-brand-blue">AI分析中...</p>
+                    <p className="text-sm mt-2 text-gray-600">処理中...</p>
                   </div>
                 ) : (
                   <div>
                     <AnalysisRenderer text={analysis} />
                     {isStreaming && (
-                      <span className="inline-block w-2 h-5 animate-pulse ml-1" style={{ backgroundColor: '#4DFFDC' }}></span>
+                      <span className="inline-block w-2 h-5 animate-pulse ml-1 bg-brand-blue"></span>
                     )}
                   </div>
                 )}

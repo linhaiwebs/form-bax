@@ -4,6 +4,30 @@ export default {
   theme: {
     extend: {
       colors: {
+        'brand': {
+          red: '#DC2626',
+          'red-dark': '#B91C1C',
+          'red-light': '#FEE2E2',
+          blue: '#2563EB',
+          'blue-dark': '#1D4ED8',
+          'blue-light': '#DBEAFE',
+        },
+        'line': {
+          green: '#06C755',
+          'green-dark': '#05B04B',
+          'green-light': '#E6F9F0',
+        },
+        'trust': {
+          yellow: '#F59E0B',
+          orange: '#EA580C',
+          pink: '#EC4899',
+        },
+        'business': {
+          gray: '#F3F4F6',
+          'gray-dark': '#E5E7EB',
+          'gray-darker': '#D1D5DB',
+          white: '#FFFFFF',
+        },
         'ocean': {
           50: '#E6F7FF',
           100: '#B3E6FF',
@@ -39,24 +63,6 @@ export default {
           700: '#042F52',
           800: '#022036',
           900: '#00101A',
-        },
-        'foam': {
-          50: '#FFFFFF',
-          100: '#F0FFFE',
-          200: '#E0FFFD',
-          300: '#D0FFFC',
-          400: '#C0FFFB',
-          500: '#A0FFF9',
-          600: '#80E6D9',
-          700: '#60CCB9',
-          800: '#40B399',
-          900: '#209979',
-        },
-        'wave': {
-          light: '#4DFFDC',
-          medium: '#00E6C3',
-          dark: '#008071',
-          crest: '#B3FFF0',
         },
         'accent-red': '#dc2626',
         'accent-red-dark': '#b91c1c',

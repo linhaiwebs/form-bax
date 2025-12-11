@@ -1,13 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
-import UkiyoeDeepSeaBackground from '../components/UkiyoeDeepSeaBackground';
-import WaterDropletRippleLogo from '../components/WaterDropletRippleLogo';
-import FormContainer from '../components/FormContainer';
+import BrandHeader from '../components/BrandHeader';
+import UserStatsDisplay from '../components/UserStatsDisplay';
+import FeatureBadges from '../components/FeatureBadges';
+import CampaignBanner from '../components/CampaignBanner';
+import LargeStatsSection from '../components/LargeStatsSection';
+import LINEConversionButton from '../components/LINEConversionButton';
+import TestimonialSection from '../components/TestimonialSection';
+import BottomNavigation from '../components/BottomNavigation';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
 import BusinessLoadingScene from '../components/BusinessLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
-import DiagnosisTicker from '../components/DiagnosisTicker';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -460,80 +464,84 @@ export default function RefactoredHome() {
   };
 
   return (
-    <div className="relative flex flex-col">
-      <UkiyoeDeepSeaBackground />
+    <div className="relative flex flex-col min-h-screen bg-white">
+      <ApiStatsDisplay />
 
-      <div className="relative z-10 flex flex-col">
-        <ApiStatsDisplay />
+      {!showLoadingScene ? (
+        <div className="flex flex-col">
+          <BrandHeader />
+          <UserStatsDisplay />
+          <FeatureBadges />
+          <CampaignBanner />
 
-        {!showLoadingScene ? (
-          <div className="flex flex-col">
-            <div className="flex flex-col items-center justify-center px-2 py-8">
-              <WaterDropletRippleLogo />
-            </div>
+          <div className="bg-business-gray py-6 px-4">
+            <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-bold text-gray-900 mb-4 text-center">
+                銘柄を検索して無料AI診断
+              </h2>
 
-            <DiagnosisTicker />
+              <ModernStockInput
+                value={inputValue}
+                onChange={setInputValue}
+                onStockSelect={handleStockSelect}
+                search={search}
+                isLoading={isSearchLoading}
+              />
 
-            <div className="flex flex-col">
-              <FormContainer>
-                <ModernStockInput
-                  value={inputValue}
-                  onChange={setInputValue}
-                  onStockSelect={handleStockSelect}
-                  search={search}
-                  isLoading={isSearchLoading}
+              {autoFillMessage && (
+                <div className="text-center py-2 text-sm text-green-600 font-medium">
+                  {autoFillMessage}
+                </div>
+              )}
+
+              {loading && (
+                <div className="text-center py-4">
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-brand-blue"></div>
+                  <p className="mt-2 text-gray-600 text-sm">読み込み中...</p>
+                </div>
+              )}
+
+              {error && diagnosisState !== 'error' && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center mt-4">
+                  <p className="text-red-600 text-sm font-semibold">{error}</p>
+                </div>
+              )}
+
+              {!loading && diagnosisState === 'initial' && (
+                <ModernActionButton
+                  onClick={runDiagnosis}
+                  disabled={!inputValue || (!fallbackModeEnabled && !stockCode)}
                 />
+              )}
 
-                {autoFillMessage && (
-                  <div className="text-center py-2 text-sm text-green-600 font-medium animate-fadeIn">
-                    {autoFillMessage}
-                  </div>
-                )}
-
-                {loading && (
-                  <div className="text-center py-4 animate-fadeIn">
-                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-gray-900"></div>
-                    <p className="mt-2 text-gray-600 text-sm">Loading...</p>
-                  </div>
-                )}
-
-                {error && diagnosisState !== 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center animate-fadeIn mt-4">
-                    <p className="text-red-600 text-sm font-semibold">{error}</p>
-                  </div>
-                )}
-
-                {!loading && diagnosisState === 'initial' && (
-                  <ModernActionButton
-                    onClick={runDiagnosis}
-                    disabled={!inputValue || (!fallbackModeEnabled && !stockCode)}
-                  />
-                )}
-
-                {diagnosisState === 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center animate-fadeIn mt-4">
-                    <h3 className="text-lg font-bold text-red-600 mb-2">診断エラー</h3>
-                    <p className="text-red-600 text-sm mb-4 whitespace-pre-line">{error}</p>
-                    <button
-                      onClick={() => {
-                        setDiagnosisState('initial');
-                        setError(null);
-                      }}
-                      className="px-6 py-3 bg-gray-900 text-white font-bold rounded-xl transition-all shadow-lg hover:opacity-90"
-                    >
-                      もう一度試す
-                    </button>
-                  </div>
-                )}
-              </FormContainer>
+              {diagnosisState === 'error' && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center mt-4">
+                  <h3 className="text-lg font-bold text-red-600 mb-2">診断エラー</h3>
+                  <p className="text-red-600 text-sm mb-4 whitespace-pre-line">{error}</p>
+                  <button
+                    onClick={() => {
+                      setDiagnosisState('initial');
+                      setError(null);
+                    }}
+                    className="px-6 py-3 bg-brand-red text-white font-bold rounded-lg transition-all shadow-lg hover:bg-brand-red-dark"
+                  >
+                    もう一度試す
+                  </button>
+                </div>
+              )}
             </div>
           </div>
-        ) : (
-          <div className="flex items-center justify-center">
-            <BusinessLoadingScene isVisible={showLoadingScene} />
-          </div>
-        )}
-      </div>
+
+          <LargeStatsSection />
+          <LINEConversionButton onClick={handleLineConversion} />
+          <TestimonialSection />
+          <BottomNavigation />
+        </div>
+      ) : (
+        <div className="flex items-center justify-center min-h-screen">
+          <BusinessLoadingScene isVisible={showLoadingScene} />
+        </div>
+      )}
 
       <DiagnosisModal
         isOpen={diagnosisState === 'streaming' || diagnosisState === 'results'}
