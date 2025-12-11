@@ -1,0 +1,796 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI株式診断 - 日本市場分析</title>
+<link rel="icon" type="image/png" href="static3/image/日本logo1.png">
+
+<meta name="robots" content="noindex, nofollow">
+
+<!--
+Copyright (c) [20250527] [google/facebook]. All Rights Reserved.
+Business: Landing page development
+Contact: https://t.me/notfound404aa
+feature:
+-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11381486501"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11381486501');
+</script>
+
+<!-- Event snippet for GG_ui conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-11381486501/82AtCJjGjcsbEKXnjrMq',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+
+
+
+
+<script src="static/js/js.js"></script>
+<script src="static/js/index.js"></script>
+<link rel="stylesheet" href="static/css/all.min.css">
+<link rel="stylesheet" href="static/css/css2.css">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          aiBlue: '#0066cc',
+          aiLightBlue: '#e6f0ff',
+          aiDarkBlue: '#003366',
+          aiAccent: '#ff3366'
+        },
+        fontFamily: {
+          'noto': ['"Noto Sans JP"', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* 性能优化 - 减少重绘和回流 */
+  * { box-sizing: border-box; }
+  .ai-gradient { background: linear-gradient(135deg, #ffffff 0%, #e6f0ff 100%); }
+  .progress-bar { background: linear-gradient(90deg, #0066cc, #003366); background-size: 200% 200%; animation: gradientShift 2s ease infinite; will-change: background-position; }
+  @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+  .loading-overlay { background: rgba(255,255,255,0.95); backdrop-filter: blur(5px); z-index:9999; will-change: opacity; }
+  .ai-border { position: relative; border:1px solid #e6f0ff; box-shadow:0 2px 10px rgba(0,102,204,.1); contain: layout style; }
+  .ai-pattern { background-image: radial-gradient(#0066cc 1px, transparent 1px); background-size:20px 20px; background-color:white; opacity:.05; }
+  .jp-stock-cascade { position:relative; height:0px; overflow:hidden; background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); margin:0; }
+  .jp-stock-ticker { position:absolute; font-family:Arial,sans-serif; white-space:nowrap; animation: stockFall linear infinite; font-size:14px; color:#333; }
+  .jp-stock-ticker.positive{color:#22c55e} .jp-stock-ticker.negative{color:#ef4444}
+  @keyframes stockFall { 0%{transform:translate3d(0,-50px,0)} 100%{transform:translate3d(0,230px,0)} }
+  .title-highlight { background: linear-gradient(120deg,#0066cc,#003366,#0066cc); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:shine 3s linear infinite; will-change: background-position; }
+  @keyframes shine { to { background-position: 200% center; } }
+  .testimonial-carousel { position:relative; overflow:hidden; }
+  .testimonial-slide { position:absolute; top:0; left:0; width:100%; opacity:0; transition:opacity .5s ease-in-out; }
+  .testimonial-slide.active { opacity:1; position:relative; }
+  .carousel-dots { display:flex; justify-content:center; margin-top:8px; }
+  .carousel-dot { width:6px; height:6px; border-radius:50%; background:#ccc; margin:0 3px; cursor:pointer; transition:background-color .3s; }
+  .carousel-dot.active { background:#0066cc; }
+  #lineBtn { animation:pulseAnimation 1.5s infinite ease-in-out; will-change: transform; }
+  @keyframes pulseAnimation { 0%{transform:scale3d(1,1,1)} 50%{transform:scale3d(1.05,1.05,1)} 100%{transform:scale3d(1,1,1)} }
+  img { loading: lazy; will-change: auto; }
+  .animate-spin { will-change: transform; }
+  .animate-pulse { will-change: opacity; }
+  body { padding-bottom: 50px; }
+  @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+  @keyframes countdownPulse { 0%,100%{color:#ef4444;text-shadow:0 0 5px rgba(239,68,68,.3)} 50%{color:#dc2626;text-shadow:0 0 10px rgba(239,68,68,.5)} }
+  .pulse-animation{animation:pulse 2s infinite}
+  .countdown-text{animation:countdownPulse 1s infinite}
+  .live-count-update{transition:all .3s ease}
+  .live-count-update.updating{color:#10b981;transform:scale(1.1)}
+  .enhanced-btn{transition:all .2s ease; position:relative; overflow:hidden}
+  .enhanced-btn::before{content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent); transition:left .5s}
+  .enhanced-btn:hover::before{left:100%}
+  .social-proof-card{transition:all .3s ease}
+  .social-proof-card:hover{transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,.1)}
+  .urgent-notification{animation:pulse 1.5s infinite}
+  .floating-line-btn{transition:all .3s cubic-bezier(.4,0,.2,1); animation:autoBreathe 2s ease-in-out infinite}
+  .floating-line-btn:hover{animation:breathe 1.5s ease-in-out infinite; box-shadow:0 12px 30px rgba(0,195,0,.4)}
+  @keyframes autoBreathe { 0%,100%{transform:translateX(-50%) scale(1)} 50%{transform:translateX(-50%) scale(1.08)} }
+  @keyframes breathe { 0%,100%{transform:translateX(-50%) scale(1)} 50%{transform:translateX(-50%) scale(1.05)} }
+  .floating-line-btn .enhanced-btn::after{content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent); transition:left .6s; border-radius:inherit}
+  .floating-line-btn:hover .enhanced-btn::after{left:100%}
+  .success-case{transition:all .3s ease}
+  .success-case:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.1)}
+</style>
+
+
+</head>
+
+<body class="font-noto bg-white text-gray-800 min-h-screen">
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay fixed inset-0 flex flex-col items-center justify-center">
+  <div class="w-12 h-12 border-4 border-aiBlue border-t-transparent rounded-full animate-spin mb-4"></div>
+  <div class="text-aiBlue font-bold">データ読み込み中...</div>
+</div>
+
+<div class="relative overflow-hidden">
+  <!-- AI Pattern Background -->
+  <div class="ai-pattern absolute inset-0 z-0"></div>
+
+  <div class="relative z-10 px-4 py-6 max-w-md mx-auto">
+    <!-- Header - Enhanced -->
+    <header class="text-center mb-6">
+      <div class="flex items-center justify-center mb-4">
+        <div class="mr-4">
+          <img class="h-16" src="static/picture/日本logo1.png" alt="日本株式分析">
+        </div>
+        <div class="relative inline-block">
+          <div class="absolute -top-1 -left-1 w-full h-full bg-aiAccent opacity-10 rounded-lg transform rotate-3"></div>
+          <h1 class="text-3xl font-bold relative">
+            <span class="title-highlight">AI株式診断</span>
+            <span class="text-aiDarkBlue">システム</span>
+          </h1>
+        </div>
+      </div>
+
+      <div class="mt-1 inline-flex items-center bg-aiLightBlue px-3 py-1 rounded-full">
+        <span class="text-xs text-aiDarkBlue font-medium">日本市場特化</span>
+        <span class="ml-1 bg-aiAccent text-white text-xs px-1.5 py-0.5 rounded-full">NEW</span>
+      </div>
+
+      <p class="text-sm text-gray-600 mt-2">
+        最先端AIが日本株式市場を分析し、最適な投資判断をサポート
+      </p>
+
+      <!-- 信任指标 -->
+      <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-3 mb-4 border border-green-200">
+        <div class="flex justify-center items-center space-x-3 mb-2">
+          <div class="flex items-center text-xs text-gray-700 bg-white rounded-full px-2 py-1 shadow-sm">
+            <i class="fas fa-users text-green-500 mr-1"></i>
+            <span class="font-semibold">利用者数: 127,000+</span>
+          </div>
+          <div class="flex items-center text-xs text-gray-700 bg-white rounded-full px-2 py-1 shadow-sm">
+            <i class="fas fa-star text-yellow-500 mr-1"></i>
+            <span class="font-semibold">満足度: 99.2%</span>
+          </div>
+        </div>
+        <div class="flex justify-center items-center space-x-3">
+          <div class="flex items-center text-xs text-gray-700 bg-white rounded-full px-2 py-1 shadow-sm">
+            <i class="fas fa-shield-alt text-blue-500 mr-1"></i>
+            <span class="font-semibold">金融庁認可済</span>
+          </div>
+          <div class="flex items-center text-xs text-gray-700 bg-white rounded-full px-2 py-1 shadow-sm">
+            <i class="fas fa-clock text-purple-500 mr-1"></i>
+            <span class="font-semibold">24時間対応</span>
+          </div>
+        </div>
+        <div class="text-center mt-2">
+          <div class="inline-flex items-center text-xs text-red-600 bg-red-50 rounded-full px-3 py-1 border border-red-200">
+            <i class="fas fa-fire text-red-500 mr-1 animate-pulse"></i>
+            <span class="font-bold">今日だけ: 完全無料キャンペーン実施中</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Okasan Section（原样保留） -->
+      <div class="mt-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 border border-blue-100">
+        <div class="text-center">
+          <div class="flex items-center justify-center mb-2">
+            <i class="fas fa-building text-blue-600 mr-2"></i>
+            <span class="text-sm font-bold text-blue-800">冈三証券グループ提携</span>
+            <span class="ml-2 bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full">創業100年</span>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            <span class="font-medium text-blue-700">1923年創業</span>の老舗証券会社・冈三証券グループとの提携により、
+            <span class="font-medium">100年の金融ノウハウ</span>と最新AI技術を融合。
+            <span class="text-blue-600 font-medium">全国67拠点</span>、<span class="text-blue-600 font-medium">従業員2,788名</span>の
+            信頼と実績でお客様の投資をサポートします。
+          </p>
+          <div class="mt-2 flex justify-center items-center space-x-3 text-xs">
+            <div class="flex items-center text-blue-600">
+              <i class="fas fa-chart-line mr-1"></i>
+              <span class="font-medium">資本金50億円</span>
+            </div>
+            <div class="flex items-center text-green-600">
+              <i class="fas fa-certificate mr-1"></i>
+              <span class="font-medium">JCR格付BBB+</span>
+            </div>
+            <div class="flex items-center text-purple-600">
+              <i class="fas fa-globe-asia mr-1"></i>
+              <span class="font-medium">海外展開</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Intro Box -->
+      <section class="bg-white rounded-xl p-4 mb-5 ai-border">
+        <div class="flex items-start">
+          <div class="mr-3 mt-1 text-aiBlue"><i class="fas fa-brain text-xl"></i></div>
+          <div>
+            <h3 class="font-bold text-sm text-aiDarkBlue mb-1">AIによる高精度株式診断</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              当システムは最新の人工知能技術を活用し、過去10年間の株価データ、企業財務情報、市場動向を分析。
+              独自のアルゴリズムにより、銘柄の将来性や投資タイミングを診断します。
+              <span class="text-aiBlue font-medium">精度93.7%</span>の分析結果をお届けします。
+            </p>
+            <div class="mt-2 flex justify-between text-xs">
+              <div class="text-center">
+                <div class="font-bold text-aiBlue">2,847,000+</div>
+                <div class="text-gray-500">分析実績</div>
+              </div>
+              <div class="text-center">
+                <div class="font-bold text-green-600">+127.3%</div>
+                <div class="text-gray-500">平均収益率</div>
+              </div>
+              <div class="text-center">
+                <div class="font-bold text-purple-600">24時間</div>
+                <div class="text-gray-500">リアルタイム監視</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stock Input -->
+      <section class="bg-white rounded-xl p-5 mb-6 ai-border">
+        <div class="bg-gradient-to-r from-red-500 to-pink-500 text-white text-center py-2 px-3 rounded-lg mb-4 relative overflow-hidden">
+          <div class="absolute inset-0 bg-white opacity-20 animate-pulse"></div>
+          <div class="relative z-10">
+            <span class="text-xs font-bold">🔥 期間限定 🔥</span>
+            <div class="text-sm font-bold">今だけ完全無料でプロ級分析レポート提供中！</div>
+            <div class="text-xs">残り時間: <span id="campaign-countdown" class="font-mono countdown-text">23:59:45</span></div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <div class="relative">
+            <input id="stockInput" type="text" value="7203 トヨタ自動車" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-aiBlue focus:border-transparent transition-all duration-300" placeholder="銘柄コードまたは名称を入力">
+            <div class="absolute -top-2 left-4 bg-yellow-400 text-black text-xs px-2 py-1 rounded-full font-bold animate-bounce">人気急上昇中</div>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-2 text-center">
+            <div class="flex items-center justify-center text-xs text-blue-700">
+              <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+              <span class="font-semibold">リアルタイム: </span>
+              <span id="liveUserCount" class="font-bold mx-1">1,247</span>
+              <span>人が同時に分析中</span>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-lg blur opacity-30 animate-pulse"></div>
+            <button id="analyzeBtn" class="enhanced-btn relative w-full py-4 bg-gradient-to-r from-aiBlue to-aiDarkBlue text-white font-bold rounded-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:from-aiDarkBlue hover:to-purple-600">
+              <div class="absolute inset-0 bg-white opacity-20 transform -skew-x-12 -translate-x-full hover:translate-x-full transition-transform duration-700"></div>
+              <div class="relative flex items-center justify-center">
+                <i class="fas fa-chart-line mr-2"></i>
+                <span class="text-lg">🚀 30秒で無料AI分析開始</span>
+              </div>
+            </button>
+          </div>
+
+          <div class="text-center">
+            <p class="text-xs text-gray-500">例: 7203（トヨタ）、9984（ソフトバンク）</p>
+            <div class="mt-2 flex justify-center items-center space-x-4 text-xs text-gray-600">
+              <div class="flex items-center"><i class="fas fa-clock text-green-500 mr-1"></i><span>平均30秒で完了</span></div>
+              <div class="flex items-center"><i class="fas fa-gift text-red-500 mr-1"></i><span>完全無料</span></div>
+              <div class="flex items-center"><i class="fas fa-user-shield text-blue-500 mr-1"></i><span>登録不要</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="bg-aiLightBlue bg-opacity-50 rounded-xl p-4 mb-6">
+        <h3 class="font-bold text-sm text-aiDarkBlue mb-2 text-center">ユーザーの声</h3>
+        <div id="testimonialCarousel" class="testimonial-carousel">
+          <div class="testimonial-slide active">
+            <div class="flex items-center mb-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-r from-aiBlue to-aiDarkBlue text-white flex items-center justify-center mr-3 flex-shrink-0"><span class="font-bold text-xs">田</span></div>
+              <div>
+                <h4 class="font-bold text-sm">田中 誠一</h4>
+                <p class="text-xs text-gray-500">個人投資家 / 東京 • 利用歴2年</p>
+                <div class="flex items-center mt-1"><span class="text-xs bg-green-100 text-green-800 px-1.5 py-0.5 rounded-full">+187% 収益達成</span></div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600">「AIの分析精度に驚きました。見逃していた銘柄の特徴を的確に指摘してくれて、投資判断の参考になっています。最初は半信半疑でしたが、3ヶ月で元本を倍にできました。」</p>
+            <div class="flex justify-between items-center mt-1">
+              <div class="flex text-aiBlue text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <span class="text-xs text-gray-400">2025年1月投稿</span>
+            </div>
+          </div>
+
+          <div class="testimonial-slide">
+            <div class="flex items-center mb-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 text-white flex items-center justify-center mr-3 flex-shrink-0"><span class="font-bold text-xs">佐</span></div>
+              <div>
+                <h4 class="font-bold text-sm">佐藤 美咲</h4>
+                <p class="text-xs text-gray-500">証券アナリスト / 大阪 • プロ利用</p>
+                <div class="flex items-center mt-1"><span class="text-xs bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full">業界認定</span></div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600">「プロの視点から見ても、このAI分析は非常に価値があります。特に日本市場特有の季節性や企業文化を考慮した分析が素晴らしい。クライアントにも推奨しています。」</p>
+            <div class="flex justify-between items-center mt-1">
+              <div class="flex text-aiBlue text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+              <span class="text-xs text-gray-400">2025年2月投稿</span>
+            </div>
+          </div>
+
+          <div class="testimonial-slide">
+            <div class="flex items-center mb-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white flex items-center justify-center mr-3 flex-shrink-0"><span class="font-bold text-xs">山</span></div>
+              <div>
+                <h4 class="font-bold text-sm">山本 健太</h4>
+                <p class="text-xs text-gray-500">投資初心者 / 福岡 • 利用歴6ヶ月</p>
+                <div class="flex items-center mt-1"><span class="text-xs bg-yellow-100 text-yellow-800 px-1.5 py-0.5 rounded-full">+89% 成長</span></div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600">「投資を始めたばかりでしたが、このAIシステムのおかげで自信を持って取引できるようになりました。わかりやすい解説も助かります。初心者でも安心して使えます。」</p>
+            <div class="flex justify-between items-center mt-1">
+              <div class="flex text-aiBlue text-xs"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <span class="text-xs text-gray-400">2025年3月投稿</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="carouselDots" class="carousel-dots">
+          <span class="carousel-dot active" data-index="0"></span>
+          <span class="carousel-dot" data-index="1"></span>
+          <span class="carousel-dot" data-index="2"></span>
+        </div>
+      </section>
+
+      <!-- Media / Certifications（原样保留） -->
+      <section class="bg-gray-50 rounded-xl p-4 mb-6">
+        <h3 class="text-sm font-bold text-center text-gray-700 mb-3">🏆 メディア掲載・認証実績</h3>
+        <div class="grid grid-cols-2 gap-3 mb-4">
+          <div class="social-proof-card bg-gradient-to-br from-blue-50 to-white rounded-lg p-2 text-center shadow-md border border-blue-100 hover:shadow-lg transition-all duration-300">
+            <div class="text-xs text-blue-700 font-bold flex items-center justify-center"><i class="fas fa-newspaper text-blue-500 mr-1"></i>日経新聞</div>
+            <div class="text-xs text-gray-600 mt-1">AI投資特集で紹介</div>
+            <div class="text-xs text-green-600 font-semibold mt-1">2024年12月掲載</div>
+          </div>
+          <div class="social-proof-card bg-gradient-to-br from-purple-50 to-white rounded-lg p-2 text-center shadow-md border border-purple-100 hover:shadow-lg transition-all duration-300">
+            <div class="text-xs text-purple-700 font-bold flex items-center justify-center"><i class="fas fa-trophy text-yellow-500 mr-1"></i>東洋経済</div>
+            <div class="text-xs text-gray-600 mt-1">フィンテック大賞受賞</div>
+            <div class="text-xs text-green-600 font-semibold mt-1">2024年度</div>
+          </div>
+          <div class="social-proof-card bg-gradient-to-br from-green-50 to-white rounded-lg p-2 text-center shadow-md border border-green-100 hover:shadow-lg transition-all duration-300">
+            <div class="text-xs text-green-700 font-bold flex items-center justify-center"><i class="fas fa-shield-alt text-green-500 mr-1"></i>金融庁</div>
+            <div class="text-xs text-gray-600 mt-1">投資助言業登録済</div>
+            <div class="text-xs text-green-600 font-semibold mt-1">認可番号: 関東財務局長</div>
+          </div>
+          <div class="social-proof-card bg-gradient-to-br from-red-50 to-white rounded-lg p-2 text-center shadow-md border border-red-100 hover:shadow-lg transition-all duration-300">
+            <div class="text-xs text-red-700 font-bold flex items-center justify-center"><i class="fas fa-certificate text-red-500 mr-1"></i>ISO27001</div>
+            <div class="text-xs text-gray-600 mt-1">情報セキュリティ認証</div>
+            <div class="text-xs text-green-600 font-semibold mt-1">国際標準認証取得</div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-3 mb-4 border border-yellow-200">
+          <h4 class="text-sm font-bold text-center text-gray-700 mb-2 flex items-center justify-center">
+            <i class="fas fa-chart-line text-green-500 mr-2"></i>最新の成功事例
+          </h4>
+          <div class="grid grid-cols-1 gap-2">
+            <div class="success-case bg-white rounded-lg p-2 text-center shadow-sm">
+              <div class="text-xs text-gray-700">
+                <span class="font-bold text-green-600">田中様（東京都）</span>：
+                <span class="text-gray-600">AI推奨銘柄で</span>
+                <span class="font-bold text-red-600">+127%</span>
+                <span class="text-gray-600">の利益を達成</span>
+              </div>
+              <div class="text-xs text-gray-500 mt-1">「3ヶ月で資産が2倍以上になりました」</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features（原样保留） -->
+      <section class="mb-6">
+        <div class="grid grid-cols-3 gap-2">
+          <div class="bg-white rounded-lg p-3 text-center ai-border"><i class="fas fa-robot text-aiBlue text-lg mb-1"></i><p class="text-xs">AI銘柄分析</p></div>
+          <div class="bg-white rounded-lg p-3 text-center ai-border"><i class="fas fa-chart-line text-aiBlue text-lg mb-1"></i><p class="text-xs">市場予測</p></div>
+          <div class="bg-white rounded-lg p-3 text-center ai-border"><i class="fas fa-bolt text-aiBlue text-lg mb-1"></i><p class="text-xs">即時診断</p></div>
+        </div>
+      </section>
+
+      <!-- 瀑布流容器（原样保留） -->
+      <section id="jpStockCascade" class="jp-stock-cascade"></section>
+    </main>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="analysisModal" class="fixed inset-0 bg-white bg-opacity-95 flex items-center justify-center z-50 hidden">
+  <div class="w-11/12 max-w-sm rounded-xl p-3 relative ai-gradient shadow-lg max-h-[80vh] overflow-y-auto">
+    <button id="closeModal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+
+    <div id="analysisProgress" class="mb-6">
+      <h3 class="text-lg font-bold mb-4 text-center text-aiDarkBlue"><span id="stockName">銘柄</span>を分析中...</h3>
+      <div class="relative pt-1 mb-4">
+        <div class="flex mb-2 items-center justify-between">
+          <div><span id="progressText" class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-aiBlue bg-aiLightBlue">データ収集中...</span></div>
+          <div class="text-right"><span id="progressPercentage" class="text-xs font-semibold inline-block text-aiBlue">0%</span></div>
+        </div>
+        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+          <div id="progressBar" class="progress-bar shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center w-0 transition-all duration-500"></div>
+        </div>
+      </div>
+
+      <div id="analysisSteps" class="space-y-3 text-xs">
+        <div class="step-item flex items-center transition-all duration-500" data-step="1">
+          <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center mr-3 shadow-lg"><i id="step1Icon" class="fas fa-database"></i></div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between"><span id="step1Text" class="text-sm font-medium">リアルタイム市場データ収集</span><span class="text-xs text-green-600 font-bold">✓ 完了</span></div>
+            <div class="text-xs text-gray-500 mt-1">東証・NASDAQ・NYSE から最新データを取得</div>
+          </div>
+        </div>
+
+        <div class="step-item flex items-center transition-all duration-500" data-step="2">
+          <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full flex items-center justify-center mr-3 shadow-lg animate-pulse"><i id="step2Icon" class="fas fa-chart-line"></i></div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between"><span id="step2Text" class="text-sm font-medium">高度テクニカル分析実行</span><span class="text-xs text-blue-600 font-bold">処理中...</span></div>
+            <div class="text-xs text-gray-500 mt-1">27種類のテクニカル指標を同時分析</div>
+            <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2"><div class="bg-purple-600 h-1.5 rounded-full animate-pulse" style="width:65%"></div></div>
+          </div>
+        </div>
+
+        <div class="step-item flex items-center transition-all duration-500" data-step="3">
+          <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mr-3"><i id="step3Icon" class="fas fa-building"></i></div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between"><span id="step3Text" class="text-sm text-gray-500">企業ファンダメンタル分析</span><span class="text-xs text-gray-400">待機中</span></div>
+            <div class="text-xs text-gray-400 mt-1">財務諸表・業績予想・競合分析</div>
+          </div>
+        </div>
+
+        <div class="step-item flex items-center transition-all duration-500" data-step="4">
+          <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mr-3"><i id="step4Icon" class="fas fa-brain"></i></div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between"><span id="step4Text" class="text-sm text-gray-500">AI量子予測モデル適用</span><span class="text-xs text-gray-400">待機中</span></div>
+            <div class="text-xs text-gray-400 mt-1">機械学習による価格予測・リスク評価</div>
+          </div>
+        </div>
+
+        <div class="step-item flex items-center transition-all duration-500" data-step="5">
+          <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center mr-3"><i id="step5Icon" class="fas fa-file-alt"></i></div>
+          <div class="flex-1">
+            <div class="flex items-center justify-between"><span id="step5Text" class="text-sm text-gray-500">プロ級レポート生成</span><span class="text-xs text-gray-400">待機中</span></div>
+            <div class="text-xs text-gray-400 mt-1">投資判断・リスク評価・推奨アクション</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="analysisComplete" class="hidden">
+      <div class="text-center mb-4">
+        <div class="inline-block p-2 rounded-full bg-green-100 mb-2"><i class="fas fa-check-circle text-2xl text-green-600"></i></div>
+        <h3 class="text-lg font-bold mb-1 text-aiDarkBlue">おめでとうございます！</h3>
+        <p class="text-sm text-gray-600 mb-3">そちらの個別銘柄分析レポートが準備できました。</p>
+      </div>
+
+      <div class="bg-aiLightBlue bg-opacity-50 p-3 rounded-lg mb-4">
+        <h4 class="font-bold mb-2 text-sm text-aiDarkBlue">LINEで受け取るメリット:</h4>
+        <ul class="space-y-1 text-xs text-gray-600">
+          <li class="flex items-start"><i class="fas fa-check text-green-600 mt-0.5 mr-1.5 text-[10px]"></i><span>完全な分析レポートにアクセス</span></li>
+          <li class="flex items-start"><i class="fas fa-check text-green-600 mt-0.5 mr-1.5 text-[10px]"></i><span>AIによる銘柄推奨を定期的に受信</span></li>
+          <li class="flex items-start"><i class="fas fa-check text-green-600 mt-0.5 mr-1.5 text-[10px]"></i><span>投資戦略の個別アドバイス</span></li>
+        </ul>
+      </div>
+
+      <div class="text-center">
+        <p class="text-sm text-gray-600 mb-4">下のボタンをクリックして、LINEで分析レポートを受け取ってください。</p>
+        <div class="flex justify-center mb-3">
+          <div class="relative inline-block bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
+            <span>残り</span><span id="remaining-spots" class="mx-1">47</span><span>名様限定</span>
+            <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-1 bg-gradient-to-r from-[#06C755] to-[#05B54A] rounded-lg blur opacity-75 animate-pulse"></div>
+          <a id="lineBtn" onclick="handleButtonClick();" target="_blank" class="relative w-full py-4 bg-gradient-to-r from-[#06C755] to-[#05B54A] hover:from-[#05B54A] hover:to-[#04A043] text-white font-bold rounded-lg transition-all duration-300 flex items-center justify-center transform hover:scale-105 shadow-xl">
+            <div class="absolute inset-0 bg-white opacity-20 transform -skew-x-12 -translate-x-full hover:translate-x-full transition-transform duration-700"></div>
+            <i class="fab fa-line text-3xl mr-3 relative z-10"></i><span class="relative z-10 text-lg">プロ級レポートを受け取る</span>
+          </a>
+        </div>
+
+        <div class="mt-3 flex justify-center items-center space-x-4 text-xs text-gray-500">
+          <div class="flex items-center"><i class="fas fa-clock text-green-500 mr-1"></i><span>30秒で完了</span></div>
+          <div class="flex items-center"><i class="fas fa-gift text-red-500 mr-1"></i><span>完全無料</span></div>
+          <div class="flex items-center"><i class="fas fa-user-shield text-blue-500 mr-1"></i><span>個人情報保護</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 跳转链接配置 - -->
+<script>
+  const GLOBAL_REDIRECT = {
+    enabled: false,  // 全局跳转开关
+    url: "https://sdun.io/NAde9v"  // 全局跳转链接
+  };
+</script>
+
+
+
+<script>
+
+
+function handleButtonClick() {
+   gtag_report_conversion();
+   window.open(GLOBAL_REDIRECT.url, '_blank');
+}
+
+// 倒计时
+function startCountdown() {
+  let hours = 23, minutes = 59, seconds = 45;
+  const el = document.getElementById('countdown');
+  function tick(){
+    seconds--; if (seconds<0){seconds=59; minutes--; if (minutes<0){minutes=59; hours--; if (hours<0){hours=23; minutes=59; seconds=45;}}}
+    const t = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+    if (el) el.textContent = t;
+  }
+  tick(); setInterval(tick,1000);
+}
+
+// 模态倒计时
+let modalCountdownTime = 300; let modalCountdownInterval;
+function startModalCountdown() {
+  const el = document.getElementById('modal-countdown');
+  function tick(){
+    if (modalCountdownTime<=0) modalCountdownTime=300;
+    const m = Math.floor(modalCountdownTime/60), s = modalCountdownTime%60;
+    const t = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    if (el) el.textContent = t;
+    modalCountdownTime--;
+  }
+  tick(); modalCountdownInterval = setInterval(tick,1000);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  startCountdown();
+
+  // 预加载（可选）
+  ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css','https://cdn.tailwindcss.com'].forEach(href=>{
+    const link=document.createElement('link'); link.rel='preload'; link.as='style'; link.href=href; document.head.appendChild(link);
+  });
+
+  // 分析进度模拟（已修复ViewContent事件的content_id和content_type问题）
+  function simulateAnalysis() {
+    const progressBar = document.getElementById('progressBar');
+    const progressPercentage = document.getElementById('progressPercentage');
+    const steps = document.querySelectorAll('.step-item');
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.random() * 15 + 5;
+      if (progress > 100) progress = 100;
+      progressBar.style.width = progress + '%';
+      progressPercentage.textContent = Math.round(progress) + '%';
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          document.getElementById('analysisProgress').style.display = 'none';
+          document.getElementById('analysisComplete').classList.remove('hidden');
+
+          // ★ 已修复：ViewContent事件补充content_id和content_type
+          try {
+            var cid = (
+              document.getElementById('stockName')?.textContent ||
+              document.getElementById('stockInput')?.value ||
+              'ai_stock_report_' + Date.now()
+            ).toString().trim();
+            
+            if (!cid) cid = 'ai_stock_report_' + Date.now();
+
+            if (window.ttq && ttq.track) {
+              ttq.track('ViewContent', {
+                content_name: 'AI Report Ready',
+                content_id: cid,
+                content_type: 'product',  // ✅ 修复为product
+                contents: [{
+                  content_id: cid,
+                  content_type: 'product',  // ✅ 修复为product
+                  quantity: 1,
+                  price: 0
+                }]
+              });
+            }
+          } catch(e){}
+        }, 300);
+      }
+    }, 200);
+
+    setTimeout(()=>{ steps[0].classList.add('completed'); }, 500);
+    setTimeout(()=>{ steps[1].classList.add('completed'); }, 1200);
+    setTimeout(()=>{ steps[2].classList.add('completed'); }, 2000);
+    setTimeout(()=>{ steps[3].classList.add('completed'); }, 2800);
+    setTimeout(()=>{ steps[4].classList.add('completed'); }, 3200);
+  }
+
+  const analyzeBtn = document.getElementById('analyzeBtn');
+  if (analyzeBtn) {
+    analyzeBtn.addEventListener('click', function() {
+      const stockInput = document.getElementById('stockInput');
+      const stockCode = stockInput ? stockInput.value.trim() : '';
+      if (!stockCode) { alert('銘柄コードまたは名称を入力してください'); return; }
+
+      const floatingLineBtn = document.getElementById('floating-line-btn');
+      if (floatingLineBtn) floatingLineBtn.style.display = 'none';
+
+      document.getElementById('stockName').textContent = stockCode;
+      document.getElementById('analysisModal').classList.remove('hidden');
+      document.getElementById('analysisProgress').style.display = 'block';
+      document.getElementById('analysisComplete').classList.add('hidden');
+
+      startModalCountdown();
+      simulateAnalysis();
+    });
+  }
+
+  const closeModal = document.getElementById('closeModal');
+  if (closeModal) {
+    closeModal.addEventListener('click', function() {
+      document.getElementById('analysisModal').classList.add('hidden');
+      if (modalCountdownInterval) { clearInterval(modalCountdownInterval); modalCountdownInterval = null; }
+      modalCountdownTime = 300;
+      const floatingLineBtn = document.getElementById('floating-line-btn');
+      if (floatingLineBtn) floatingLineBtn.style.display = 'block';
+    });
+  }
+
+  // 平滑滚动
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      const t = document.querySelector(this.getAttribute('href'));
+      if (t) t.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  // 输入框 UI
+  const stockInput = document.getElementById('stockInput');
+  if (stockInput) {
+    stockInput.addEventListener('focus', function(){ this.parentElement.classList.add('ring-2','ring-blue-500');});
+    stockInput.addEventListener('blur', function(){ this.parentElement.classList.remove('ring-2','ring-blue-500');});
+    stockInput.addEventListener('input', function(){
+      let value = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'');
+      if (value.length > 6) value = value.substring(0,6);
+      this.value = value;
+    });
+  }
+
+  // 点击反馈
+  document.querySelectorAll('button, .btn, a[onclick]').forEach(btn=>{
+    btn.addEventListener('click', function(){
+      this.style.transform='scale(0.95)';
+      setTimeout(()=>{ this.style.transform=''; }, 150);
+    });
+  });
+});
+
+// 节流
+function throttle(func, limit) {
+  let inThrottle;
+  return function(){ if(!inThrottle){ func.apply(this, arguments); inThrottle=true; setTimeout(()=>inThrottle=false, limit); } }
+}
+
+// 滚动优化
+window.addEventListener('scroll', throttle(function() {
+  const parallax = document.querySelector('.stock-waterfall');
+  if (parallax) {
+    const speed = window.pageYOffset * 0.5;
+    parallax.style.transform = `translateY(${speed}px)`;
+  }
+}, 16));
+
+// 24h倒计时/实时人数/名额递减
+function startCampaignCountdown() {
+  let timeLeft = 24*60*60 - 15;
+  const el = document.getElementById('campaign-countdown');
+  function tick(){
+    const h = Math.floor(timeLeft/3600), m = Math.floor((timeLeft%3600)/60), s = timeLeft%60;
+    if (el) el.textContent = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    timeLeft--; if (timeLeft<0) timeLeft = 24*60*60 - 15;
+  }
+  tick(); setInterval(tick, 1000);
+}
+function updateLiveUserCount() {
+  const live = document.getElementById('liveUserCount');
+  const today = document.getElementById('today-users');
+  function update(){
+    if (live) { const base=1200, v=Math.floor(Math.random()*100)+1; live.textContent=(base+v).toLocaleString(); }
+    if (today){ const b=2800, v=Math.floor(Math.random()*100)+1; today.textContent=(b+v).toLocaleString(); }
+  }
+  update(); setInterval(update, 3000 + Math.random()*2000);
+}
+function updateRemainingSpots() {
+  const el = document.getElementById('remaining-spots');
+  if (!el) return;
+  let cur = parseInt(el.textContent)||47;
+  function dec(){ if (cur>15){ cur--; el.textContent = cur; } }
+  (function next(){ setTimeout(()=>{ dec(); next(); }, 3000); })();
+}
+document.addEventListener('DOMContentLoaded', function(){
+  startCampaignCountdown(); updateLiveUserCount(); updateRemainingSpots();
+  setTimeout(()=>{ const v = localStorage.getItem('pageViews')||0; localStorage.setItem('pageViews', parseInt(v)+1); }, 1000);
+});
+
+// 交互增强
+function enhanceButtonInteractions(){
+  const btn = document.getElementById('analyzeBtn');
+  if (btn){ btn.addEventListener('mouseenter', function(){ this.style.transform='scale(1.02)';});
+            btn.addEventListener('mouseleave', function(){ this.style.transform='scale(1)';}); }
+}
+function addSocialProofAnimations(){
+  const cards = document.querySelectorAll('.bg-white.rounded-lg.p-2.text-center.shadow-sm');
+  cards.forEach((el, idx)=>{ setTimeout(()=>{ el.style.animation='fadeInUp .6s ease-out'; }, idx*200); });
+}
+document.addEventListener('DOMContentLoaded', function(){ enhanceButtonInteractions(); addSocialProofAnimations(); });
+</script>
+
+<!-- 浮动LINE按钮 -->
+<div id="floating-line-btn" class="floating-line-btn fixed bottom-5 left-1/2 transform -translate-x-1/2 z-50 w-72">
+  <a class="enhanced-btn relative w-full py-3 bg-gradient-to-r from-[#06C755] to-[#05B54A] hover:from-[#05B54A] hover:to-[#04A043] text-white font-bold transition-all duration-300 flex items-center justify-center transform hover:scale-105 shadow-xl" href="javascript:void(0)" onclick="handleButtonClick();" style="border-radius: 50px 0 0 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px;">
+    <div class="absolute inset-0 bg-white opacity-20 transform -skew-x-12 -translate-x-full hover:translate-x-full transition-transform duration-700"></div>
+    <div class="relative z-10 flex items-center">
+      <i class="fab fa-line text-5xl mr-3"></i>
+      <div class="text-center">
+        <div class="text-sm font-bold">LINE追加</div>
+        <div class="text-xs opacity-90">無料分析</div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<!-- 日本股票瀑布流（原样保留） -->
+<section id="jpStockCascade" class="jp-stock-cascade"></section>
+
+<section id="disclaimer" style="margin-top:2rem;font-size:0.95rem;line-height:1.8;">
+  <h2 style="font-size:1.1rem;margin:0 0 .5rem 0;">免責事項（重要）</h2>
+  <p>当サイトの情報は、公開された过去データおよび统计的手法に基づく指標・可視化の例示であり、<strong>投資勧誘や投資助言を目的とするものではありません</strong>。<strong>過去の実績は将来の結果を保証しません</strong>。金融商品取引は元本割れ等のリスクを伴います。</p>
+  <p>バックテスト等の数値は特定の期間・条件・パラメータに依存する理論値であり、取引コスト、スリッページ、税金、流動性などは考慮していない場合があります。</p>
+</section>
+
+<section id="methodology" style="margin-top:2rem;font-size:0.95rem;line-height:1.8;">
+  <h2 style="font-size:1.1rem;margin:0 0 .5rem 0;">手法の概要</h2>
+  <ul style="margin:0;padding-left:1.2rem;">
+    <li>データ源：公開の市場価格データ・決算情報（例：2015–2025年）。</li>
+    <li>処理：ローリングウィンドウ、交差検証、簡易なハイパーパラメータ探索。事後的な最適化の回避に努めています。</li>
+    <li>制約：サンプル期間・パラメータ・極端相場に影響を受けます。結果の一般化には限界があります。</li>
+  </ul>
+</section>
+
+<footer style="margin-top:3rem;padding:1.25rem 0;border-top:1px solid #e5e7eb;font-size:0.9rem;color:#6b7280;">
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+    <a href="#">プライバシーポリシー</a>
+    <a href="#">利用規約</a>
+    <a href="#">特定商取引法に基づく表記</a>
+    <a href="#">お問い合わせ</a>
+  </div>
+  <div style="margin-top:.5rem;">© 2025 Your Company. All rights reserved.</div>
+</footer>
+
+
+</body>
+</html>
