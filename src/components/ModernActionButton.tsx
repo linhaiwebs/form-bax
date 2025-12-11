@@ -10,7 +10,7 @@ export default function ModernActionButton({ onClick, disabled = false }: Modern
         <button
           onClick={onClick}
           disabled={disabled}
-          className="w-full font-bold py-5 px-8 rounded-lg transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 text-white text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-brand-blue to-brand-blue-dark hover:from-brand-blue-dark hover:to-brand-blue"
+          className="w-full font-bold py-5 px-8 rounded-lg transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 text-white text-lg shadow-lg hover:shadow-xl bg-gradient-to-r from-brand-blue-light to-brand-blue hover:from-brand-blue hover:to-brand-blue-dark"
         >
           <div className="flex items-center justify-center gap-2">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
