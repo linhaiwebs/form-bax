@@ -9,8 +9,8 @@ export default {
           'red-dark': '#B91C1C',
           'red-light': '#FEE2E2',
           blue: '#2563EB',
-          'blue-dark': '#1D4ED8',
-          'blue-light': '#DBEAFE',
+          'blue-dark': '#1E40AF',
+          'blue-light': '#60A5FA',
         },
         'line': {
           green: '#06C755',
