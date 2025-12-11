@@ -6,7 +6,7 @@ interface LINEConversionButtonProps {
 
 export default function LINEConversionButton({ onClick }: LINEConversionButtonProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white py-4 px-4 shadow-lg border-t border-gray-200 z-50">
+    <div className="fixed bottom-0 left-0 right-0 py-4 px-4 z-50 mb-5">
       <div className="max-w-4xl mx-auto">
         <button
           onClick={onClick}
