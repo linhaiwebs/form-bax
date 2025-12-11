@@ -1,6 +1,6 @@
 export default function WaterDropletRippleLogo() {
   return (
-    <div className="relative w-[300px] h-[300px] flex items-center justify-center">
+    <div className="relative w-[300px] h-[300px] flex items-center justify-center animate-current-sway">
       <svg
         width="300"
         height="300"

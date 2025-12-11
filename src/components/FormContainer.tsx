@@ -8,7 +8,7 @@ export default function FormContainer({ children }: FormContainerProps) {
   return (
     <div className="w-[95%] mx-auto">
       <div
-        className="rounded-t-[32px] px-5 py-8 backdrop-blur-xl relative overflow-hidden animate-current-sway"
+        className="rounded-t-[32px] px-5 py-8 backdrop-blur-xl relative overflow-hidden"
         style={{
           minHeight: '40vh',
           background: 'rgba(4, 47, 82, 0.85)',
