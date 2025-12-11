@@ -7,7 +7,7 @@ import ModernActionButton from '../components/ModernActionButton';
 import BusinessLoadingScene from '../components/BusinessLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
-import StockTickerItem from '../components/StockTickerItem';
+import DiagnosisTicker from '../components/DiagnosisTicker';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -15,19 +15,6 @@ import { useStockSearch } from '../hooks/useStockSearch';
 import { apiClient } from '../lib/apiClient';
 import { userTracking } from '../lib/userTracking';
 import { trackConversion, trackDiagnosisButtonClick, trackConversionButtonClick } from '../lib/googleTracking';
-
-const stockTickerData = [
-  { code: '6758', name: 'ソニーグループ', basePrice: 13500 },
-  { code: '6861', name: 'キーエンス', basePrice: 62000 },
-  { code: '8035', name: '東京エレクトロン', basePrice: 25500 },
-  { code: '6098', name: 'リクルート', basePrice: 6200 },
-  { code: '4755', name: '楽天グループ', basePrice: 850 },
-  { code: '4689', name: 'Ｚホールディングス', basePrice: 420 },
-  { code: '3382', name: '７＆ｉＨＤ', basePrice: 1650 },
-  { code: '4063', name: '信越化学', basePrice: 7500 },
-  { code: '6954', name: 'ファナック', basePrice: 3800 },
-  { code: '9984', name: 'ソフトバンクG', basePrice: 6800 },
-];
 
 export default function RefactoredHome() {
   const urlParams = useUrlParams();
@@ -485,32 +472,7 @@ export default function RefactoredHome() {
               <WaterDropletRippleLogo />
             </div>
 
-            <div className="w-full mx-auto mb-4">
-              <div className="overflow-hidden py-3 relative rounded-xl backdrop-blur-md"
-                style={{
-                  background: 'rgba(4, 47, 82, 0.75)',
-                  border: '2px solid rgba(0, 230, 195, 0.4)',
-                }}
-              >
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(90deg, rgba(4, 47, 82, 1) 0%, transparent 5%, transparent 95%, rgba(4, 47, 82, 1) 100%)',
-                    zIndex: 1
-                  }}
-                />
-                <div className="animate-scroll-left whitespace-nowrap inline-block">
-                  {[...stockTickerData, ...stockTickerData, ...stockTickerData].map((stock, index) => (
-                    <StockTickerItem
-                      key={index}
-                      code={stock.code}
-                      name={stock.name}
-                      basePrice={stock.basePrice}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
+            <DiagnosisTicker />
 
             <div className="flex flex-col">
               <FormContainer>
