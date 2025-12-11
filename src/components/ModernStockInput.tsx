@@ -88,7 +88,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="銘柄名を入力して検索"
-          className="w-full px-5 py-4 text-sm backdrop-blur-xl border-2 rounded-xl focus:outline-none transition-all duration-300 font-sans font-normal shadow-soft animate-current-sway"
+          className="w-full px-5 py-4 text-sm backdrop-blur-xl border-2 rounded-xl focus:outline-none transition-all duration-300 font-sans font-normal shadow-soft"
           style={{
             height: '60px',
             color: '#FFFFFF',
