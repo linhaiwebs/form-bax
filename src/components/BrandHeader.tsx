@@ -19,7 +19,7 @@ export default function BrandHeader() {
                   right: '-4px'
                 }}
               />
-              <h1 className="relative text-gray-900 font-bold text-lg">AI株式診断システム</h1>
+              <h1 className="relative text-gray-900 font-bold text-2xl">AI株式診断システム</h1>
             </div>
             <div className="flex items-center gap-1.5 mt-1.5 bg-blue-100 rounded px-2 py-1 inline-flex">
               <span className="text-gray-700 text-xs font-medium">日本市場特化</span>
