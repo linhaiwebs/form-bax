@@ -9,7 +9,7 @@ interface DiagnosisModalProps {
   analysis: string;
   stockCode: string;
   stockName: string;
-  onLineConversion: () => void;
+  onWhatsAppConversion: () => void;
   onReportDownload: () => void;
   isStreaming?: boolean;
   isConnecting?: boolean;
@@ -21,7 +21,7 @@ export default function DiagnosisModal({
   analysis,
   stockCode,
   stockName,
-  onLineConversion,
+  onWhatsAppConversion,
   onReportDownload,
   isStreaming = false,
   isConnecting = false,
@@ -112,11 +112,11 @@ export default function DiagnosisModal({
             </div>
 
             <button
-              onClick={onLineConversion}
-              className="w-full bg-gradient-to-r from-[#06C755] to-[#05b04b] hover:from-[#05b04b] hover:to-[#049c42] text-white font-bold py-4 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 text-sm mt-2"
+              onClick={onWhatsAppConversion}
+              className="w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#128C7E] hover:to-[#0E7A6D] text-white font-bold py-4 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 text-sm mt-2"
             >
               <ExternalLink className="w-6 h-6 flex-shrink-0" />
-              <span>Get Free Analysis Report</span>
+              <span>Connect on WhatsApp</span>
             </button>
 
             <div className="mt-3 p-4 rounded-lg border" style={{ backgroundColor: '#FFF7ED', borderColor: '#FB923C' }}>
@@ -129,11 +129,11 @@ export default function DiagnosisModal({
               <ul className="text-xs text-gray-800 leading-relaxed space-y-1.5 ml-1">
                 <li className="flex items-start gap-2">
                   <span className="text-orange-600 font-bold mt-0.5">•</span>
-                  <span>Clicking this button will take you to a <strong>third-party contact service</strong>.</span>
+                  <span>Clicking this button will redirect you to <strong>WhatsApp</strong>.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-orange-600 font-bold mt-0.5">•</span>
-                  <span>This contact service is <strong>independent from our platform</strong>.</span>
+                  <span>WhatsApp is <strong>independent from our platform</strong>.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-600 font-bold mt-0.5">✓</span>
@@ -141,7 +141,7 @@ export default function DiagnosisModal({
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-green-600 font-bold mt-0.5">✓</span>
-                  <span>Receive daily AI analysis reports directly to your inbox.</span>
+                  <span>Receive daily AI analysis reports via WhatsApp.</span>
                 </li>
               </ul>
             </div>

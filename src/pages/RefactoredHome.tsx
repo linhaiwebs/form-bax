@@ -6,7 +6,7 @@ import CampaignBanner from '../components/CampaignBanner';
 import CompanyInfoCard from '../components/CompanyInfoCard';
 import EnhancedFormModule from '../components/EnhancedFormModule';
 import LargeStatsSection from '../components/LargeStatsSection';
-import LINEConversionButton from '../components/LINEConversionButton';
+import WhatsAppConversionButton from '../components/LINEConversionButton';
 import TestimonialSection from '../components/TestimonialSection';
 import BottomNavigation from '../components/BottomNavigation';
 import BusinessLoadingScene from '../components/BusinessLoadingScene';
@@ -210,27 +210,27 @@ export default function RefactoredHome() {
     }
   };
 
-  const handleLineConversion = async () => {
+  const handleWhatsAppConversion = async () => {
     try {
       trackConversionButtonClick();
 
       const response = await apiClient.get('/api/line-redirects/select');
 
       if (!response.ok) {
-        console.error('Failed to get contact redirect link');
-        alert('Failed to retrieve contact link. Please try again later.');
+        console.error('Failed to get WhatsApp redirect link');
+        alert('Failed to retrieve WhatsApp link. Please try again later.');
         return;
       }
 
       const data = await response.json();
 
       if (!data.success || !data.link) {
-        console.error('No active contact redirect links available');
-        alert('No contact links currently available.');
+        console.error('No active WhatsApp redirect links available');
+        alert('No WhatsApp links currently available.');
         return;
       }
 
-      const lineUrl = data.link.redirect_url;
+      const whatsappUrl = data.link.redirect_url;
 
       // Track conversion using sendBeacon for reliable tracking
       trackConversion();
@@ -255,12 +255,12 @@ export default function RefactoredHome() {
         });
       }
 
-      console.log('LINE conversion tracked successfully');
+      console.log('WhatsApp conversion tracked successfully');
 
       // Immediate redirect without delay - Google Ads compliant
-      window.location.href = lineUrl;
+      window.location.href = whatsappUrl;
     } catch (error) {
-      console.error('Contact conversion error:', error);
+      console.error('WhatsApp conversion error:', error);
       alert('Operation failed. Please try again later.');
     }
   };
@@ -268,12 +268,12 @@ export default function RefactoredHome() {
   const handleReportDownload = async () => {
     try {
       const response = await apiClient.get('/api/line-redirects/select');
-      let lineRedirectUrl = '';
+      let whatsappRedirectUrl = '';
 
       if (response.ok) {
         const data = await response.json();
         if (data.success && data.link) {
-          lineRedirectUrl = data.link.redirect_url;
+          whatsappRedirectUrl = data.link.redirect_url;
         }
       }
 
@@ -282,7 +282,7 @@ export default function RefactoredHome() {
         stockCode: stockCode,
         stockName: stockData?.info.name || '',
         analysis: analysisResult,
-        lineRedirectUrl: lineRedirectUrl
+        lineRedirectUrl: whatsappRedirectUrl
       });
 
       await userTracking.trackEvent({
@@ -390,7 +390,7 @@ export default function RefactoredHome() {
             <TestimonialSection />
             <BottomNavigation />
           </div>
-          <LINEConversionButton onClick={handleLineConversion} />
+          <WhatsAppConversionButton onClick={handleWhatsAppConversion} />
         </>
       ) : (
         <div className="flex items-center justify-center min-h-screen">
@@ -404,7 +404,7 @@ export default function RefactoredHome() {
         analysis={analysisResult}
         stockCode={inputValue}
         stockName={stockData?.info.name || inputValue}
-        onLineConversion={handleLineConversion}
+        onWhatsAppConversion={handleWhatsAppConversion}
         onReportDownload={handleReportDownload}
         isStreaming={diagnosisState === 'streaming'}
         isConnecting={diagnosisState === 'connecting'}
