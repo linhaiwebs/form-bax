@@ -10,7 +10,10 @@ export default function LINEConversionButton({ onClick }: LINEConversionButtonPr
       <div className="max-w-4xl mx-auto">
         <button
           onClick={onClick}
-          className="w-full bg-gradient-to-r from-line-green to-line-green-dark hover:from-line-green-dark hover:to-line-green text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex flex-col items-center justify-center gap-2"
+          style={{
+            background: 'linear-gradient(to right, #06C755, #05B04B)',
+          }}
+          className="w-full text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] flex flex-col items-center justify-center gap-2 hover:brightness-110"
         >
           <div className="flex items-center gap-3">
             <MessageCircle className="w-7 h-7" />
