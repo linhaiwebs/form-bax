@@ -8,6 +8,7 @@ import BusinessLoadingScene from '../components/BusinessLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
 import StockTickerItem from '../components/StockTickerItem';
+import DiagnosisTicker from '../components/DiagnosisTicker';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -474,9 +475,10 @@ export default function RefactoredHome() {
 
   return (
     <div className="relative flex flex-col">
+      <DiagnosisTicker />
       <UkiyoeDeepSeaBackground />
 
-      <div className="relative z-10 flex flex-col">
+      <div className="relative z-10 flex flex-col pt-12">
         <ApiStatsDisplay />
 
         {!showLoadingScene ? (
