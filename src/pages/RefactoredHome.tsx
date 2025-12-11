@@ -3,6 +3,7 @@ import BrandHeader from '../components/BrandHeader';
 import UserStatsDisplay from '../components/UserStatsDisplay';
 import FeatureBadges from '../components/FeatureBadges';
 import CampaignBanner from '../components/CampaignBanner';
+import CompanyInfoCard from '../components/CompanyInfoCard';
 import LargeStatsSection from '../components/LargeStatsSection';
 import LINEConversionButton from '../components/LINEConversionButton';
 import TestimonialSection from '../components/TestimonialSection';
@@ -475,6 +476,12 @@ export default function RefactoredHome() {
               <UserStatsDisplay />
               <FeatureBadges />
               <CampaignBanner />
+            </div>
+
+            <div className="px-4 mb-4">
+              <div className="max-w-4xl mx-auto">
+                <CompanyInfoCard />
+              </div>
             </div>
 
             <div className="bg-business-gray py-6 px-4">
