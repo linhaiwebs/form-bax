@@ -180,23 +180,86 @@ export default function RefactoredHome() {
     }, 100);
 
     try {
-      // Simulate loading for minimum time
       const elapsedTime = Date.now() - startTime;
       const remainingTime = Math.max(0, minimumLoadingTime - elapsedTime);
-
       await new Promise(resolve => setTimeout(resolve, remainingTime));
 
-      // Always throw error with fixed message
-      throw new Error('AI analysis service is currently unavailable');
+      setShowLoadingScene(false);
+      setDiagnosisState('streaming');
+      setLoadingProgress(100);
+
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+        progressIntervalRef.current = null;
+      }
+
+      const response = await apiClient.post('/api/gemini/diagnosis', {
+        code: stockCode,
+        stockData: null,
+        sessionId: userTracking.getSessionId()
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get diagnosis');
+      }
+
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+
+      if (!reader) {
+        throw new Error('No response body');
+      }
+
+      let buffer = '';
+      let accumulatedText = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        for (const line of lines) {
+          const trimmedLine = line.trim();
+          if (!trimmedLine || !trimmedLine.startsWith('data: ')) continue;
+
+          const data = trimmedLine.slice(6).trim();
+
+          try {
+            const parsed = JSON.parse(data);
+
+            if (parsed.error) {
+              throw new Error(parsed.error);
+            }
+
+            if (parsed.content) {
+              accumulatedText += parsed.content;
+              setAnalysisResult(accumulatedText);
+            }
+
+            if (parsed.done) {
+              setDiagnosisState('results');
+            }
+          } catch (e) {
+            console.error('Error parsing SSE data:', e);
+          }
+        }
+      }
+
+      if (accumulatedText.trim().length === 0) {
+        throw new Error('Empty response from AI');
+      }
+
+      setDiagnosisState('results');
     } catch (err) {
       console.error('Diagnosis error:', err);
-      const errorMessage = 'AI analysis service is currently unavailable';
+      const errorMessage = err instanceof Error ? err.message : 'AI analysis service is currently unavailable';
       const errorDetails = 'Our AI analysis service is temporarily unavailable. Please try again later or contact support for assistance.';
 
       setError(`${errorMessage}\nDetails: ${errorDetails}`);
-
-      const elapsedTime = Date.now() - startTime;
-      const remainingTime = Math.max(0, 2000 - elapsedTime);
 
       setTimeout(() => {
         setDiagnosisState('error');
@@ -206,7 +269,7 @@ export default function RefactoredHome() {
           clearInterval(progressIntervalRef.current);
           progressIntervalRef.current = null;
         }
-      }, remainingTime);
+      }, 500);
     }
   };
 
