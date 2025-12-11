@@ -4,12 +4,11 @@ import UserStatsDisplay from '../components/UserStatsDisplay';
 import FeatureBadges from '../components/FeatureBadges';
 import CampaignBanner from '../components/CampaignBanner';
 import CompanyInfoCard from '../components/CompanyInfoCard';
+import EnhancedFormModule from '../components/EnhancedFormModule';
 import LargeStatsSection from '../components/LargeStatsSection';
 import LINEConversionButton from '../components/LINEConversionButton';
 import TestimonialSection from '../components/TestimonialSection';
 import BottomNavigation from '../components/BottomNavigation';
-import ModernStockInput from '../components/ModernStockInput';
-import ModernActionButton from '../components/ModernActionButton';
 import BusinessLoadingScene from '../components/BusinessLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
 import ApiStatsDisplay from '../components/ApiStatsDisplay';
@@ -485,55 +484,43 @@ export default function RefactoredHome() {
             </div>
 
             <div className="bg-business-gray py-6 px-4">
-              <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                  銘柄を検索して無料AI診断
-                </h2>
-
-                <ModernStockInput
-                  value={inputValue}
-                  onChange={setInputValue}
-                  onStockSelect={handleStockSelect}
-                  search={search}
-                  isLoading={isSearchLoading}
-                />
-
-                {autoFillMessage && (
-                  <div className="text-center py-2 text-sm text-green-600 font-medium">
-                    {autoFillMessage}
-                  </div>
-                )}
-
+              <div className="max-w-4xl mx-auto">
                 {loading && (
-                  <div className="text-center py-4">
-                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-brand-blue"></div>
-                    <p className="mt-2 text-gray-600 text-sm">読み込み中...</p>
+                  <div className="text-center py-8 bg-white rounded-lg shadow-md">
+                    <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-brand-blue"></div>
+                    <p className="mt-3 text-gray-600 text-base font-medium">読み込み中...</p>
                   </div>
                 )}
 
                 {error && diagnosisState !== 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center mt-4">
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center mb-4 shadow-md">
                     <p className="text-red-600 text-sm font-semibold">{error}</p>
                   </div>
                 )}
 
                 {!loading && diagnosisState === 'initial' && (
-                  <ModernActionButton
-                    onClick={runDiagnosis}
+                  <EnhancedFormModule
+                    value={inputValue}
+                    onChange={setInputValue}
+                    onStockSelect={handleStockSelect}
+                    onSubmit={runDiagnosis}
                     disabled={!inputValue || (!fallbackModeEnabled && !stockCode)}
+                    search={search}
+                    isLoading={isSearchLoading}
+                    autoFillMessage={autoFillMessage}
                   />
                 )}
 
                 {diagnosisState === 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center mt-4">
-                    <h3 className="text-lg font-bold text-red-600 mb-2">診断エラー</h3>
-                    <p className="text-red-600 text-sm mb-4 whitespace-pre-line">{error}</p>
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center shadow-md">
+                    <h3 className="text-xl font-bold text-red-600 mb-3">診断エラー</h3>
+                    <p className="text-red-600 text-sm mb-5 whitespace-pre-line">{error}</p>
                     <button
                       onClick={() => {
                         setDiagnosisState('initial');
                         setError(null);
                       }}
-                      className="px-6 py-3 bg-brand-red text-white font-bold rounded-lg transition-all shadow-lg hover:bg-brand-red-dark"
+                      className="px-8 py-3 bg-brand-red text-white font-bold rounded-lg transition-all shadow-lg hover:bg-brand-red-dark transform hover:scale-105 active:scale-95"
                     >
                       もう一度試す
                     </button>
