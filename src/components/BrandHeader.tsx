@@ -1,7 +1,7 @@
 export default function BrandHeader() {
   return (
     <div className="bg-blue-50 py-4 px-4">
-      <div className="max-w-4xl mx-auto bg-blue-50 rounded-lg px-4 py-2">
+      <div className="max-w-4xl mx-auto bg-blue-50 rounded-lg py-2">
         <div className="flex items-center gap-3">
           <img
             src="/assets/logo.png"
