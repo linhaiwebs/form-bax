@@ -38,10 +38,10 @@ export default function FormContainer({ children }: FormContainerProps) {
         <div className="max-w-md mx-auto relative z-10">
           <div className="mb-6">
             <h2 className="text-2xl font-sans font-semibold text-left mb-2" style={{ color: '#4DFFDC', textShadow: '0 0 20px rgba(0, 230, 195, 0.6)' }}>
-              3秒で診断完了
+              Analysis Complete in 3 Seconds
             </h2>
             <p className="text-xs font-sans font-normal text-left" style={{ color: 'rgba(179, 255, 240, 0.8)' }}>
-              銘柄コードまたは銘柄名を入力するだけ
+              Simply enter a stock ticker or company name
             </p>
           </div>
 

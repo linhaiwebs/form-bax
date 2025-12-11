@@ -8,7 +8,6 @@ import { initializeGoogleTracking } from './lib/googleTracking';
 const Contact = lazy(() => import('./pages/Contact'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
-const SpecifiedCommercialTransactionAct = lazy(() => import('./pages/SpecifiedCommercialTransactionAct'));
 const AdminLogin = lazy(() => import('./pages/AdminLogin'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 
@@ -29,7 +28,6 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="/specified-commercial-transaction-act" element={<SpecifiedCommercialTransactionAct />} />
 
           <Route path="/adsadmin" element={<AdminLogin />} />
           <Route

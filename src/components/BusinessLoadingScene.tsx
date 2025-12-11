@@ -19,21 +19,21 @@ export default function BusinessLoadingScene({ isVisible }: BusinessLoadingScene
 
         <div className="text-center space-y-4">
           <h2 className="text-4xl md:text-5xl font-sans font-semibold tracking-tight text-sky-600 animate-soft-pulse">
-            高速分析実行中
+            Running Fast Analysis
           </h2>
           <div className="flex items-center justify-center space-x-3">
             <div className="w-2 h-2 bg-sky-500 rounded-full animate-soft-pulse" />
             <p className="text-xl text-mint-600 font-sans font-normal tracking-wide">
-              数秒で完了します
+              Completing in seconds
             </p>
             <div className="w-2 h-2 bg-mint-500 rounded-full animate-soft-pulse" style={{ animationDelay: '0.5s' }} />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl px-4">
-          <BusinessDataCard label="市場データ" value="分析中..." color="blue" />
-          <BusinessDataCard label="AI分析" value="処理中..." color="mint" />
-          <BusinessDataCard label="予測モデル" value="計算中..." color="green" />
+          <BusinessDataCard label="Market Data" value="Analyzing..." color="blue" />
+          <BusinessDataCard label="AI Analysis" value="Processing..." color="mint" />
+          <BusinessDataCard label="Forecast Model" value="Calculating..." color="green" />
         </div>
 
         <div className="mt-8 text-center max-w-2xl px-4">
@@ -42,9 +42,8 @@ export default function BusinessLoadingScene({ isVisible }: BusinessLoadingScene
             borderColor: 'rgba(96, 165, 250, 0.2)',
           }}>
             <p className="text-xs leading-relaxed text-text-muted font-sans">
-              すべてのデータは公開されている市場情報を使用しており、
-              公開市場データに基づいて分析を行っています。
-              本分析は最新のAI技術により、財務指標、業界動向、市場トレンドを総合的に評価しています。
+              All data uses publicly available market information and analysis is based on public market data.
+              This analysis uses the latest AI technology to comprehensively evaluate financial metrics, industry trends, and market trends.
             </p>
           </div>
         </div>

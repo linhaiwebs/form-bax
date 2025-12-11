@@ -10,19 +10,19 @@ export default function ModernPromptBox({ stockName, stockCode }: ModernPromptBo
         {stockName && stockCode ? (
           <p className="text-sm md:text-base text-gray-200 text-center leading-relaxed">
             <span className="text-modern-purple-300 font-semibold text-base md:text-lg block mb-1">
-              {stockName}（{stockCode}）
+              {stockName} ({stockCode})
             </span>
-            の分析準備が完了しました
+            Analysis ready
             <br />
-            下のボタンをクリックして、AIレポートを受け取りましょう
+            Click the button below to receive your AI report
           </p>
         ) : (
           <p className="text-sm md:text-base text-gray-200 text-center leading-relaxed">
-            株式コードを入力すると、AIが
-            <span className="text-white font-semibold"> 指標</span>、
-            <span className="text-white font-semibold">データ</span>、
-            <span className="text-white font-semibold">トレンド</span>
-            を分析し、数秒で完全な結果をご提供します
+            Enter a stock ticker and AI will analyze
+            <span className="text-white font-semibold"> metrics</span>,
+            <span className="text-white font-semibold"> data</span>, and
+            <span className="text-white font-semibold"> trends</span>,
+            delivering complete results in seconds
           </p>
         )}
       </div>

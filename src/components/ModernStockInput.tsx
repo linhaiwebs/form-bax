@@ -87,7 +87,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="銘柄コードまたは銘柄名を入力"
+          placeholder="Enter stock ticker or company name"
           className="w-full px-5 py-4 text-base border-2 rounded-lg focus:outline-none transition-all duration-200 font-sans shadow-sm bg-white text-gray-900 border-gray-300 focus:border-brand-blue hover:border-brand-blue"
           style={{
             height: '56px',
@@ -137,7 +137,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
                 className="flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all rounded-lg bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
               >
                 <ChevronLeft className="w-4 h-4" />
-                前へ
+                Prev
               </button>
 
               <div className="text-sm font-sans font-semibold text-gray-700">
@@ -149,7 +149,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
                 disabled={currentPage === totalPages - 1}
                 className="flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all rounded-lg bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
               >
-                次へ
+                Next
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -159,7 +159,7 @@ export default function ModernStockInput({ value, onChange, onStockSelect, searc
 
       {isLoading && (
         <div className="absolute left-0 right-0 top-full mt-2 text-center text-xs font-sans text-gray-500">
-          読み込み中...
+          Loading...
         </div>
       )}
     </div>

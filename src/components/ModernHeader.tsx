@@ -9,17 +9,17 @@ export default function ModernHeader() {
 
       <div className="relative -mt-24 z-30">
         <div className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-bold px-4 py-2 rounded-full mb-3 shadow-lg animate-pulse">
-          完全無料 • アカウント不要 • 即座に開始
+          100% Free • No Account Required • Start Instantly
         </div>
         <p className="text-base md:text-lg text-white leading-relaxed px-4 drop-shadow-lg font-medium">
-          <span className="font-semibold text-cyan-300">銘柄コード</span>を入力するだけで
+          Simply enter a <span className="font-semibold text-cyan-300">stock ticker</span>
           <br />
-          <span className="font-semibold text-blue-300">AIが即座に分析</span>
+          and <span className="font-semibold text-blue-300">AI analyzes instantly</span>
           <br />
-          詳細レポートを取得
+          Get detailed report
         </p>
         <p className="text-xs md:text-sm text-cyan-200/90 mt-2 drop-shadow-lg">
-          高速処理 • 利用制限なし • データ保護
+          Fast Processing • Unlimited Use • Data Protected
         </p>
       </div>
     </div>

@@ -15,14 +15,14 @@ export default function Footer() {
             </div>
             <div className="flex-1">
               <h3 className="text-base font-bold text-yellow-900 mb-2">
-                免責事項（重要）
+                Disclaimer (Important)
               </h3>
               <div className="space-y-2 text-sm leading-relaxed text-gray-700">
                 <p>
-                  当サイトの情報は、公開された过去データおよび统计的手法に基づく指標・可視化の例示であり、投資勧誘や投資助言を目的とするものではありません。過去の実績は将来の結果を保証しません。金融商品取引は元本割れ等のリスクを伴います。
+                  The information on this site is based on publicly available historical data and statistical methods for illustrative purposes only. It is not intended as investment solicitation or advice. Past performance does not guarantee future results. Financial instruments trading involves risks including loss of principal.
                 </p>
                 <p>
-                  バックテスト等の数値は特定の期間・条件・パラメータに依存する理論値であり、取引コスト、スリッページ、税金、流動性などは考慮していない場合があります。
+                  Backtested results are theoretical values dependent on specific periods, conditions, and parameters, and may not account for transaction costs, slippage, taxes, or liquidity.
                 </p>
               </div>
             </div>
@@ -41,28 +41,21 @@ export default function Footer() {
               to="/privacy"
               className="text-brand-blue hover:text-brand-blue-dark transition-colors duration-200 hover:underline"
             >
-              プライバシーポリシー
+              Privacy Policy
             </Link>
             <span className="text-gray-400">|</span>
             <Link
               to="/terms"
               className="text-brand-blue hover:text-brand-blue-dark transition-colors duration-200 hover:underline"
             >
-              利用規約
-            </Link>
-            <span className="text-gray-400">|</span>
-            <Link
-              to="/specified-commercial-transaction-act"
-              className="text-brand-blue hover:text-brand-blue-dark transition-colors duration-200 hover:underline"
-            >
-              特定商取引法に基づく表記
+              Terms of Service
             </Link>
             <span className="text-gray-400">|</span>
             <Link
               to="/contact"
               className="text-brand-blue hover:text-brand-blue-dark transition-colors duration-200 hover:underline"
             >
-              お問い合わせ
+              Contact Us
             </Link>
           </div>
         </div>

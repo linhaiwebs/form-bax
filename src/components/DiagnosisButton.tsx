@@ -20,13 +20,13 @@ export default function DiagnosisButton({ onClick, disabled = false }: Diagnosis
             <Zap className="w-3 md:w-4 h-3 md:h-4 absolute -top-1 -right-1 text-yellow-300" />
           </div>
           <div className="text-center md:text-left">
-            <div className="text-lg md:text-2xl">AI診断を受ける</div>
-            <div className="text-xs md:text-sm text-white/90 font-normal">最新AIで徹底分析</div>
+            <div className="text-lg md:text-2xl">Get AI Analysis</div>
+            <div className="text-xs md:text-sm text-white/90 font-normal">Advanced AI Technology</div>
           </div>
         </div>
 
         <div className="absolute -top-2 md:-top-3 -right-2 md:-right-3 bg-white text-blue-600 text-xs md:text-sm font-bold px-3 md:px-4 py-1 md:py-1.5 rounded-full shadow-lg transform rotate-12 animate-bounce border-2 border-blue-600">
-          無料
+          FREE
         </div>
       </button>
     </div>
