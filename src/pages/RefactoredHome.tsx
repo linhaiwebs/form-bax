@@ -469,7 +469,7 @@ export default function RefactoredHome() {
 
       {!showLoadingScene ? (
         <>
-          <div className="flex flex-col pb-32">
+          <div className="flex flex-col">
             <BrandHeader />
             <div className="bg-[#bbf7d0] bg-opacity-50 rounded-lg mx-4 my-2 p-3">
               <UserStatsDisplay />
