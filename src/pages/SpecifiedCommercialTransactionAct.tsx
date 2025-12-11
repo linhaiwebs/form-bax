@@ -1,4 +1,4 @@
-import { ArrowLeft, FileText, Mail, Phone } from 'lucide-react';
+import { ArrowLeft, FileText, Mail, Phone, Building2, Home, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getDomainEmail } from '../lib/getDomainEmail';
 import SEO from '../components/SEO';
@@ -14,47 +14,64 @@ export default function SpecifiedCommercialTransactionAct() {
         keywords="特定商取引法,特商法,事業者情報,返金ポリシー,AI株式診断"
         path="/specified-commercial-transaction-act"
       />
-      <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          トップページに戻る
-        </Link>
-
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="bg-blue-100 p-3 rounded-lg">
-              <FileText className="w-6 h-6 text-blue-700" />
-            </div>
-            <h1 className="text-3xl font-bold text-gray-900">特定商取引法に基づく表記</h1>
+      <div className="min-h-screen bg-gradient-to-br from-slate-300 via-gray-200 to-slate-200">
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        <nav className="flex items-center justify-between mb-10">
+          <div className="flex items-center gap-2 text-sm text-gray-600" aria-label="パンくずリスト">
+            <Link to="/" className="hover:text-gray-900 flex items-center gap-1">
+              <Home className="w-4 h-4" />
+              ホーム
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 font-medium">特定商取引法表記</span>
           </div>
 
-          <p className="text-gray-700 leading-relaxed mb-8">
-            特定商取引法（特定商取引に関する法律）に基づき、以下の通り表記いたします。
-          </p>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 px-5 py-2 text-sm border border-gray-600 text-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-all"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            戻る
+          </Link>
+        </nav>
+
+        <article className="bg-gradient-to-br from-white via-gray-50 to-white rounded-lg shadow-2xl border border-gray-300 p-12">
+          <header className="mb-10 pb-8 border-b-4 border-gray-300">
+            <div className="flex items-start gap-6">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-600 to-slate-700 rounded-md rotate-6"></div>
+                <div className="relative bg-gradient-to-br from-gray-700 to-slate-800 p-5 rounded-md shadow-xl">
+                  <FileText className="w-9 h-9 text-white" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <h1 className="text-4xl font-extrabold text-gray-900 mb-3">特定商取引法に基づく表記</h1>
+                <p className="text-base text-gray-600 leading-relaxed">
+                  特定商取引法（特定商取引に関する法律）に基づき、以下の通り表記いたします。
+                </p>
+              </div>
+            </div>
+          </header>
 
           <div className="space-y-6">
-            <section className="border-b border-gray-200 pb-6">
-              <div className="flex items-start gap-4">
-                <div className="bg-green-50 p-3 rounded-lg flex-shrink-0">
-                  <Phone className="w-5 h-5 text-green-600" />
+            <section className="mb-8">
+              <div className="bg-gradient-to-r from-gray-100 to-slate-100 p-6 rounded-lg border-2 border-gray-300">
+                <div className="flex items-center gap-3 mb-6">
+                  <Building2 className="w-6 h-6 text-gray-700" />
+                  <h2 className="text-2xl font-bold text-gray-900">事業者情報・連絡先</h2>
                 </div>
-                <div className="flex-1">
-                  <h2 className="text-xl font-bold text-gray-900 mb-4">連絡先</h2>
-                  <dl className="space-y-3">
-                    <div className="grid sm:grid-cols-3 gap-2">
-                      <dt className="font-semibold text-gray-900">メールアドレス</dt>
-                      <dd className="sm:col-span-2 text-blue-600">{contactEmail}</dd>
-                    </div>
-                    <div className="grid sm:grid-cols-3 gap-2">
-                      <dt className="font-semibold text-gray-900">受付時間</dt>
-                      <dd className="sm:col-span-2 text-gray-700">24時間受付（返信は営業日内）</dd>
-                    </div>
-                  </dl>
-                </div>
+                <table className="w-full border-collapse">
+                  <tbody>
+                    <tr className="border-b border-gray-300">
+                      <td className="py-4 px-4 bg-gray-200 font-bold text-gray-900 w-1/3">メールアドレス</td>
+                      <td className="py-4 px-4 bg-white text-gray-700">{contactEmail}</td>
+                    </tr>
+                    <tr className="border-b border-gray-300">
+                      <td className="py-4 px-4 bg-gray-200 font-bold text-gray-900">受付時間</td>
+                      <td className="py-4 px-4 bg-white text-gray-700">24時間受付（返信は営業日内）</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </section>
 
@@ -206,36 +223,41 @@ export default function SpecifiedCommercialTransactionAct() {
             </section>
 
             <section>
-              <h2 className="text-xl font-bold text-gray-900 mb-4">お問い合わせ</h2>
-              <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-200">
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  特定商取引法に関するご質問、その他お問い合わせは、
-                  以下の方法でご連絡ください。
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <Mail className="w-6 h-6 text-gray-700" />
+                お問い合わせ
+              </h2>
+              <div className="bg-gradient-to-br from-slate-100 to-gray-100 rounded-lg p-8 border-2 border-gray-400 shadow-inner">
+                <p className="text-gray-800 leading-relaxed mb-6 text-base">
+                  特定商取引法に関するご質問、その他お問い合わせは、以下の方法でご連絡ください。
                 </p>
-                <div className="flex items-start gap-3 mb-4">
-                  <Mail className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-gray-900 mb-1">メール</p>
-                    <p className="text-blue-600">{contactEmail}</p>
-                    <p className="text-sm text-gray-600 mt-1">24時間受付（返信は営業日内）</p>
+                <dl className="bg-white rounded-lg p-6 mb-6 border border-gray-300">
+                  <div className="flex items-start gap-4">
+                    <Mail className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" />
+                    <div className="flex-1">
+                      <dt className="font-bold text-gray-900 mb-2 text-lg">メールアドレス</dt>
+                      <dd className="text-gray-700 text-base mb-2">{contactEmail}</dd>
+                      <dd className="text-sm text-gray-500">受付時間: 24時間受付（返信は営業日内）</dd>
+                    </div>
                   </div>
-                </div>
+                </dl>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-md hover:bg-gray-800 transition-all font-bold shadow-md hover:shadow-lg"
                 >
+                  <Mail className="w-5 h-5" />
                   お問い合わせフォームへ
                 </Link>
               </div>
             </section>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-sm text-gray-600 text-center">
+          <footer className="mt-10 pt-8 border-t-2 border-gray-300 text-center">
+            <p className="text-sm text-gray-600 bg-gray-100 inline-block px-6 py-2 rounded-full">
               最終更新日: 2025年1月15日
             </p>
-          </div>
-        </div>
+          </footer>
+        </article>
       </div>
       </div>
     </>

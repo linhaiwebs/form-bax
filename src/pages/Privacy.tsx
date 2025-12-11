@@ -1,4 +1,4 @@
-import { ArrowLeft, Shield } from 'lucide-react';
+import { ArrowLeft, Shield, Lock, Home, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getDomainEmail } from '../lib/getDomainEmail';
 import SEO from '../components/SEO';
@@ -14,36 +14,60 @@ export default function Privacy() {
         keywords="プライバシーポリシー,個人情報保護,Cookie,Google AdSense,セキュリティ,AI株式診断"
         path="/privacy"
       />
-      <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          トップページに戻る
-        </Link>
+      <div className="min-h-screen bg-gradient-to-br from-green-50 via-teal-50 to-blue-100">
+      <div className="max-w-4xl mx-auto px-5 py-12">
+        <div className="flex justify-between items-start mb-8">
+          <nav className="flex items-center gap-2 text-sm text-gray-600" aria-label="パンくずリスト">
+            <Link to="/" className="hover:text-green-700 flex items-center gap-1">
+              <Home className="w-4 h-4" />
+              ホーム
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 font-medium">プライバシーポリシー</span>
+          </nav>
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="bg-blue-100 p-3 rounded-lg">
-              <Shield className="w-6 h-6 text-blue-700" />
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm border-2 border-green-600 text-green-700 rounded-full hover:bg-green-600 hover:text-white transition-all"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            戻る
+          </Link>
+        </div>
+
+        <main className="bg-white rounded-2xl shadow-2xl p-9" role="main">
+          <header className="mb-8">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="bg-gradient-to-br from-green-500 to-teal-600 p-4 rounded-full shadow-lg">
+                <Shield className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h1 className="text-4xl font-extrabold text-gray-900 mb-2">プライバシーポリシー</h1>
+                <p className="text-sm text-gray-500 flex items-center gap-2">
+                  <Lock className="w-4 h-4" />
+                  最終更新日: 2025年10月21日
+                </p>
+              </div>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900">プライバシーポリシー</h1>
-          </div>
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
+              <p className="text-sm text-gray-700 leading-relaxed">
+                当サービスは、お客様の個人情報とプライバシーを最優先に考え、厳格な保護基準を設けています。
+                このポリシーでは、情報の収集、使用、保護方法について詳しく説明します。
+              </p>
+            </div>
+          </header>
 
-          <div className="prose max-w-none">
-            <p className="text-sm text-gray-600 mb-6">最終更新日: 2025年10月21日</p>
+          <div className="prose max-w-none space-y-8">
 
-            <section className="mb-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">1. 基本方針</h2>
-              <p className="text-gray-700 leading-relaxed">
+            <section className="border-l-4 border-green-500 pl-6 mb-8 bg-green-50/30 py-4">
+              <h2 className="text-2xl font-bold text-green-900 mb-4">1. 基本方針</h2>
+              <p className="text-gray-800 leading-relaxed text-base">
                 AI株式診断サービス（以下「当サービス」）の運営者（以下「当社」）は、利用者の個人情報の重要性を認識し、
                 個人情報の保護に関する法律（個人情報保護法）を遵守し、適切に取り扱い、保護することに努めます。
               </p>
             </section>
 
-            <section className="mb-8">
+            <section className="border-l-4 border-teal-500 pl-6 mb-8 bg-teal-50/30 py-4">
               <h2 className="text-xl font-bold text-gray-900 mb-4">2. 収集する情報</h2>
               <p className="text-gray-700 leading-relaxed mb-3">
                 当社は、当サービスの提供にあたり、以下の情報を収集する場合があります：
@@ -145,20 +169,33 @@ export default function Privacy() {
               </p>
             </section>
 
-            <div className="bg-slate-100 rounded-lg p-6 mt-8">
-              <h3 className="font-bold text-gray-900 mb-3">お問い合わせ</h3>
-              <p className="text-sm text-gray-700 mb-2">
-                本ポリシーに関するご質問、個人情報の取り扱いに関するご相談は、お問い合わせフォームよりご連絡ください。
-              </p>
-              <p className="text-sm text-gray-700 mb-2">
-                メール: {contactEmail}
-              </p>
-              <p className="text-sm text-gray-700">
-                受付時間: 24時間受付（返信は営業日内）
-              </p>
-            </div>
+            <aside className="bg-gradient-to-br from-green-100 to-teal-100 border-2 border-green-300 rounded-xl p-8 mt-10 shadow-lg">
+              <div className="flex items-start gap-4">
+                <div className="bg-green-600 p-3 rounded-full flex-shrink-0">
+                  <Lock className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-gray-900 mb-3 text-xl">個人情報に関するお問い合わせ</h3>
+                  <p className="text-sm text-gray-800 mb-4 leading-relaxed">
+                    本ポリシーに関するご質問、個人情報の取り扱いに関するご相談は、
+                    <Link to="/contact" className="text-green-700 hover:underline font-semibold mx-1">
+                      お問い合わせフォーム
+                    </Link>
+                    よりご連絡ください。
+                  </p>
+                  <div className="bg-white/70 rounded-lg p-4 space-y-2">
+                    <p className="text-sm text-gray-800">
+                      <span className="font-semibold text-green-700">メール:</span> {contactEmail}
+                    </p>
+                    <p className="text-sm text-gray-800">
+                      <span className="font-semibold text-green-700">受付時間:</span> 24時間受付（返信は営業日内）
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </aside>
           </div>
-        </div>
+        </main>
       </div>
       </div>
     </>
