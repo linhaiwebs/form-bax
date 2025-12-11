@@ -5,9 +5,10 @@ interface RollingNumberProps {
   decimals?: number;
   className?: string;
   glowColor?: 'green' | 'red' | 'none';
+  style?: React.CSSProperties;
 }
 
-export default function RollingNumber({ value, decimals = 2, className = '', glowColor = 'none' }: RollingNumberProps) {
+export default function RollingNumber({ value, decimals = 2, className = '', glowColor = 'none', style = {} }: RollingNumberProps) {
   const [displayValue, setDisplayValue] = useState(value);
   const [isAnimating, setIsAnimating] = useState(false);
   const previousValue = useRef(value);
@@ -58,7 +59,7 @@ export default function RollingNumber({ value, decimals = 2, className = '', glo
   return (
     <span
       className={`inline-block font-mono ${glowClass} ${className} transition-all duration-200`}
-      style={shadowStyle}
+      style={{ ...shadowStyle, ...style }}
     >
       {formattedValue}
     </span>

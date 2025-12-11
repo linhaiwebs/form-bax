@@ -28,7 +28,6 @@ export default function StockTickerItem({ code, name, basePrice }: StockTickerIt
   }, [basePrice]);
 
   const isPositive = change >= 0;
-  const glowColor = isPositive ? 'cyan' : 'pink';
   const arrowIcon = isPositive ? '▲' : '▼';
   const accentColor = isPositive ? '#10B981' : '#DC2626';
 
@@ -65,22 +64,22 @@ export default function StockTickerItem({ code, name, basePrice }: StockTickerIt
               style={{ color: '#FFFFFF' }}
             />
           </div>
-          <div className="flex items-center space-x-1 font-body" style={{ color: accentColor }}>
-            <span className="text-xs">{arrowIcon}</span>
+          <div className="flex items-center space-x-1 font-body">
+            <span className="text-xs" style={{ color: accentColor }}>{arrowIcon}</span>
             <RollingNumber
               value={Math.abs(change)}
               decimals={0}
               className="text-xs font-medium"
-              glowColor={glowColor}
+              style={{ color: '#FFFFFF' }}
             />
-            <span className="text-xs">(</span>
+            <span className="text-xs" style={{ color: '#FFFFFF' }}>(</span>
             <RollingNumber
               value={Math.abs(changePercent)}
               decimals={2}
               className="text-xs font-medium"
-              glowColor={glowColor}
+              style={{ color: '#FFFFFF' }}
             />
-            <span className="text-xs">%)</span>
+            <span className="text-xs" style={{ color: '#FFFFFF' }}>%)</span>
           </div>
         </div>
       </div>
