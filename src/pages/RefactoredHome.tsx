@@ -1,13 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
-import UkiyoeDeepSeaBackground from '../components/UkiyoeDeepSeaBackground';
-import WaterDropletRippleLogo from '../components/WaterDropletRippleLogo';
+import CleanBackground from '../components/CleanBackground';
+import JapaneseLogo from '../components/JapaneseLogo';
+import PartnershipSection from '../components/PartnershipSection';
+import FeaturesSection from '../components/FeaturesSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import MediaSection from '../components/MediaSection';
 import FormContainer from '../components/FormContainer';
 import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
 import BusinessLoadingScene from '../components/BusinessLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
-import ApiStatsDisplay from '../components/ApiStatsDisplay';
-import StockTickerItem from '../components/StockTickerItem';
+import DisclaimerSection from '../components/DisclaimerSection';
 import { StockData } from '../types/stock';
 import { DiagnosisState } from '../types/diagnosis';
 import { useUrlParams } from '../hooks/useUrlParams';
@@ -15,19 +18,6 @@ import { useStockSearch } from '../hooks/useStockSearch';
 import { apiClient } from '../lib/apiClient';
 import { userTracking } from '../lib/userTracking';
 import { trackConversion, trackDiagnosisButtonClick, trackConversionButtonClick } from '../lib/googleTracking';
-
-const stockTickerData = [
-  { code: '6758', name: 'ソニーグループ', basePrice: 13500 },
-  { code: '6861', name: 'キーエンス', basePrice: 62000 },
-  { code: '8035', name: '東京エレクトロン', basePrice: 25500 },
-  { code: '6098', name: 'リクルート', basePrice: 6200 },
-  { code: '4755', name: '楽天グループ', basePrice: 850 },
-  { code: '4689', name: 'Ｚホールディングス', basePrice: 420 },
-  { code: '3382', name: '７＆ｉＨＤ', basePrice: 1650 },
-  { code: '4063', name: '信越化学', basePrice: 7500 },
-  { code: '6954', name: 'ファナック', basePrice: 3800 },
-  { code: '9984', name: 'ソフトバンクG', basePrice: 6800 },
-];
 
 export default function RefactoredHome() {
   const urlParams = useUrlParams();
@@ -473,44 +463,21 @@ export default function RefactoredHome() {
   };
 
   return (
-    <div className="relative flex flex-col">
-      <UkiyoeDeepSeaBackground />
+    <div className="relative flex flex-col min-h-screen">
+      <CleanBackground />
 
       <div className="relative z-10 flex flex-col">
-        <ApiStatsDisplay />
-
         {!showLoadingScene ? (
           <div className="flex flex-col">
-            <div className="flex flex-col items-center justify-center px-2 py-8">
-              <WaterDropletRippleLogo />
-            </div>
+            <JapaneseLogo />
 
-            <div className="w-full mx-auto mb-4">
-              <div className="overflow-hidden py-3 relative rounded-xl backdrop-blur-md"
-                style={{
-                  background: 'rgba(4, 47, 82, 0.75)',
-                  border: '2px solid rgba(0, 230, 195, 0.4)',
-                }}
-              >
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(90deg, rgba(4, 47, 82, 1) 0%, transparent 5%, transparent 95%, rgba(4, 47, 82, 1) 100%)',
-                    zIndex: 1
-                  }}
-                />
-                <div className="animate-scroll-left whitespace-nowrap inline-block">
-                  {[...stockTickerData, ...stockTickerData, ...stockTickerData].map((stock, index) => (
-                    <StockTickerItem
-                      key={index}
-                      code={stock.code}
-                      name={stock.name}
-                      basePrice={stock.basePrice}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
+            <PartnershipSection />
+
+            <FeaturesSection />
+
+            <TestimonialsSection />
+
+            <MediaSection />
 
             <div className="flex flex-col">
               <FormContainer>
@@ -523,20 +490,20 @@ export default function RefactoredHome() {
                 />
 
                 {autoFillMessage && (
-                  <div className="text-center py-2 text-sm text-green-600 font-medium animate-fadeIn">
+                  <div className="text-center py-2 text-sm text-green-600 font-medium">
                     {autoFillMessage}
                   </div>
                 )}
 
                 {loading && (
-                  <div className="text-center py-4 animate-fadeIn">
-                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-gray-900"></div>
+                  <div className="text-center py-4">
+                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-blue-600"></div>
                     <p className="mt-2 text-gray-600 text-sm">Loading...</p>
                   </div>
                 )}
 
                 {error && diagnosisState !== 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center animate-fadeIn mt-4">
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center mt-4">
                     <p className="text-red-600 text-sm font-semibold">{error}</p>
                   </div>
                 )}
@@ -549,7 +516,7 @@ export default function RefactoredHome() {
                 )}
 
                 {diagnosisState === 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center animate-fadeIn mt-4">
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center mt-4">
                     <h3 className="text-lg font-bold text-red-600 mb-2">診断エラー</h3>
                     <p className="text-red-600 text-sm mb-4 whitespace-pre-line">{error}</p>
                     <button
@@ -557,7 +524,7 @@ export default function RefactoredHome() {
                         setDiagnosisState('initial');
                         setError(null);
                       }}
-                      className="px-6 py-3 bg-gray-900 text-white font-bold rounded-xl transition-all shadow-lg hover:opacity-90"
+                      className="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg transition-all shadow-lg hover:bg-blue-700"
                     >
                       もう一度試す
                     </button>
@@ -565,9 +532,11 @@ export default function RefactoredHome() {
                 )}
               </FormContainer>
             </div>
+
+            <DisclaimerSection />
           </div>
         ) : (
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center min-h-screen">
             <BusinessLoadingScene isVisible={showLoadingScene} />
           </div>
         )}
