@@ -1,4 +1,5 @@
 import { Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -43,9 +44,40 @@ export default function Footer() {
 
         {/* Copyright Section */}
         <div className="border-t-2 border-green-400/40 pt-3 text-center">
-          <p className="text-xs sm:text-sm text-white font-semibold">
+          <p className="text-xs sm:text-sm text-white font-semibold mb-3">
             &copy; {currentYear} All rights reserved.
           </p>
+
+          {/* Footer Links */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm">
+            <Link
+              to="/privacy"
+              className="text-green-300 hover:text-green-200 transition-colors duration-200 hover:underline"
+            >
+              プライバシーポリシー
+            </Link>
+            <span className="text-gray-400">|</span>
+            <Link
+              to="/terms"
+              className="text-green-300 hover:text-green-200 transition-colors duration-200 hover:underline"
+            >
+              利用規約
+            </Link>
+            <span className="text-gray-400">|</span>
+            <Link
+              to="/specified-commercial-transaction-act"
+              className="text-green-300 hover:text-green-200 transition-colors duration-200 hover:underline"
+            >
+              特定商取引法に基づく表記
+            </Link>
+            <span className="text-gray-400">|</span>
+            <Link
+              to="/contact"
+              className="text-green-300 hover:text-green-200 transition-colors duration-200 hover:underline"
+            >
+              お問い合わせ
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
