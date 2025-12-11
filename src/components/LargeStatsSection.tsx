@@ -35,7 +35,7 @@ export default function LargeStatsSection() {
           {stats.map((stat, index) => (
             <div key={index} className={`${stat.bgColor} rounded-xl p-4 text-center shadow-sm`}>
               <stat.icon className={`w-7 h-7 ${stat.color} mx-auto mb-2`} />
-              <div className={`text-xl font-bold ${stat.color} mb-1`}>
+              <div className={`text-sm font-bold ${stat.color} mb-1`}>
                 {stat.value}
               </div>
               <div className="text-xs text-gray-600 font-medium">
